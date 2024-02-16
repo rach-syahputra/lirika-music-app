@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "James",
+      "email": "james@gmail.com",
+      "profile": "https://i.pravatar.cc/48?u=118836",
+      "password": "11223344",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Robert",
+      "email": "robert@gmail.com",
+      "profile": "https://i.pravatar.cc/48?u=33372",
+      "password": "11223344",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Mary",
+      "email": "mary@gmail.com",
+      "profile": "https://i.pravatar.cc/48?u=322554",
+      "password": "11223344",
+      "role": "user"
+    }
+  ],
+  "songs": [
+    {
+      "id": "1",
+      "title": "The Shadows of Morbid Hunger",
+      "artist": "Nordjevel",
+      "album": "Nordjevel",
+      "duration": "4.02",
+      "image": ""
+    },
+    {
+      "id": "2",
+      "title": "Djevelen I Nord",
+      "artist": "Nordjevel",
+      "album": "Nordjevel",
+      "duration": "4.25",
+      "image": ""
+    },
+    {
+      "id": "3",
+      "title": "The Funeral Smell",
+      "artist": "Nordjevel",
+      "album": "Nordjevel",
+      "duration": "6.00",
+      "image": ""
+    },
+    {
+      "id": "4",
+      "title": "Frost",
+      "artist": "Horanauts",
+      "album": "How to Trade Curses",
+      "duration": "3.28",
+      "image": ""
+    },
+    {
+      "id": "5",
+      "title": "Bad Aura",
+      "artist": "Horanauts",
+      "album": "How to Trade Curses",
+      "duration": "4.30",
+      "image": ""
+    }
+  ]
+}
