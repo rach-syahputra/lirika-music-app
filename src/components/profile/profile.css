@@ -13,8 +13,9 @@
 .userInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
   cursor: pointer;
+  gap: 8px;
 }
 
 .userInfo .imgContainer {
@@ -25,4 +26,8 @@
 .userInfo img {
   height: 30px;
   width: 30px;
+}
+
+.userInfo h3 {
+  white-space: nowrap;
 }

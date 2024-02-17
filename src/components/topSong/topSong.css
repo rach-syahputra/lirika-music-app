@@ -37,6 +37,11 @@
   gap: 5px;
 }
 
+.title,
+.artist {
+  cursor: pointer;
+}
+
 .action {
   display: flex;
   align-items: center;
