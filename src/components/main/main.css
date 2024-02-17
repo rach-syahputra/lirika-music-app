@@ -1,0 +1,5 @@
+.main {
+  padding: 20px 40px;
+  display: grid;
+  grid-template-rows: 10% 40% 50%;
+}

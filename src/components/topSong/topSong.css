@@ -1,0 +1,77 @@
+.topSong {
+  padding: 15px;
+  border-radius: 6px;
+  background-color: var(--dark-bg);
+  display: grid;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.songList {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.item img {
+  height: 50px;
+}
+
+.action .playIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--light);
+  padding: 6px 8px;
+  border-radius: 50px;
+}
+
+.action .playIcon .icon {
+  color: var(--main-color);
+  font-size: 12px;
+}
+
+.action .plusIcon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--light);
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.action .plusIcon .icon {
+  color: var(--darker-bg);
+  font-size: 10px;
+}
