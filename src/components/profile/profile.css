@@ -1,0 +1,28 @@
+.profile {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 65px;
+}
+
+.profile .icon {
+  cursor: pointer;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.userInfo .imgContainer {
+  display: flex;
+  padding: 2px;
+}
+
+.userInfo img {
+  height: 30px;
+  width: 30px;
+}

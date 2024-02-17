@@ -1,14 +1,14 @@
 import React from 'react'
 import Sidebar from '../components/sidebar/Sidebar'
 import Main from '../components/main/Main'
-import MusicPlayer from '../components/musicPlayer/MusicPlayer'
+import Rightbar from '../components/rightbar/Rightbar'
 
 const Home = () => {
   return (
     <div className="container">
       <Sidebar />
       <Main />
-      <MusicPlayer />
+      <Rightbar />
     </div>
   )
 }
