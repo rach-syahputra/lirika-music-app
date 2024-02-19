@@ -5,12 +5,16 @@
   gap: 30px;
   height: 100vh;
   background-color: var(--dark-bg);
+  width: 100%;
+  justify-content: center;
 }
 
 .logo {
   font-weight: bold;
   font-size: 18px;
   color: var(--main-color);
+  height: fit-content;
+  cursor: default;
 }
 
 .menu {

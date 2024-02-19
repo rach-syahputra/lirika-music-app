@@ -10,7 +10,7 @@ const MusicPlayer = () => {
       <div className="top">
         <div className="header">
           <h3>Player</h3>
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={faBars} className='icon' />
         </div>
         <div className="songContainer">
           <div className="imgContainer">

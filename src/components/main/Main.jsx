@@ -7,7 +7,6 @@ import TopSong from '../topSong/TopSong'
 const Main = () => {
   return (
     <div className='main'>
-      <Search />
       <Trending />
       <TopSong />
     </div>

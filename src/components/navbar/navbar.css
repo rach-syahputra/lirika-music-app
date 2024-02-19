@@ -1,0 +1,6 @@
+.navbar {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  height: fit-content;
+  padding: 20px 40px;
+}

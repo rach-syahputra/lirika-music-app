@@ -2,7 +2,6 @@
   padding: 15px;
   border-radius: 6px;
   background-color: var(--dark-bg);
-  display: grid;
 }
 
 .header {

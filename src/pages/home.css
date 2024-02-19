@@ -1,0 +1,11 @@
+.mainPage {
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  padding: 20px 40px;
+}

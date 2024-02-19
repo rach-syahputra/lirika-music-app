@@ -44,6 +44,14 @@ h5 {
   color: var(--light);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  cursor: default;
+}
+
 img {
   object-fit: cover;
   object-position: top;
@@ -59,7 +67,8 @@ body {
 .container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 4fr 2fr;
+  grid-template-columns: auto 85%;
+  box-sizing: border-box;
   background: linear-gradient(#050505, #18181d);
   color: white;
 }

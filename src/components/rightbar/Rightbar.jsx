@@ -6,7 +6,6 @@ import MusicPlayer from '../musicPlayer/MusicPlayer'
 const Rightbar = () => {
   return (
     <div className='rightbar'>
-      <Profile />
       <MusicPlayer />
     </div>
   )

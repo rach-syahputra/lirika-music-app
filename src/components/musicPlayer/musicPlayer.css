@@ -26,6 +26,10 @@
   padding: 0 18px;
 }
 
+.header .icon {
+  cursor: pointer;
+}
+
 .imgContainer {
   width: 80%;
   border-radius: 4px;
@@ -84,31 +88,37 @@
   margin-top: 15px;
 }
 
-.icons {
+.bottom .icons {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 90px;
 }
 
-.playIcon {
+.bottom .icons .icon {
+  cursor: pointer;
+}
+
+.bottom .playIcon {
   display: flex;
   background-color: #fff;
   padding: 8px 12px;
   border-radius: 12px;
+  cursor: pointer;
 }
 
-.playIcon .icon {
+.bottom .playIcon .icon {
   color: var(--main-color);
 }
 
-.lyric {
+.bottom .lyric {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.lyric h4 {
+.bottom .lyric h4 {
   color: #fff;
 }
