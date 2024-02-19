@@ -27,7 +27,7 @@ const TopSong = () => {
       </div>
 
       <div className="songList">
-        {songs && songs.slice(0, 4).map((song, index) => (
+        {songs && songs.sort((a, b) => b.playedCount - a.playedCount).slice(0, 4).map((song, index) => (
           <div className="item" key={song.id}>
             <div className="info">
               <h5>{index + 1}</h5>
