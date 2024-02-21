@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+.songInfo .songTitle {
+  display: flex;
+  align-items: center;
+  height: 25px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

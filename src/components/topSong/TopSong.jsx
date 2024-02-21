@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { Context } from "../../pages/Home"
 
 const TopSong = () => {
+  const [id, setId] = useContext(Context)
   const [songs, setSongs] = useState([])
+  const [isPlayedId, setIsPlayedId] = useState(null)
+  const [likedId, setLikedId] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:3000/songs")
@@ -13,11 +17,32 @@ const TopSong = () => {
       })
       .then((data) => {
         setSongs(data)
+        const mostPlayedSong = data.reduce((maxObj, obj) => (obj.playedCount > maxObj.playedCount ? obj : maxObj));
+        setId(mostPlayedSong.id)
       })
       .catch((err) => {
         console.log(err.message)
       })
   }, [])
+
+  const handlePlay = (songId) => {
+    setIsPlayedId(songId)
+    setId(songId)
+  }
+
+  const handleStop = () => {
+    setIsPlayedId(null)
+  }
+
+  const handleToggleLike = (songId) => {
+    if (likedId.includes(songId)) {
+      setLikedId(likedId.filter((id) => id !== songId))
+    } else {
+      setLikedId([...likedId, songId])
+    }
+  }
+
+  const isLiked = (songId) => likedId.includes(songId);
 
   return (
     <div className='topSong'>
@@ -39,12 +64,34 @@ const TopSong = () => {
             </div>
             <div className="action">
               <h3>{song.duration}</h3>
-              <div className="playIcon">
-                <FontAwesomeIcon icon={faPlay} className='icon' />
-              </div>
-              <div className="plusIcon">
-                <FontAwesomeIcon icon={faPlus} className='icon' />
-              </div>
+
+              {isPlayedId === song.id
+                ?
+                <div className="buttonStop" onClick={handleStop}>
+                  <FontAwesomeIcon icon={faSquare} className='icon' />
+                </div>
+                :
+                <div className="buttonPlay" onClick={() => handlePlay(song.id)}>
+                  <FontAwesomeIcon icon={faPlay} className='icon' />
+                </div>
+              }
+
+              {isLiked(song.id)
+                ?
+                <div className="buttonCheck" onClick={() => handleToggleLike(song.id)}>
+                  <FontAwesomeIcon icon={faCheck} className='icon' />
+                </div>
+                :
+                <div className="buttonPlus" onClick={() => handleToggleLike(song.id)}>
+                  <FontAwesomeIcon icon={faPlus} className='icon' />
+                </div>
+              }
+
+
+
+
+
+
             </div>
           </div>
         ))}

@@ -51,31 +51,46 @@
   height: 50px;
 }
 
-.action .playIcon {
+.action .buttonPlay,
+.action .buttonStop {
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid var(--light);
-  padding: 6px 8px;
+  height: 32px;
+  width: 32px;
   border-radius: 50px;
 }
 
-.action .playIcon .icon {
+.action .icon {
   color: var(--main-color);
   font-size: 12px;
+  text-align: center;
 }
 
-.action .plusIcon {
+.action .buttonStop .icon {
+  font-size: 11px;
+}
+
+.action .buttonPlus,
+.action .buttonCheck {
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   background-color: var(--light);
-  padding: 3px;
+  width: 14px;
+  height: 14px;
   border-radius: 4px;
 }
 
-.action .plusIcon .icon {
+.action .buttonCheck {
+  background-color: var(--main-color);
+}
+
+.action .buttonPlus .icon,
+.action .buttonCheck .icon {
   color: var(--darker-bg);
   font-size: 10px;
 }

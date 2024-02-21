@@ -1,10 +1,32 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { Context } from "../../pages/Home"
 
 
 const MusicPlayer = () => {
+  const [id, setId] = useContext(Context)
+  const [title, setTitle] = useState("")
+  const [artist, setArtist] = useState("")
+  const [image, setImage] = useState("")
+  const isLarge = title && title.length > 20 ? true : false
+
+  useEffect(() => {
+    fetch("http://localhost:3000/songs/" + id)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setTitle(data.title)
+        setArtist(data.artist)
+        setImage(data.image)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }, [id])
+
   return (
     <div className='musicPlayer'>
       <div className="top">
@@ -14,11 +36,13 @@ const MusicPlayer = () => {
         </div>
         <div className="songContainer">
           <div className="imgContainer">
-            <img src="https://cdn-p.smehost.net/sites/7f9737f2506941499994d771a29ad47a/wp-content/uploads/2022/03/SOP-Incurso-cover-art.jpg" alt="" />
+            <img src={image ? `${image}` : 'https://f4.bcbits.com/img/a4139357031_10.jpg'} alt="" />
           </div>
           <div className="songInfo">
-            <h2>Apparation</h2>
-            <h3>Spawn of Possession</h3>
+            <div className="songTitle">
+              <h2 style={{ fontSize: isLarge && '18px' }}>{id ? title : 'Song Title'}</h2>
+            </div>
+            <h3>{artist}</h3>
             <h4>Best of 2024</h4>
           </div>
           <div className="progress">
