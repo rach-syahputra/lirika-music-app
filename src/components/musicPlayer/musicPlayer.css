@@ -94,28 +94,35 @@
   margin-top: 15px;
 }
 
-.bottom .icons {
+.bottom .buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 90px;
 }
 
-.bottom .icons .icon {
+.bottom .buttons .icon {
   cursor: pointer;
 }
 
-.bottom .playIcon {
+.bottom .buttons .buttonPlay,
+.bottom .buttons .buttonStop {
   display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #fff;
-  padding: 8px 12px;
+  height: 34px;
+  width: 34px;
   border-radius: 12px;
   cursor: pointer;
 }
 
-.bottom .playIcon .icon {
+.bottom .buttons .buttonPlay .icon,
+.bottom .buttons .buttonStop .icon {
   color: var(--main-color);
 }
+
+
 
 .bottom .lyric {
   display: flex;

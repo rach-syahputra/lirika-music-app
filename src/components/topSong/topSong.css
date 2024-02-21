@@ -69,10 +69,6 @@
   text-align: center;
 }
 
-.action .buttonStop .icon {
-  font-size: 11px;
-}
-
 .action .buttonPlus,
 .action .buttonCheck {
   display: flex;

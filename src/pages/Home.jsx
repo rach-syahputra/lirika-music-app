@@ -5,22 +5,26 @@ import Main from '../components/main/Main'
 import Rightbar from '../components/rightbar/Rightbar'
 import Navbar from '../components/navbar/Navbar'
 
-export const Context = createContext()
+export const ContextId = createContext()
+export const ContextIsPlayed = createContext()
 
 const Home = () => {
   const [id, setId] = useState("")
+  const [isPlayed, setIsPlayed] = useState(false)
 
   return (
     <div className="container">
       <Sidebar />
       <div className="mainPage">
         <Navbar />
-        <Context.Provider value={[id, setId]}>
-          <div className="mainContent">
-            <Main />
-            <Rightbar />
-          </div>
-        </Context.Provider>
+        <ContextId.Provider value={[id, setId]}>
+          <ContextIsPlayed.Provider value={[isPlayed, setIsPlayed]}>
+            <div className="mainContent">
+              <Main />
+              <Rightbar />
+            </div>
+          </ContextIsPlayed.Provider>
+        </ContextId.Provider>
       </div>
     </div>
   )

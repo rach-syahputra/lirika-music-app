@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { Context } from "../../pages/Home"
+import { faCheck, faPause, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { ContextId, ContextIsPlayed } from "../../pages/Home"
 
 const TopSong = () => {
-  const [id, setId] = useContext(Context)
+  const [id, setId] = useContext(ContextId)
+  const [isPlayed, setIsPlayed] = useContext(ContextIsPlayed)
   const [songs, setSongs] = useState([])
   const [isPlayedId, setIsPlayedId] = useState(null)
   const [likedId, setLikedId] = useState([])
@@ -26,11 +27,13 @@ const TopSong = () => {
   }, [])
 
   const handlePlay = (songId) => {
+    setIsPlayed(true)
     setIsPlayedId(songId)
     setId(songId)
   }
 
   const handleStop = () => {
+    setIsPlayed(false)
     setIsPlayedId(null)
   }
 
@@ -68,7 +71,7 @@ const TopSong = () => {
               {isPlayedId === song.id
                 ?
                 <div className="buttonStop" onClick={handleStop}>
-                  <FontAwesomeIcon icon={faSquare} className='icon' />
+                  <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
                 <div className="buttonPlay" onClick={() => handlePlay(song.id)}>

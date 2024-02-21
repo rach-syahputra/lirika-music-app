@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp, faBackward, faBars, faForward, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { Context } from "../../pages/Home"
+import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { ContextId, ContextIsPlayed } from "../../pages/Home"
 
 
 const MusicPlayer = () => {
-  const [id, setId] = useContext(Context)
+  const [id, setId] = useContext(ContextId)
+  const [isPlayed, setIsPlayed] = useContext(ContextIsPlayed)
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [image, setImage] = useState("")
@@ -54,11 +55,20 @@ const MusicPlayer = () => {
         </div>
       </div>
       <div className="bottom">
-        <div className="icons">
+        <div className="buttons">
+
           <FontAwesomeIcon icon={faBackward} className='icon' />
-          <div className="playIcon">
-            <FontAwesomeIcon icon={faPlay} className='icon' />
-          </div>
+          {isPlayed
+            ?
+            <div className="buttonStop">
+              <FontAwesomeIcon icon={faPause} className='icon' />
+            </div>
+            :
+            <div className="buttonPlay">
+              <FontAwesomeIcon icon={faPlay} className='icon' />
+            </div>
+
+          }
           <FontAwesomeIcon icon={faForward} className='icon' />
         </div>
         <div className="lyric">
