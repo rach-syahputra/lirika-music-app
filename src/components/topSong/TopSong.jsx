@@ -2,40 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { ContextId, ContextIsPlayed } from "../../pages/Home"
+import { ContextIsPlayedId } from "../../pages/Home"
 
-const TopSong = () => {
-  const [id, setId] = useContext(ContextId)
-  const [isPlayed, setIsPlayed] = useContext(ContextIsPlayed)
-  const [songs, setSongs] = useState([])
-  const [isPlayedId, setIsPlayedId] = useState(null)
+const TopSong = ({ songs, handlePlay, handleStop }) => {
+  const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [likedId, setLikedId] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:3000/songs")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setSongs(data)
-        const mostPlayedSong = data.reduce((maxObj, obj) => (obj.playedCount > maxObj.playedCount ? obj : maxObj));
-        setId(mostPlayedSong.id)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+
   }, [])
-
-  const handlePlay = (songId) => {
-    setIsPlayed(true)
-    setIsPlayedId(songId)
-    setId(songId)
-  }
-
-  const handleStop = () => {
-    setIsPlayed(false)
-    setIsPlayedId(null)
-  }
 
   const handleToggleLike = (songId) => {
     if (likedId.includes(songId)) {
@@ -89,12 +64,6 @@ const TopSong = () => {
                   <FontAwesomeIcon icon={faPlus} className='icon' />
                 </div>
               }
-
-
-
-
-
-
             </div>
           </div>
         ))}
@@ -104,3 +73,4 @@ const TopSong = () => {
 }
 
 export default TopSong
+

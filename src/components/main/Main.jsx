@@ -4,11 +4,15 @@ import Search from '../search/Search'
 import Trending from '../trending/Trending'
 import TopSong from '../topSong/TopSong'
 
-const Main = () => {
+const Main = ({ songs, handlePlay, handleStop }) => {
   return (
     <div className='main'>
       <Trending />
-      <TopSong />
+      <TopSong
+        songs={songs}
+        handlePlay={handlePlay}
+        handleStop={handleStop}
+      />
     </div>
   )
 }

@@ -2,31 +2,31 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { ContextId, ContextIsPlayed } from "../../pages/Home"
+import { ContextIsPlayedId } from "../../pages/Home"
 
 
-const MusicPlayer = () => {
-  const [id, setId] = useContext(ContextId)
-  const [isPlayed, setIsPlayed] = useContext(ContextIsPlayed)
+const MusicPlayer = ({ songId, handleNext, handlePrev, handlePlay, handleStop }) => {
+  const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [image, setImage] = useState("")
   const isLarge = title && title.length > 20 ? true : false
 
   useEffect(() => {
-    fetch("http://localhost:3000/songs/" + id)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/songs/" + songId);
+        const data = await response.json()
+
         setTitle(data.title)
         setArtist(data.artist)
         setImage(data.image)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }, [id])
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+    fetchData();
+  }, [songId])
 
   return (
     <div className='musicPlayer'>
@@ -41,7 +41,7 @@ const MusicPlayer = () => {
           </div>
           <div className="songInfo">
             <div className="songTitle">
-              <h2 style={{ fontSize: isLarge && '18px' }}>{id ? title : 'Song Title'}</h2>
+              <h2 style={{ fontSize: isLarge && '18px' }}>{songId ? title : 'Song Title'}</h2>
             </div>
             <h3>{artist}</h3>
             <h4>Best of 2024</h4>
@@ -56,20 +56,23 @@ const MusicPlayer = () => {
       </div>
       <div className="bottom">
         <div className="buttons">
-
-          <FontAwesomeIcon icon={faBackward} className='icon' />
-          {isPlayed
+          <div className="buttonPrev" onClick={handlePrev}>
+            <FontAwesomeIcon icon={faBackward} className='icon' />
+          </div>
+          {isPlayedId === songId
             ?
-            <div className="buttonStop">
+            <div className="buttonStop" onClick={handleStop}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay">
+            <div className="buttonPlay" onClick={() => handlePlay(songId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
 
           }
-          <FontAwesomeIcon icon={faForward} className='icon' />
+          <div className="buttonNext" onClick={handleNext}>
+            <FontAwesomeIcon icon={faForward} className='icon' />
+          </div>
         </div>
         <div className="lyric">
           <FontAwesomeIcon icon={faAngleUp} className='icon' />
