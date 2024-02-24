@@ -3,7 +3,7 @@ import "./registerIdentity.css"
 import AuthNavbar from '../../components/authNavbar/AuthNavbar'
 import useRegisterStateIdentity from '../../hooks/useRegisterIdentityState'
 import { handleIdentitySubmit } from '../../handlers/handleSubmit.js'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterIdentity = () => {
 
@@ -15,13 +15,12 @@ const RegisterIdentity = () => {
   } = useRegisterStateIdentity()
 
   const navigate = useNavigate()
-  const { userId } = useParams()
 
   return (
     <div className='register'>
       <AuthNavbar />
       <div className="section">
-        <form className='identity' onSubmit={handleIdentitySubmit(name, selectedGender, navigate, userId)}>
+        <form className='identity' onSubmit={handleIdentitySubmit(name, selectedGender, navigate)}>
           <h2>Tell us about yourself</h2>
           <div className="name input">
             <div className="title">

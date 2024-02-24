@@ -23,6 +23,14 @@
       "name": "Tiara",
       "gender": "female",
       "role": "user"
+    },
+    {
+      "id": "e8e22f94-0d26-454f-94e6-a5d52c052cfc",
+      "email": "yunyun@gmail.com",
+      "password": "dekyun7766",
+      "name": "Yunita",
+      "gender": "female",
+      "role": "user"
     }
   ],
   "songs": [
