@@ -9,19 +9,19 @@
       "role": "admin"
     },
     {
-      "id": 2,
-      "name": "Robert",
-      "email": "robert@gmail.com",
-      "profile": "https://i.pravatar.cc/48?u=33372",
-      "password": "11223344",
+      "id": "4a22a100-3a81-49c5-b9f7-b84f9766ce42",
+      "email": "nadiasari12@gmail.com",
+      "password": "azazel772345",
+      "name": "Ariskadya",
+      "gender": "female",
       "role": "user"
     },
     {
-      "id": 3,
-      "name": "Mary",
-      "email": "mary@gmail.com",
-      "profile": "https://i.pravatar.cc/48?u=322554",
+      "id": "8c82541d-426b-47d0-9b23-afceec75c13c",
+      "email": "marrybloody@gmail.com",
       "password": "11223344",
+      "name": "Tiara",
+      "gender": "female",
       "role": "user"
     }
   ],

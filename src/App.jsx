@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import MusicPlayer from './components/musicPlayer/MusicPlayer'
-import Main from './components/main/Main'
-import Sidebar from './components/sidebar/Sidebar'
-import Home from './pages/Home'
-
+import Home from './pages/home/Home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Register from './pages/register/Register'
+import Login from './pages/login/Login'
+import RegisterIdentity from './pages/registerIdentity/RegisterIdentity'
 
 function App() {
 
-
   return (
-    <>
-      <Home />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/register/identity/:userId' element={<RegisterIdentity />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,0 +1,63 @@
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 340px;
+  padding: 10px;
+}
+
+.identity .input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.identity .input .title h5 {
+  font-size: 12px;
+}
+
+.identity .name input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: black;
+  border: 2px solid var(--light);
+  border-radius: 6px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.gender .title {
+  width: 100%;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.radio input {
+  accent-color: var(--main-color);
+}
+
+.radio .male,
+.radio .female {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.identity .signUpButton {
+  width: 100%;
+  background-color: var(--main-color);
+  color: #000;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}

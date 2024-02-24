@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { ContextIsPlayedId } from "../../pages/Home"
+import { ContextIsPlayedId } from '../../pages/home/Home'
 
 
 const MusicPlayer = ({ songId, handleNext, handlePrev, handlePlay, handleStop }) => {

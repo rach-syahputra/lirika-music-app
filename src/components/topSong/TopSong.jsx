@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { ContextIsPlayedId } from "../../pages/Home"
+import { ContextIsPlayedId } from '../../pages/home/Home'
 
 const TopSong = ({ songs, handlePlay, handleStop }) => {
   const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
