@@ -3,11 +3,13 @@ import "./rightbar.css"
 import Profile from '../profile/Profile'
 import MusicPlayer from '../musicPlayer/MusicPlayer'
 
-const Rightbar = ({ songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
+const Rightbar = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
   return (
     <div className='rightbar'>
       <MusicPlayer
+        songs={songs}
         songId={songId}
+        setSongId={setSongId}
         handleNext={handleNext}
         handlePrev={handlePrev}
         handlePlay={handlePlay}

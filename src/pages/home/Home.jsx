@@ -4,13 +4,20 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import Main from '../../components/main/Main'
 import Rightbar from '../../components/rightbar/Rightbar'
 import Navbar from '../../components/navbar/Navbar'
+import useHomeState from '../../hooks/useHomeState'
+import { handlePlay, handleStop, handleNext, handlePrev } from '../../handlers/handleSong'
 
 export const ContextIsPlayedId = createContext()
 
 const Home = () => {
-  const [songId, setSongId] = useState("")
-  const [isPlayedId, setIsPlayedId] = useState('')
-  const [songs, setSongs] = useState([])
+  const {
+    songId,
+    setSongId,
+    isPlayedId,
+    setIsPlayedId,
+    songs,
+    setSongs
+  } = useHomeState()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,29 +39,6 @@ const Home = () => {
     fetchData();
   }, [])
 
-  const handlePlay = (songId) => {
-    setIsPlayedId(songId)
-    setSongId(songId)
-  }
-
-  const handleStop = () => {
-    setIsPlayedId(null)
-  }
-
-  const handleNext = () => {
-    const currentIndex = songs.findIndex((item) => item.id === songId);
-    const nextIndex = (currentIndex + 1) % songs.length;
-    setSongId(songs[nextIndex].id);
-    setIsPlayedId(songs[nextIndex].id);
-  };
-
-  const handlePrev = () => {
-    const currentIndex = songs.findIndex((item) => item.id === songId);
-    const nextIndex = (currentIndex - 1) % songs.length;
-    setSongId(songs[nextIndex].id);
-    setIsPlayedId(songs[nextIndex].id);
-  };
-
   return (
     <div className="container">
       <Sidebar />
@@ -64,11 +48,17 @@ const Home = () => {
           <div className="mainContent">
             <Main
               songs={songs}
+              songId={songId}
+
+              setSongId={setSongId}
               handlePlay={handlePlay}
               handleStop={handleStop}
             />
             <Rightbar
+              songs={songs}
               songId={songId}
+              setSongId={setSongId}
+
               handleNext={handleNext}
               handlePrev={handlePrev}
               handlePlay={handlePlay}

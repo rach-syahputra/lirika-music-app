@@ -5,7 +5,7 @@ import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay, faSquare } f
 import { ContextIsPlayedId } from '../../pages/home/Home'
 
 
-const MusicPlayer = ({ songId, handleNext, handlePrev, handlePlay, handleStop }) => {
+const MusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
   const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
@@ -56,21 +56,21 @@ const MusicPlayer = ({ songId, handleNext, handlePrev, handlePlay, handleStop })
       </div>
       <div className="bottom">
         <div className="buttons">
-          <div className="buttonPrev" onClick={handlePrev}>
+          <div className="buttonPrev" onClick={() => handlePrev(songs, songId, setSongId, setIsPlayedId)}>
             <FontAwesomeIcon icon={faBackward} className='icon' />
           </div>
           {isPlayedId === songId
             ?
-            <div className="buttonStop" onClick={handleStop}>
+            <div className="buttonStop" onClick={() => handleStop(setIsPlayedId)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(songId)}>
+            <div className="buttonPlay" onClick={() => handlePlay(setIsPlayedId, setSongId, songId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
 
           }
-          <div className="buttonNext" onClick={handleNext}>
+          <div className="buttonNext" onClick={() => handleNext(songs, songId, setSongId, setIsPlayedId)}>
             <FontAwesomeIcon icon={faForward} className='icon' />
           </div>
         </div>

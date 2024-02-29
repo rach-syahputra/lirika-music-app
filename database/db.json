@@ -31,6 +31,14 @@
       "name": "Yunita",
       "gender": "female",
       "role": "user"
+    },
+    {
+      "id": "8ae8cdd0-5f7c-42a6-b64d-e25b5fd26c30",
+      "email": "ruby@gmail.com",
+      "password": "ruby12345",
+      "name": "Ruby Lena",
+      "gender": "female",
+      "role": "user"
     }
   ],
   "songs": [

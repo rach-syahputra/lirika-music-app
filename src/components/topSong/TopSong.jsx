@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { ContextIsPlayedId } from '../../pages/home/Home'
 
-const TopSong = ({ songs, handlePlay, handleStop }) => {
+const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
   const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [likedId, setLikedId] = useState([])
 
@@ -45,11 +45,11 @@ const TopSong = ({ songs, handlePlay, handleStop }) => {
 
               {isPlayedId === song.id
                 ?
-                <div className="buttonStop" onClick={handleStop}>
+                <div className="buttonStop" onClick={() => handleStop(setIsPlayedId)}>
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
-                <div className="buttonPlay" onClick={() => handlePlay(song.id)}>
+                <div className="buttonPlay" onClick={() => handlePlay(setIsPlayedId, setSongId, song.id)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </div>
               }
