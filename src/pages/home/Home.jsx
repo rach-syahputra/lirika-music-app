@@ -22,6 +22,9 @@ const Home = () => {
 
         const mostPlayedSong = data.reduce((maxObj, obj) => (obj.playedCount > maxObj.playedCount ? obj : maxObj));
         setSongId(mostPlayedSong.id)
+
+        const isAuthenticated = localStorage.getItem('isAuth')
+        console.log('Home : ', isAuthenticated)
       } catch (error) {
         console.log(error.message)
       }

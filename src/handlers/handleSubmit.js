@@ -1,4 +1,4 @@
-import { validateRegisterForm } from "../utils/validation";
+import { validateLoginForm, validateRegisterForm } from "../utils/validation";
 import { v4 as uuidv4 } from "uuid"
 
 export const handleRegisterSubmit = (email, password, confirmPassword, setErrorMessage, navigate) => (event) => {
@@ -21,18 +21,6 @@ export const handleRegisterSubmit = (email, password, confirmPassword, setErrorM
     localStorage.setItem('userData', JSON.stringify(userData))
 
     navigate(`/register/identity`)
-
-    // fetch('http://localhost:3000/users', {
-    //   method: 'POST',
-    //   headers: { 'content-type': 'application/json' },
-    //   body: JSON.stringify(userData)
-    // })
-    //   .then((res) => {
-    //     navigate(`/register/identity/${userData.id}`)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message)
-    //   })
   }
 }
 
@@ -54,12 +42,46 @@ export const handleIdentitySubmit = (name, selectedGender, navigate) => (event) 
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(userData)
+  }).then((res) => {
+    localStorage.removeItem('userData')
+    navigate('/')
+  }).catch((err) => {
+    console.log(err.message)
   })
-    .then((res) => {
-      localStorage.removeItem('userData')
+}
+
+export const handleLoginSubmit = (email, password, setErrorMessage, login, navigate) => async (event) => {
+  event.preventDefault();
+
+  let user = [{
+    email: '',
+    password: ''
+  }]
+
+  try {
+    const response = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`, { method: 'GET' })
+
+    if (!response.ok) throw new Error('Network response was not ok')
+
+    const data = await response.json()
+
+    if (data.length === 1) {
+      user = data
+    }
+
+    // response from the server is an array. Accessing the first element of that array 'user[0]'
+    const errors = validateLoginForm(email, password, user[0])
+    setErrorMessage(errors)
+
+    const isValid = (Object.values(errors).every(error => error === ''))
+
+    console.log(isValid)
+    if (isValid) {
+      login()
       navigate('/')
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
+    }
+
+  } catch (error) {
+    console.error(error)
+  }
 }

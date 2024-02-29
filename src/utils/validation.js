@@ -24,4 +24,30 @@ const validateRegisterForm = (email, password, confirmPassword) => {
   return errors
 }
 
-export { validateRegisterForm }
+const validateLoginForm = (email, password, user) => {
+  const errors = {}
+
+  // Email format validation
+
+  const validateInput = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      errors.email = 'Please enter a valid email address'
+      return false
+    }
+
+    return true
+  }
+
+  validateInput()
+
+  if (validateInput) {
+    if (email !== user.email || password !== user.password) {
+      errors.auth = 'Incorrect email or password'
+    }
+  }
+
+  return errors
+}
+
+export { validateRegisterForm, validateLoginForm }
