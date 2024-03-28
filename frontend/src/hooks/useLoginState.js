@@ -5,6 +5,7 @@ const useLoginState = () => {
   const [password, setPassword] = useState('');
   const [user, setUser] = useState({});
   const [errorMessage, setErrorMessage] = useState({});
+  const [redirectToHome, setRedirectToHome] = useState(false)
 
   return {
     email,
@@ -14,7 +15,9 @@ const useLoginState = () => {
     user,
     setUser,
     errorMessage,
-    setErrorMessage
+    setErrorMessage,
+    redirectToHome,
+    setRedirectToHome
   }
 }
 

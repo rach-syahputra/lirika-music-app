@@ -58,6 +58,8 @@ export const handleLoginSubmit = (email, password, setErrorMessage, login, navig
     password: ''
   }]
 
+  let userName = ''
+
   try {
     const response = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`, { method: 'GET' })
 
@@ -67,6 +69,7 @@ export const handleLoginSubmit = (email, password, setErrorMessage, login, navig
 
     if (data.length === 1) {
       user = data
+      userName = data[0].name
     }
 
     // response from the server is an array. Accessing the first element of that array 'user[0]'
@@ -76,8 +79,9 @@ export const handleLoginSubmit = (email, password, setErrorMessage, login, navig
     const isValid = (Object.values(errors).every(error => error === ''))
 
     console.log(isValid)
+
     if (isValid) {
-      login()
+      login(userName)
       navigate('/')
     }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./login.css"
 import AuthNavbar from '../../components/authNavbar/AuthNavbar'
 import useLoginState from '../../hooks/useLoginState'
@@ -14,10 +14,12 @@ const Login = () => {
     setPassword,
     errorMessage,
     setErrorMessage,
+    redirectToHome,
+    setRedirectToHome
   } = useLoginState()
 
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { userAuth, login } = useAuth()
 
   return (
     <div className='login'>

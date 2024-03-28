@@ -3,9 +3,6 @@
   justify-content: end;
   align-items: center;
   gap: 24px;
-}
-
-.profile .icon {
   cursor: pointer;
 }
 
@@ -29,4 +26,5 @@
 
 .userInfo h3 {
   white-space: nowrap;
+  cursor: pointer;
 }
