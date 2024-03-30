@@ -49,6 +49,11 @@
   gap: 8px;
 }
 
+.identity .errorMessage {
+  color: red;
+  font-size: 14px;
+}
+
 .identity .signUpButton {
   width: 100%;
   background-color: var(--main-color);

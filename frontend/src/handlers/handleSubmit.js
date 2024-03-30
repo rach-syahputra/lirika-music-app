@@ -1,53 +1,73 @@
-import { validateLoginForm, validateRegisterForm } from "../utils/validation";
-import { v4 as uuidv4 } from "uuid"
+import { validateLoginForm, validateRegisterForm, validateIdentityForm } from "../utils/validation";
+import axios from "axios"
 
-export const handleRegisterSubmit = (email, password, confirmPassword, setErrorMessage, navigate) => (event) => {
-  event.preventDefault()
+export const handleRegister = (email, password, confirmPassword, setError, navigate) => async (e) => {
+  e.preventDefault()
 
+  // Form input validation
   const errors = validateRegisterForm(email, password, confirmPassword)
-  setErrorMessage(errors)
+  setError(errors)
 
   const isValid = Object.values(errors).every(error => error === '')
 
   // If all validations pass
   if (isValid) {
     const userData = {
-      id: uuidv4(),
       email,
       password
     }
 
-    // Save the userData temporarily
-    localStorage.setItem('userData', JSON.stringify(userData))
+    try {
+      const res = await axios.post("http://localhost:8800/api/auth/emailAvailabilityCheck", userData)
 
-    navigate(`/register/identity`)
+      // Save the userData temporarily
+      localStorage.setItem('userData', JSON.stringify(userData))
+
+      navigate('/register/identity')
+    } catch (err) {
+      setError(prevError => ({
+        ...prevError,
+        message: err.response.data.error
+      }))
+    }
   }
 }
 
-export const handleIdentitySubmit = (name, selectedGender, navigate) => (event) => {
+export const handleIdentity = (name, selectedGender, setError, navigate) => async (event) => {
   event.preventDefault()
 
   const storedUserData = JSON.parse(localStorage.getItem('userData'))
 
-  const userData = {
-    id: storedUserData.id,
-    email: storedUserData.email,
-    password: storedUserData.password,
-    name,
-    gender: selectedGender,
-    role: 'user'
-  }
+  // Form input validation
+  const errors = validateIdentityForm(name, selectedGender)
+  setError(errors)
 
-  fetch('http://localhost:3000/users/', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(userData)
-  }).then((res) => {
-    localStorage.removeItem('userData')
-    navigate('/')
-  }).catch((err) => {
-    console.log(err.message)
-  })
+  const isValid = Object.values(errors).every(error => error === '')
+
+  // If all validation pass
+  if (isValid) {
+    const userData = {
+      email: storedUserData.email,
+      password: storedUserData.password,
+      name,
+      gender: selectedGender,
+      role: 'user'
+    }
+
+    try {
+      const res = await axios.post("http://localhost:8800/api/auth/register", userData)
+
+      localStorage.removeItem("userData");
+
+      console.log('REGISTERED SUCCESSFULLY');
+      navigate('/')
+    } catch (error) {
+      setError(prevError => ({
+        ...prevError,
+        message: err.response.data.error
+      }))
+    }
+  }
 }
 
 export const handleLoginSubmit = (email, password, setErrorMessage, login, navigate) => async (event) => {
@@ -77,8 +97,6 @@ export const handleLoginSubmit = (email, password, setErrorMessage, login, navig
     setErrorMessage(errors)
 
     const isValid = (Object.values(errors).every(error => error === ''))
-
-    console.log(isValid)
 
     if (isValid) {
       login(userName)

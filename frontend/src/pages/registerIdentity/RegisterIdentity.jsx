@@ -1,8 +1,8 @@
 import React from 'react'
 import "./registerIdentity.css"
 import AuthNavbar from '../../components/authNavbar/AuthNavbar'
-import useRegisterStateIdentity from '../../hooks/useRegisterIdentityState'
-import { handleIdentitySubmit } from '../../handlers/handleSubmit.js'
+import useRegisterState from '../../hooks/useRegisterState.js'
+import { handleIdentity } from '../../handlers/handleSubmit.js'
 import { useNavigate } from 'react-router-dom'
 
 const RegisterIdentity = () => {
@@ -11,8 +11,10 @@ const RegisterIdentity = () => {
     name,
     setName,
     selectedGender,
-    setSelectedGender
-  } = useRegisterStateIdentity()
+    setSelectedGender,
+    error,
+    setError
+  } = useRegisterState()
 
   const navigate = useNavigate()
 
@@ -20,7 +22,7 @@ const RegisterIdentity = () => {
     <div className='register'>
       <AuthNavbar />
       <div className="section">
-        <form className='identity' onSubmit={handleIdentitySubmit(name, selectedGender, navigate)}>
+        <form className='identity' onSubmit={handleIdentity(name, selectedGender, setError, navigate)}>
           <h2>Tell us about yourself</h2>
           <div className="name input">
             <div className="title">
@@ -28,6 +30,7 @@ const RegisterIdentity = () => {
               <h5>This name will appear in your profile.</h5>
             </div>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            {error.name && <p className='errorMessage'>{error.name}</p>}
           </div>
 
           <div className="gender input">
@@ -57,6 +60,7 @@ const RegisterIdentity = () => {
                 Female
               </div>
             </div>
+            {error.gender && <p className='errorMessage'>{error.gender}</p>}
           </div>
 
           <button className='signUpButton' type='submit'>

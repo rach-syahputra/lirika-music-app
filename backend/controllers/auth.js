@@ -1,41 +1,48 @@
-import { db } from "../connect.js"
+import { connection } from "../connect.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
-export const register = (req, res) => {
-  // CHECK USER IF EXIST
-  const query = "SELECT * FROM users WHERE email = ?"
+export const emailAvailabilityCheck = async (req, res) => {
+  try {
+    //CHECK IF EMAIL EXIST
+    const query = "SELECT COUNT(*) AS count FROM users WHERE email = ?"
+    const [checkEmail] = await connection.execute(query, [req.body.email])
 
-  db.query(query, [req.body.email], (err, data) => {
-    if (err) return res.status(500).json(err)
-    if (data.length) return res.status(409).json("Email already exist")
+    if (checkEmail[0].count > 0) return res.status(400).json({ error: 'Email already exists' })
 
-    // CREATE A NEW USER
-    // Hash the password
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt)
+    res.status(200).json({ message: 'email is available' })
+  } catch (err) {
+    res.status(500).json({ error: 'failed to check availability' })
+  }
+}
 
-    const query = "INSERT INTO users (`email`,`password`,`name`,`gender`,`role`) VALUE (?)"
+export const register = async (req, res) => {
+  // Hash the password
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(req.body.password, salt)
 
+  // CREATE A NEW USER
+  try {
     const values = [
       req.body.email,
       hashedPassword,
       req.body.name,
       req.body.gender,
-      "user"
+      req.body.role
     ]
+    const query = "INSERT INTO users (`email`,`password`,`name`,`gender`,`role`) VALUES (?,?,?,?,?)"
+    const [addUser] = await connection.execute(query, values)
 
-    db.query(query, [values], (err, data) => {
-      if (err) return res.status(500).json(err)
-      return res.status(200).json("User has been created.")
-    })
-  })
+    res.status(201).json({ message: 'user added successfully' })
+  } catch (err) {
+    res.status(500).json({ error: 'failed to register' })
+  }
 }
 
 export const login = (req, res) => {
   const query = "SELECT * FROM users WHERE email = ?"
 
-  db.query(query, [req.body.email], (err, data) => {
+  connection.query(query, [req.body.email], (err, data) => {
     if (err) return res.status(500).json(err)
     if (data.length === 0) return res.status(404).json("User not found!")
 
