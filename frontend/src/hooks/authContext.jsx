@@ -1,30 +1,28 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
+import axios from "axios"
 
-const AuthContext = createContext()
-export const useAuth = () => useContext(AuthContext)
+export const AuthContext = createContext()
 
-export const AuthProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
 
-  const [userAuth, setUserAuth] = useState({
-    name: '',
-    isAuthenticated: false
-  })
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem('user')) || null
+  )
 
-  const login = (userName) => {
-    setUserAuth({ name: userName, isAuthenticated: true })
-  }
+  const login = async (email, password) => {
+    const res = await axios.post("http://localhost:8800/api/auth/login", { email, password }, {
+      withCredentials: true
+    })
 
-  const logout = () => {
-    setUserAuth({ name: '', isAuthenticated: false })
-    localStorage.removeItem('isAuth')
+    setCurrentUser(res.data)
   }
 
   useEffect(() => {
-    localStorage.setItem('isAuth', JSON.stringify(userAuth))
-  }, [userAuth])
+    localStorage.setItem("user", JSON.stringify(currentUser))
+  }, [currentUser])
 
   return (
-    <AuthContext.Provider value={{ userAuth, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, login }}>
       {children}
     </AuthContext.Provider>
   )

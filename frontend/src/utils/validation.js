@@ -42,28 +42,16 @@ const validateIdentityForm = (name, gender) => {
   return errors
 }
 
-const validateLoginForm = (email, password, user) => {
-  const errors = {}
+const validateLoginForm = (email) => {
+  const errors = {
+    email: ''
+  }
 
   // Email format validation
-  const validateInput = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      errors.email = 'Please enter a valid email address'
-      return false
-    }
-
-    return true
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errors.email = 'Please enter a valid email address'
   }
-
-  validateInput()
-
-  if (validateInput) {
-    if (email !== user.email || password !== user.password) {
-      errors.auth = 'Incorrect email or password'
-    }
-  }
-
   return errors
 }
 

@@ -28,9 +28,7 @@ const useRegisterState = () => {
     selectedGender,
     setSelectedGender,
     error,
-    setError,
-    isValid,
-    setIsValid,
+    setError
   }
 }
 

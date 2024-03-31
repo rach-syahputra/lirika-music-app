@@ -1,26 +1,30 @@
 import Home from './pages/home/Home'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import RegisterIdentity from './pages/registerIdentity/RegisterIdentity'
-import PrivateRoutes from './utils/PrivateRoutes'
-import { AuthProvider } from './hooks/authContext'
+import ProtectedRoute from './utils/ProtectedRoute.jsx'
+import { AuthContextProvider, AuthContext } from './hooks/authContext'
+import { useContext } from 'react'
 
 function App() {
 
   return (
-    <AuthProvider>
+    <AuthContextProvider>
       <Router>
         <Routes>
-          <Route element={<PrivateRoutes />}>
+          {/* <Route element={<PrivateRoutes />}>
             <Route exact path='/' element={<Home />} />
-          </Route>
+          </Route> */}
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/register/identity' element={<RegisterIdentity />} />
+          <Route element={<ProtectedRoute />}>
+            <Route exact path='/' element={<Home />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/register/identity' element={<RegisterIdentity />} />
+          </Route>
         </Routes>
       </Router>
-    </AuthProvider>
+    </AuthContextProvider>
   )
 }
 

@@ -8,11 +8,11 @@ export const emailAvailabilityCheck = async (req, res) => {
     const query = "SELECT COUNT(*) AS count FROM users WHERE email = ?"
     const [checkEmail] = await connection.execute(query, [req.body.email])
 
-    if (checkEmail[0].count > 0) return res.status(400).json({ error: 'Email already exists' })
+    if (checkEmail[0].count > 0) return res.status(400).json({ message: 'Email already exists' })
 
-    res.status(200).json({ message: 'email is available' })
+    res.status(200).json({ message: 'Email is available' })
   } catch (err) {
-    res.status(500).json({ error: 'failed to check availability' })
+    res.status(500).json({ error: 'Failed to check availability' })
   }
 }
 
@@ -33,29 +33,36 @@ export const register = async (req, res) => {
     const query = "INSERT INTO users (`email`,`password`,`name`,`gender`,`role`) VALUES (?,?,?,?,?)"
     const [addUser] = await connection.execute(query, values)
 
-    res.status(201).json({ message: 'user added successfully' })
+    res.status(201).json({ message: 'User has been added successfully' })
   } catch (err) {
-    res.status(500).json({ error: 'failed to register' })
+    res.status(500).json({ message: 'Register failed' })
   }
 }
 
-export const login = (req, res) => {
-  const query = "SELECT * FROM users WHERE email = ?"
+export const login = async (req, res) => {
+  try {
+    const query = "SELECT * FROM users WHERE email = ?"
+    const [login] = await connection.execute(query, [req.body.email])
 
-  connection.query(query, [req.body.email], (err, data) => {
-    if (err) return res.status(500).json(err)
-    if (data.length === 0) return res.status(404).json("User not found!")
+    if (login.length === 0)
+      return res.status(404).json({ message: 'User not found' })
 
-    const checkPassword = bcrypt.compareSync(req.body.password.toString(), data[0].password)
+    const checkPassword = bcrypt.compareSync(
+      req.body.password,
+      login[0].password
+    )
+    if (!checkPassword)
+      return res.status(400).json({ message: 'Wrong email or password!' })
 
-    if (!checkPassword) return res.status(400).json("Wrong email or password!")
-
-    const token = jwt.sign({ id: data[0].userId }, "secretkey")
-
-    const { password, ...others } = data[0]
-
+    const token = jwt.sign({
+      id: login[0].userId
+    }, "secretkey")
+    const { password, ...others } = login[0]
     res.cookie("accessToken", token, { httpOnly: true }).status(200).json(others)
-  })
+  } catch (err) {
+    res.status(500).json({ message: 'Login failed' })
+  }
+
 }
 
 export const logout = (req, res) => {

@@ -27,7 +27,7 @@ export const handleRegister = (email, password, confirmPassword, setError, navig
     } catch (err) {
       setError(prevError => ({
         ...prevError,
-        message: err.response.data.error
+        message: err.response.data.message
       }))
     }
   }
@@ -64,46 +64,30 @@ export const handleIdentity = (name, selectedGender, setError, navigate) => asyn
     } catch (error) {
       setError(prevError => ({
         ...prevError,
-        message: err.response.data.error
+        message: err.response.data.message
       }))
     }
   }
 }
 
-export const handleLoginSubmit = (email, password, setErrorMessage, login, navigate) => async (event) => {
+export const handleLogin = (email, password, setError, login, navigate) => async (event) => {
   event.preventDefault();
 
-  let user = [{
-    email: '',
-    password: ''
-  }]
 
-  let userName = ''
+  const errors = validateLoginForm(email)
+  setError(errors)
 
-  try {
-    const response = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`, { method: 'GET' })
+  const isValid = (Object.values(errors).every(error => error === ''))
 
-    if (!response.ok) throw new Error('Network response was not ok')
-
-    const data = await response.json()
-
-    if (data.length === 1) {
-      user = data
-      userName = data[0].name
-    }
-
-    // response from the server is an array. Accessing the first element of that array 'user[0]'
-    const errors = validateLoginForm(email, password, user[0])
-    setErrorMessage(errors)
-
-    const isValid = (Object.values(errors).every(error => error === ''))
-
-    if (isValid) {
-      login(userName)
+  if (isValid) {
+    try {
+      await login(email, password)
       navigate('/')
+    } catch (err) {
+      setError(prevError => ({
+        ...prevError,
+        message: err.response.data.message
+      }))
     }
-
-  } catch (error) {
-    console.error(error)
   }
 }
