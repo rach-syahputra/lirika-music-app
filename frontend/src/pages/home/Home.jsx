@@ -6,6 +6,7 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Navbar from '../../components/navbar/Navbar'
 import useHomeState from '../../hooks/useHomeState'
 import { handlePlay, handleStop, handleNext, handlePrev } from '../../handlers/handleSong'
+import axios from 'axios'
 
 export const ContextIsPlayedId = createContext()
 
@@ -24,16 +25,16 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/songs");
-        const data = await response.json()
+        const res = await axios.get("http://localhost:8800/api/song/")
 
-        setSongs(data)
+        const songs = res.data
+        setSongs(songs)
 
-        const mostPlayedSong = data.reduce((maxObj, obj) => (obj.playedCount > maxObj.playedCount ? obj : maxObj));
-        setSongId(mostPlayedSong.id)
-
+        // find the mostplayed song ID then store it to songId state
+        const mostPlayedSong = songs.reduce((maxObj, obj) => (obj.playedCount > maxObj.playedCount ? obj : maxObj));
+        setSongId(mostPlayedSong.songId)
       } catch (error) {
-        console.log(error.message)
+        console.log('Home', error.message)
       }
     }
 

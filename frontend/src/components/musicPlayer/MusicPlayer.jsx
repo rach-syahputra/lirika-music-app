@@ -3,6 +3,7 @@ import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { ContextIsPlayedId } from '../../pages/home/Home'
+import axios from 'axios'
 
 
 const MusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
@@ -15,14 +16,14 @@ const MusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handleP
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/songs/" + songId);
-        const data = await response.json()
+        const res = await axios.get("http://localhost:8800/api/song/find/" + songId)
+        const song = res.data
 
-        setTitle(data.title)
-        setArtist(data.artist)
-        setImage(data.image)
+        setTitle(song.title)
+        setArtist(song.artist)
+        setImage(song.image)
       } catch (error) {
-        console.log(error.message)
+        console.log('MusicPlayer', error)
       }
     }
     fetchData();

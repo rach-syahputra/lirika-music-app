@@ -31,7 +31,7 @@ const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
 
       <div className="songList">
         {songs && songs.sort((a, b) => b.playedCount - a.playedCount).slice(0, 4).map((song, index) => (
-          <div className="item" key={song.id}>
+          <div className="item" key={song.songId}>
             <div className="info">
               <h5>{index + 1}</h5>
               <img src={song.image} alt="" />
@@ -43,24 +43,24 @@ const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
             <div className="action">
               <h3>{song.duration}</h3>
 
-              {isPlayedId === song.id
+              {isPlayedId === song.songId
                 ?
                 <div className="buttonStop" onClick={() => handleStop(setIsPlayedId)}>
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
-                <div className="buttonPlay" onClick={() => handlePlay(setIsPlayedId, setSongId, song.id)}>
+                <div className="buttonPlay" onClick={() => handlePlay(setIsPlayedId, setSongId, song.songId)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </div>
               }
 
-              {isLiked(song.id)
+              {isLiked(song.songId)
                 ?
-                <div className="buttonCheck" onClick={() => handleToggleLike(song.id)}>
+                <div className="buttonCheck" onClick={() => handleToggleLike(song.songId)}>
                   <FontAwesomeIcon icon={faCheck} className='icon' />
                 </div>
                 :
-                <div className="buttonPlus" onClick={() => handleToggleLike(song.id)}>
+                <div className="buttonPlus" onClick={() => handleToggleLike(song.songId)}>
                   <FontAwesomeIcon icon={faPlus} className='icon' />
                 </div>
               }

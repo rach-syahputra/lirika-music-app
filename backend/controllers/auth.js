@@ -12,7 +12,7 @@ export const emailAvailabilityCheck = async (req, res) => {
 
     res.status(200).json({ message: 'Email is available' })
   } catch (err) {
-    res.status(500).json({ error: 'Failed to check availability' })
+    res.status(500).json({ message: 'Failed to check availability' })
   }
 }
 
