@@ -91,3 +91,14 @@ export const handleLogin = (email, password, setError, login, navigate) => async
     }
   }
 }
+
+export const handleLogout = async (event) => {
+  try {
+    const res = await axios.post("http://localhost:8800/api/auth/logout", {}, {
+      withCredentials: true
+    })
+    localStorage.removeItem('user')
+    location.reload(true)
+  } catch (err) {
+  }
+}

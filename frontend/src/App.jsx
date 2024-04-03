@@ -17,10 +17,10 @@ function App() {
             <Route exact path='/' element={<Home />} />
           </Route> */}
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/register/identity' element={<RegisterIdentity />} />
           <Route element={<ProtectedRoute />}>
             <Route exact path='/' element={<Home />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/register/identity' element={<RegisterIdentity />} />
           </Route>
         </Routes>
       </Router>

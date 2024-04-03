@@ -55,9 +55,11 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: 'Wrong email or password!' })
 
     const token = jwt.sign({
-      id: login[0].userId
+      userId: login[0].userId
     }, "secretkey")
+
     const { password, ...others } = login[0]
+
     res.cookie("accessToken", token, { httpOnly: true }).status(200).json(others)
   } catch (err) {
     res.status(500).json({ message: 'Login failed' })
@@ -66,8 +68,28 @@ export const login = async (req, res) => {
 }
 
 export const logout = (req, res) => {
-  res.clearCookie("accessToken", {
-    secure: true,
-    sameSite: "none"
-  }).status(200).json("User has been logged out.")
+  res.clearCookie("accessToken")
+  res.status(200).json("User has been logged out.")
+}
+
+// Middleware to check authentication
+export const authenticateToken = (req, res, next) => {
+  const token = req.cookies.accessToken
+
+  if (!token) {
+    return res.status(401).json({
+      authenticated: false
+    })
+  }
+
+  jwt.verify(token, "secretkey", (err) => {
+    if (err) {
+      return res.status(401).json({
+        authenticated: false
+      })
+    }
+    // if token is valid. send it back in the response
+    // res.locals.accessToken = token
+    next()
+  })
 }

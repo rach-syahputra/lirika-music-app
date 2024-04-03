@@ -4,6 +4,7 @@
   align-items: center;
   gap: 24px;
   cursor: pointer;
+  position: relative;
 }
 
 .userInfo {
@@ -27,4 +28,29 @@
 .userInfo h3 {
   white-space: nowrap;
   cursor: pointer;
+}
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  position: absolute;
+  background-color: var(--dark-bg);
+  top: 35px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.profileMenu .list {
+  padding: 12px 14px;
+  border-radius: 4px;
+}
+
+.profileMenu .list:hover {
+  background-color: rgb(104, 104, 104);
+}
+
+.profileMenu hr {
+  border-color: rgb(64, 64, 64);
 }

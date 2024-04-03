@@ -1,15 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "./profile.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../hooks/authContext'
+import { handleLogout } from '../../handlers/handleSubmit'
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext)
+  const [profileMenu, setProfileMenu] = useState(false)
+
+  const toggleMenu = () => {
+    setProfileMenu(!profileMenu)
+  }
 
   return (
-    <div className='profile'>
+    <div className='profile' onClick={toggleMenu}>
       <FontAwesomeIcon icon={faBell} className='icon' />
       <FontAwesomeIcon icon={faGear} className='icon' />
       <div className="userInfo">
@@ -18,6 +24,17 @@ const Profile = () => {
         </div>
         <h3>{currentUser ? currentUser.name : 'User Name'}</h3>
       </div>
+      {
+        profileMenu && (
+          <div className="profileMenu">
+            <div className="list">Profile</div>
+            <div className="list">Upgrade to Premium</div>
+            <div className="list">Setting</div>
+            <hr />
+            <div className="list" onClick={handleLogout}>Logout</div>
+          </div>
+        )
+      }
     </div>
   )
 }
