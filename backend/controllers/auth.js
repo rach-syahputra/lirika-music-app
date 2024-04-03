@@ -1,4 +1,4 @@
-import { connection } from "../connect.js"
+import createConnection from "../connect.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
@@ -6,6 +6,7 @@ export const emailAvailabilityCheck = async (req, res) => {
   try {
     //CHECK IF EMAIL EXIST
     const query = "SELECT COUNT(*) AS count FROM users WHERE email = ?"
+    const connection = await createConnection()
     const [checkEmail] = await connection.execute(query, [req.body.email])
 
     if (checkEmail[0].count > 0) return res.status(400).json({ message: 'Email already exists' })
@@ -31,6 +32,7 @@ export const register = async (req, res) => {
       req.body.role
     ]
     const query = "INSERT INTO users (`email`,`password`,`name`,`gender`,`role`) VALUES (?,?,?,?,?)"
+    const connection = await createConnection()
     const [addUser] = await connection.execute(query, values)
 
     res.status(201).json({ message: 'User has been added successfully' })
@@ -42,6 +44,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const query = "SELECT * FROM users WHERE email = ?"
+    const connection = await createConnection()
     const [login] = await connection.execute(query, [req.body.email])
 
     if (login.length === 0)
