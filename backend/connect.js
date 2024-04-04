@@ -8,10 +8,10 @@ const createConnection = async () => {
       password: "",
       database: "music"
     })
-    console.log('MySQL database is connected')
+    console.log('MySQL is CONNNECTED')
     return connection
   } catch (err) {
-    console.log('Error connecting to MySQL');
+    console.log('ERROR connecting to MySQL');
   }
 }
 

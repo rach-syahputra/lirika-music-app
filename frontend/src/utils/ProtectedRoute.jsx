@@ -9,13 +9,20 @@ const ProtectedRoute = () => {
   const [isAuthChecked, setIsAuthChecked] = useState(false)
 
   useEffect(() => {
+    // check authentication before accessing protected route
     const checkAuth = async () => {
       try {
         const authenticated = await isAuthenticated()
+
+        // remove the user data that stored in localStorage if token doesn't exist
+        if (!authenticated) localStorage.removeItem('user')
+
         setAuthenticated(authenticated)
+
         console.log('isAuthenticated ', authenticated)
       } catch (err) {
         console.log('Protected Route Error: ', err)
+
         setIsAuthChecked(false)
       } finally {
         setIsAuthChecked(true)
