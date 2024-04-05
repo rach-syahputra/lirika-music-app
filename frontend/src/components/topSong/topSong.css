@@ -4,55 +4,61 @@
   background-color: var(--dark-bg);
 }
 
-.header {
+.topSong .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.songList {
+.topSong .header h4 {
+  cursor: pointer;
+}
+
+.topSong .songList {
   display: flex;
   gap: 20px;
   flex-direction: column;
 }
 
-.item {
+.topSong .songList .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.info {
+.topSong .songList .item img {
+  height: 50px;
+}
+
+.topSong .songList .info {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.detail {
+.topSong .songList.detail {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.title,
-.artist {
+.topSong .songList .info .title,
+.topSong .songList .info .artist {
   cursor: pointer;
 }
 
-.action {
+.topSong .songList .item .action {
   display: flex;
   align-items: center;
   gap: 35px;
 }
 
-.item img {
-  height: 50px;
-}
 
-.action .buttonPlay,
-.action .buttonStop {
+
+.topSong .songList .item .action .buttonPlay,
+.topSong .songList .item .action .buttonStop {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -63,14 +69,14 @@
   border-radius: 50px;
 }
 
-.action .icon {
+.topSong .songList .item .action .icon {
   color: var(--main-color);
   font-size: 12px;
   text-align: center;
 }
 
-.action .buttonPlus,
-.action .buttonCheck {
+.topSong .songList .item .action .buttonPlus,
+.topSong .songList .item.action .buttonCheck {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,12 +87,12 @@
   border-radius: 4px;
 }
 
-.action .buttonCheck {
+.topSong .songList .item .action .buttonCheck {
   background-color: var(--main-color);
 }
 
-.action .buttonPlus .icon,
-.action .buttonCheck .icon {
+.topSong .songList .item .action .buttonPlus .icon,
+.topSong .songList .item.action .buttonCheck .icon {
   color: var(--darker-bg);
   font-size: 10px;
 }

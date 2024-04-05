@@ -25,19 +25,19 @@ const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
   return (
     <div className='topSong'>
       <div className="header">
-        <h3>Top Songs</h3>
-        <h5>See All</h5>
+        <h2>Top Songs</h2>
+        <h4>See All</h4>
       </div>
 
       <div className="songList">
         {songs && songs.sort((a, b) => b.playedCount - a.playedCount).slice(0, 4).map((song, index) => (
           <div className="item" key={song.songId}>
             <div className="info">
-              <h5>{index + 1}</h5>
+              <h4>{index + 1}</h4>
               <img src={song.image} alt="" />
               <div className="detail">
                 <h3 className='title'>{song.title}</h3>
-                <h5 className='artist'>{song.artist}</h5>
+                <h4 className='artist'>{song.artist}</h4>
               </div>
             </div>
             <div className="action">

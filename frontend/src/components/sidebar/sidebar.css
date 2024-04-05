@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.logo {
+.sidebar .logo {
   font-weight: bold;
   font-size: 18px;
   color: var(--main-color);
@@ -17,17 +17,17 @@
   cursor: default;
 }
 
-.menu {
+.sidebar .menu {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.menu h5 {
+.sidebar .menu h5 {
   color: var(--light);
 }
 
-.menu li {
+.sidebar .menu li {
   display: flex;
   gap: 5px;
   align-items: center;
@@ -38,17 +38,17 @@
   transition: all 0.3s;
 }
 
-.menu li:hover {
+.sidebar .menu li:hover {
   color: var(--secondary-color);
 }
 
-.menu .icon {
+.sidebar .menu .icon {
   font-size: 16px;
   width: 25px;
   margin-right: 5px;
 }
 
-.footer {
+.sidebar .footer {
   margin-top: 20px;
   font-size: 12px;
 }

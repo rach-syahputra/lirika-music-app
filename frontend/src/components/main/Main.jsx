@@ -2,11 +2,12 @@ import React from 'react'
 import "./main.css"
 import Trending from '../trending/Trending'
 import TopSong from '../topSong/TopSong'
+import TopArtist from '../TopArtist/TopArtist'
 
 const Main = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
   return (
     <div className='main'>
-      <Trending />
+      <TopArtist />
       <TopSong
         songs={songs}
         songId={songId}

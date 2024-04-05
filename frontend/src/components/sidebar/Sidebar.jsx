@@ -1,7 +1,7 @@
 import React from 'react'
 import "./sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBolt, faCompactDisc, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
+import { faBolt, faCompactDisc, faHouse, faMagnifyingGlass, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => {
   return (
@@ -9,11 +9,11 @@ const Sidebar = () => {
       <div className="logo">
         LIRIKA
       </div>
-
       <div className="menu">
         <h5>MENU</h5>
         <ul>
-          <li><span className='icon'><FontAwesomeIcon icon={faBolt} /></span> Explore</li>
+          <li><span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home</li>
+          <li><span className='icon'><FontAwesomeIcon icon={faMagnifyingGlass} /></span> Search</li>
           <li><span className='icon'><FontAwesomeIcon icon={faMusic} /></span> Genre</li>
           <li><span className='icon'><FontAwesomeIcon icon={faCompactDisc} /></span> Album</li>
           <li><span className='icon'><FontAwesomeIcon icon={faMicrophone} /></span> Artist</li>

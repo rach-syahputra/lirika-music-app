@@ -20,8 +20,6 @@ const Home = () => {
     setSongs
   } = useHomeState()
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -26,37 +26,38 @@
   height: 25px;
 }
 
-.header {
+.musicPlayer .top .header {
   display: flex;
   justify-content: space-between;
   padding: 0 18px;
+  margin-bottom: 14px;
 }
 
-.header .icon {
+.musicPlayer .header .icon {
   cursor: pointer;
 }
 
-.imgContainer {
+.musicPlayer .imgContainer {
   width: 80%;
   border-radius: 4px;
 }
 
-.imgContainer img {
+.musicPlayer .imgContainer img {
   width: 100%;
 }
 
-.progress {
+.musicPlayer .progress {
   display: flex;
   align-items: center;
   margin: 10px 0;
   padding: 0 18px;
 }
 
-.progress h4 {
+.musicPlayer .progress h4 {
   color: #fff;
 }
 
-.playedLine {
+.musicPlayer .playedLine {
   position: relative;
   width: 110px;
   height: 2px;
@@ -64,7 +65,7 @@
   margin-left: 20px;
 }
 
-.playedLine::before {
+.musicPlayer .playedLine::before {
   content: "";
   background-color: #25252d;
   height: 10px;
@@ -76,14 +77,14 @@
   border-radius: 50%;
 }
 
-.unplayedLine {
+.musicPlayer .unplayedLine {
   width: 80px;
   height: 2px;
   background-color: #919191;
   margin-right: 20px;
 }
 
-.bottom {
+.musicPlayer .bottom {
   height: 26%;
   background-color: var(--main-color);
   padding: 16px;
@@ -94,19 +95,19 @@
   margin-top: 15px;
 }
 
-.bottom .buttons {
+.musicPlayer .bottom .buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 90px;
 }
 
-.bottom .buttons .icon {
+.musicPlayer .bottom .buttons .icon {
   cursor: pointer;
 }
 
-.bottom .buttons .buttonPlay,
-.bottom .buttons .buttonStop {
+.musicPlayer .bottom .buttons .buttonPlay,
+.musicPlayer .bottom .buttons .buttonStop {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,14 +118,14 @@
   cursor: pointer;
 }
 
-.bottom .buttons .buttonPlay .icon,
-.bottom .buttons .buttonStop .icon {
+.musicPlayer .bottom .buttons .buttonPlay .icon,
+.musicPlayer .bottom .buttons .buttonStop .icon {
   color: var(--main-color);
 }
 
 
 
-.bottom .lyric {
+.musicPlayer .bottom .lyric {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,6 +133,6 @@
   cursor: pointer;
 }
 
-.bottom .lyric h4 {
+.musicPlayer .bottom .lyric h4 {
   color: #fff;
 }
