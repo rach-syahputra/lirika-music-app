@@ -5,9 +5,14 @@
   gap: 30px;
   height: 100vh;
   background-color: var(--dark-bg);
-  width: 100%;
+  /* width: 100%; */
+  width: 16%;
   justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
+
 
 .sidebar .logo {
   font-weight: bold;

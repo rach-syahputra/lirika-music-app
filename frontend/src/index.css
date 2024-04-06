@@ -5,6 +5,7 @@
   --secondary-color: #1ed750;
   --font-color: #ffffff;
   --dark-bg: #18181d;
+  --dark-bg-hover: #24242d;
   --darker-bg: #050505;
   --light: #919191;
 }
@@ -66,8 +67,8 @@ body {
 
 .container {
   width: 100%;
-  display: grid;
-  grid-template-columns: auto 85%;
+  /* display: grid;
+  grid-template-columns: auto 85%; */
   box-sizing: border-box;
   background: linear-gradient(#050505, #18181d);
   color: white;

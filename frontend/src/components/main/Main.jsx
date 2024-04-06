@@ -1,8 +1,7 @@
 import React from 'react'
 import "./main.css"
-import Trending from '../trending/Trending'
 import TopSong from '../topSong/TopSong'
-import TopArtist from '../TopArtist/TopArtist'
+import TopArtist from '../topArtist/TopArtist'
 
 const Main = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
   return (

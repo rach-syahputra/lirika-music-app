@@ -3,6 +3,7 @@
   border-radius: 6px;
   background-color: var(--dark-bg);
   margin-bottom: 16px;
+  max-width: 860px;
 }
 
 .topArtist .header {
@@ -18,32 +19,73 @@
 
 .topArtist .artistList {
   display: flex;
-  justify-content: space-between;
+  overflow-x: scroll;
+  scrollbar-gutter: stable;
+
 }
 
-.topArtist .artistList img {
-  height: 144px;
-  width: 144px;
-  border-radius: 72px;
-  object-fit: cover;
-  margin-bottom: 8px;
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--light);
+  border-radius: 50px;
 }
 
 .topArtist .artistList .item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 210px;
+  padding: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.topArtist .artistList .item:hover {
+  background-color: var(--dark-bg-hover);
+
 }
 
 .topArtist .artistList .item .info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+}
+
+
+.topArtist .artistList .item .artistImg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.topArtist .artistList .item .artistImg img {
+  height: 148px;
+  width: 148px;
+  border-radius: 75px;
+  object-fit: cover;
+}
+
+.topArtist .artistList .item .info .artistName {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.topArtist .artistList .item .info .country {
+  display: flex;
+  align-items: center;
+  height: 14px;
+}
+
+.topArtist .artistList .item .info .artistName {
+  text-align: center;
 }
 
 .topArtist .artistList img,
-.topArtist .artistList .item .info h3,
-.topArtist .artistList .item .info h4 {
+.topArtist .artistList .item .info .artistName,
+.topArtist .artistList .item .info .country {
   cursor: pointer;
 }

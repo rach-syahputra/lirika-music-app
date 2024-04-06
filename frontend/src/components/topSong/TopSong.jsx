@@ -3,13 +3,24 @@ import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { ContextIsPlayedId } from '../../pages/home/Home'
+import axios from 'axios'
 
 const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
   const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [likedId, setLikedId] = useState([])
+  const [topSongs, setTopSongs] = useState()
 
   useEffect(() => {
+    const getTopSongs = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800/api/song/topSongs")
 
+        setTopSongs(res.data)
+      } catch (err) {
+        console.log('TopSongs Error: ', err.message)
+      }
+    }
+    getTopSongs()
   }, [])
 
   const handleToggleLike = (songId) => {
@@ -30,10 +41,10 @@ const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
       </div>
 
       <div className="songList">
-        {songs && songs.sort((a, b) => b.playedCount - a.playedCount).slice(0, 4).map((song, index) => (
+        {topSongs && topSongs.map((song, index) => (
           <div className="item" key={song.songId}>
             <div className="info">
-              <h4>{index + 1}</h4>
+              <h4 className='number'>{index + 1}</h4>
               <img src={song.image} alt="" />
               <div className="detail">
                 <h3 className='title'>{song.title}</h3>

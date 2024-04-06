@@ -38,7 +38,14 @@
   gap: 16px;
 }
 
-.topSong .songList.detail {
+.topSong .songList .info .number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+}
+
+.topSong .songList .detail {
   display: flex;
   flex-direction: column;
   gap: 5px;

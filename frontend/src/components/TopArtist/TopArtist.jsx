@@ -22,19 +22,70 @@ const TopArtist = () => {
     <div className='topArtist'>
       <div className="header">
         <h2>Top Artists</h2>
-        <h4>See All</h4>
       </div>
 
       <div className="artistList">
         {topArtists && topArtists.map(artist => (
           <div className="item" key={artist.artistId}>
-            <img src={artist.image} alt="" />
+            <div className="artistImg">
+              <img src={artist.image} alt="" />
+            </div>
             <div className="info">
-              <h3>{artist.artistName}</h3>
-              <h4>{artist.country}</h4>
+              <h3 className='artistName' style={{ fontSize: artist.artistName.length > 18 && '13px' }}>{artist.artistName}</h3>
+              <h4 className='country'>{artist.country}</h4>
             </div>
           </div>
         ))}
+
+        <div className="item">
+          <div className="info">
+            <div className="artistImg">
+              <img src="https://lastfm.freetls.fastly.net/i/u/300x300/ea7f6168da2fdccd7014166aaeede714.jpg" alt="" />
+            </div>
+            <h3 className="artistName">Band Name</h3>
+            <h4 className="country">Country</h4>
+          </div>
+        </div>
+
+        <div className="item">
+          <div className="info">
+            <div className="artistImg">
+              <img src="https://lastfm.freetls.fastly.net/i/u/300x300/ea7f6168da2fdccd7014166aaeede714.jpg" alt="" />
+            </div>
+            <h3 className="artistName">Band Name</h3>
+            <h4 className="country">Country</h4>
+          </div>
+        </div>
+
+        <div className="item">
+          <div className="info">
+            <div className="artistImg">
+              <img src="https://lastfm.freetls.fastly.net/i/u/300x300/ea7f6168da2fdccd7014166aaeede714.jpg" alt="" />
+            </div>
+            <h3 className="artistName">Band Name</h3>
+            <h4 className="country">Country</h4>
+          </div>
+        </div>
+
+        <div className="item">
+          <div className="info">
+            <div className="artistImg">
+              <img src="https://lastfm.freetls.fastly.net/i/u/300x300/ea7f6168da2fdccd7014166aaeede714.jpg" alt="" />
+            </div>
+            <h3 className="artistName">Band Name</h3>
+            <h4 className="country">Country</h4>
+          </div>
+        </div>
+
+        <div className="item">
+          <div className="info">
+            <div className="artistImg">
+              <img src="https://lastfm.freetls.fastly.net/i/u/300x300/ea7f6168da2fdccd7014166aaeede714.jpg" alt="" />
+            </div>
+            <h3 className="artistName">Band Name</h3>
+            <h4 className="country">Country</h4>
+          </div>
+        </div>
 
       </div>
     </div>

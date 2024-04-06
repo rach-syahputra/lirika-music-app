@@ -1,12 +1,12 @@
 import React from 'react'
 import "./navbar.css"
-import Search from '../search/Search'
 import Profile from '../profile/Profile'
+import SearchBar from '../searchBar/SearchBar'
 
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <Search />
+      <SearchBar />
       <Profile />
     </div>
   )

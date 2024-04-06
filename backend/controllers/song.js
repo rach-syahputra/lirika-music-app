@@ -24,3 +24,19 @@ export const getSong = async (req, res) => {
     res.status(500).json({ message: 'failed to get songs data' })
   }
 }
+
+export const getTopSongs = async (req, res) => {
+  try {
+    const query = `
+    SELECT * FROM songs
+    ORDER BY playedCount DESC
+    LIMIT 10
+    `
+    const connection = await createConnection()
+    const [songs] = await connection.execute(query)
+
+    res.status(200).json(songs)
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get songs data' })
+  }
+}

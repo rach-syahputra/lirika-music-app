@@ -21,7 +21,7 @@ const Home = () => {
   } = useHomeState()
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getSongs = async () => {
       try {
         const res = await axios.get("http://localhost:8800/api/song/")
 
@@ -36,7 +36,7 @@ const Home = () => {
       }
     }
 
-    fetchData();
+    getSongs();
   }, [])
 
   return (
