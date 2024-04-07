@@ -7,4 +7,5 @@
   width: 84%;
   position: fixed;
   background-color: #050505;
+  z-index: 10;
 }

@@ -31,7 +31,11 @@ const TopArtist = () => {
               <img src={artist.image} alt="" />
             </div>
             <div className="info">
-              <h3 className='artistName' style={{ fontSize: artist.artistName.length > 18 && '13px' }}>{artist.artistName}</h3>
+              <h3 className='artistName' >
+                {artist.artistName.length > 20
+                  ? artist.artistName.slice(0, 18) + '...'
+                  : artist.artistName}
+              </h3>
               <h4 className='country'>{artist.country}</h4>
             </div>
           </div>

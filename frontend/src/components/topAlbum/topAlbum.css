@@ -1,4 +1,4 @@
-.topArtist {
+.topAlbum {
   padding: 15px;
   border-radius: 6px;
   background-color: var(--dark-bg);
@@ -6,18 +6,18 @@
   max-width: 860px;
 }
 
-.topArtist .header {
+.topAlbum .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.topArtist .header h4 {
+.topAlbum .header h4 {
   cursor: pointer;
 }
 
-.topArtist .artistList {
+.topAlbum .albumList {
   display: flex;
   overflow-x: scroll;
   scrollbar-gutter: stable;
@@ -25,7 +25,6 @@
 
 ::-webkit-scrollbar {
   width: 10px;
-  height: 14px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -33,7 +32,7 @@
   border-radius: 50px;
 }
 
-.topArtist .artistList .item {
+.topAlbum .albumList .item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,49 +42,48 @@
   transition: background-color 0.15s ease-in-out;
 }
 
-.topArtist .artistList .item:hover {
+.topAlbum .albumList .item:hover {
   background-color: var(--dark-bg-hover);
 
 }
 
-.topArtist .artistList .item .info {
+.topAlbum .albumList .item .info {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 
-.topArtist .artistList .item .artistImg {
+.topAlbum .albumList .item .artistImg {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.topArtist .artistList .item .artistImg img {
+.topAlbum .albumList .item .albumImg img {
   height: 148px;
   width: 148px;
-  border-radius: 75px;
   object-fit: cover;
 }
 
-.topArtist .artistList .item .info .artistName {
+.topAlbum .albumList .item .info .albumName {
   display: flex;
   align-items: center;
   height: 20px;
 }
 
-.topArtist .artistList .item .info .country {
+.topAlbum .albumList .item .info .artistName {
   display: flex;
   align-items: center;
   height: 14px;
 }
 
-.topArtist .artistList .item .info .artistName {
+.topAlbum .albumList .item .info .albumName {
   text-align: center;
 }
 
-.topArtist .artistList img,
-.topArtist .artistList .item .info .artistName,
-.topArtist .artistList .item .info .country {
+.topAlbum .albumList img,
+.topAlbum .albumList .item .info .albumName,
+.topAlbum .albumList .item .info .artistName {
   cursor: pointer;
 }
