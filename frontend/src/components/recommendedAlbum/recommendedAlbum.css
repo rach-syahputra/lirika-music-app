@@ -1,96 +1,89 @@
-.topArtist {
-  padding: 15px 15px 10px 15px;
+.recommendedAlbum {
+  padding: 15px 15px 0 15px;
   border-radius: 6px;
   background-color: var(--dark-bg);
   margin-bottom: 16px;
-  max-width: 860px;
-  height: 295px;
+  max-width: 100%;
+  height: 290px;
 }
 
-.topArtist .header {
+.recommendedAlbum .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.topArtist .header h4 {
-  cursor: pointer;
-}
-
-.topArtist .artistList {
+.recommendedAlbum .albumList {
   display: flex;
   overflow: hidden;
 }
 
-.topArtist:hover .artistList {
+.recommendedAlbum:hover .albumList {
   overflow-x: scroll;
   scrollbar-gutter: stable;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
-  height: 14px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--light);
   border-radius: 50px;
+  cursor: pointer;
 }
 
-.topArtist .artistList .item {
+.recommendedAlbum .albumList .item {
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 210px;
   padding: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: background-color 0.15s ease-in-out;
 }
 
-.topArtist .artistList .item:hover {
+.recommendedAlbum .albumList .item:hover {
   background-color: var(--dark-bg-hover);
 
 }
 
-.topArtist .artistList .item .info {
+.recommendedAlbum .albumList .item .info {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 
-.topArtist .artistList .item .artistImg {
+.recommendedAlbum .albumList .item .albumImg {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.topArtist .artistList .item .artistImg img {
+.recommendedAlbum .albumList .item .albumImg img {
   height: 148px;
   width: 148px;
-  border-radius: 75px;
   object-fit: cover;
 }
 
-.topArtist .artistList .item .info .artistName {
+.recommendedAlbum .albumList .item .info .albumName {
   display: flex;
   align-items: center;
   height: 20px;
 }
 
-.topArtist .artistList .item .info .country {
+.recommendedAlbum .albumList .item .info .artistName {
   display: flex;
   align-items: center;
   height: 14px;
 }
 
-.topArtist .artistList .item .info .artistName {
+.recommendedAlbum .albumList .item .info .albumName {
   text-align: center;
 }
 
-.topArtist .artistList img,
-.topArtist .artistList .item .info .artistName,
-.topArtist .artistList .item .info .country {
+.recommendedAlbum .albumList img,
+.recommendedAlbum .albumList .item .info .albumName,
+.recommendedAlbum .albumList .item .info .artistName {
   cursor: pointer;
 }

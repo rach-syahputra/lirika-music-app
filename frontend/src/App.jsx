@@ -1,30 +1,25 @@
 import Home from './pages/home/Home'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import RegisterIdentity from './pages/registerIdentity/RegisterIdentity'
+import Search from './pages/search/Search.jsx'
 import ProtectedRoute from './utils/ProtectedRoute.jsx'
-import { AuthContextProvider, AuthContext } from './hooks/authContext'
-import { useContext } from 'react'
 
 function App() {
 
   return (
-    <AuthContextProvider>
-      <Router>
-        <Routes>
-          {/* <Route element={<PrivateRoutes />}>
-            <Route exact path='/' element={<Home />} />
-          </Route> */}
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/register/identity' element={<RegisterIdentity />} />
-          <Route element={<ProtectedRoute />}>
-            <Route exact path='/' element={<Home />} />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthContextProvider>
+    <div className="App">
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/register/identity' element={<RegisterIdentity />} />
+        <Route path='/search' element={<Search />} />
+        <Route element={<ProtectedRoute />}>
+          <Route exact path='/' element={<Home />} />
+        </Route>
+      </Routes>
+    </div>
   )
 }
 

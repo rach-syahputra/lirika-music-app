@@ -41,7 +41,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <Sidebar />
+      <Sidebar currentPage='home' />
       <div className="mainPage">
         <Navbar />
         <ContextIsPlayedId.Provider value={[isPlayedId, setIsPlayedId]}>

@@ -2,7 +2,10 @@ import createConnection from "../connect.js"
 
 export const getSongs = async (req, res) => {
   try {
-    const query = "SELECT * FROM songs"
+    const query = `
+    SELECT * FROM songs
+    ORDER BY playedCount DESC
+    `
     const connection = await createConnection()
     const [songs] = await connection.execute(query)
 

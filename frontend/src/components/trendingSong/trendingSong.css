@@ -1,0 +1,77 @@
+.trendingSong {
+  padding: 15px;
+  border-radius: 6px;
+  background-color: var(--dark-bg);
+  margin-bottom: 16px;
+  max-width: 100%;
+}
+
+.trendingSong .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.trendingSong .songList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.trendingSong .songList .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  transition: background-color 0.15s ease-in-out;
+  padding: 10px;
+}
+
+.trendingSong .songList .item:hover {
+  background-color: var(--dark-bg-hover);
+}
+
+.trendingSong .songList .item .info {
+  width: 100%;
+}
+
+.trendingSong .songList .item .info .artistAndAlbumInfo {
+  display: flex;
+  gap: 8px;
+}
+
+.trendingSong .songList .item .songImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trendingSong .songList .item .songImg img {
+  height: 50px;
+  width: 50px;
+}
+
+.trendingSong .songList .item .playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.trendingSong .songList .item:hover .playButton {
+  opacity: 1;
+}
+
+.trendingSong .songList .item .playButton .icon {
+  font-size: 21px;
+}
+
+.trendingSong .songList .item .playButton .icon:hover {
+  cursor: pointer;
+}

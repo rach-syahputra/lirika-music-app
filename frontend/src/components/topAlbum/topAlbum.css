@@ -4,6 +4,7 @@
   background-color: var(--dark-bg);
   margin-bottom: 16px;
   max-width: 860px;
+  height: 295px;
 }
 
 .topAlbum .header {
@@ -19,6 +20,10 @@
 
 .topAlbum .albumList {
   display: flex;
+  overflow: hidden;
+}
+
+.topAlbum:hover .albumList {
   overflow-x: scroll;
   scrollbar-gutter: stable;
 }

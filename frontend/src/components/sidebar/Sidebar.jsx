@@ -1,9 +1,10 @@
 import React from 'react'
 import "./sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBolt, faCompactDisc, faHouse, faMagnifyingGlass, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
+import { faCompactDisc, faHouse, faMagnifyingGlass, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
 
-const Sidebar = () => {
+const Sidebar = ({ currentPage }) => {
+
   return (
     <div className='sidebar'>
       <div className="logo">
@@ -12,11 +13,25 @@ const Sidebar = () => {
       <div className="menu">
         <h5>MENU</h5>
         <ul>
-          <li><span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home</li>
-          <li><span className='icon'><FontAwesomeIcon icon={faMagnifyingGlass} /></span> Search</li>
-          <li><span className='icon'><FontAwesomeIcon icon={faMusic} /></span> Genre</li>
-          <li><span className='icon'><FontAwesomeIcon icon={faCompactDisc} /></span> Album</li>
-          <li><span className='icon'><FontAwesomeIcon icon={faMicrophone} /></span> Artist</li>
+          <li className={currentPage === 'home' && 'isActive'}>
+            <span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home
+          </li>
+
+          <li className={currentPage === 'search' && 'isActive'}>
+            <span className='icon'><FontAwesomeIcon icon={faMagnifyingGlass} /></span> Search
+          </li>
+
+          <li>
+            <span className='icon'><FontAwesomeIcon icon={faMusic} /></span> Genre
+          </li>
+
+          <li>
+            <span className='icon'><FontAwesomeIcon icon={faCompactDisc} /></span> Album
+          </li>
+
+          <li>
+            <span className='icon'><FontAwesomeIcon icon={faMicrophone} /></span> Artist
+          </li>
         </ul>
       </div>
 
