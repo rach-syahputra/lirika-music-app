@@ -2,6 +2,7 @@ import React from 'react'
 import "./sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCompactDisc, faHouse, faMagnifyingGlass, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 const Sidebar = ({ currentPage }) => {
 
@@ -13,24 +14,28 @@ const Sidebar = ({ currentPage }) => {
       <div className="menu">
         <h5>MENU</h5>
         <ul>
-          <li className={currentPage === 'home' && 'isActive'}>
-            <span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home
-          </li>
-
-          <li className={currentPage === 'search' && 'isActive'}>
-            <span className='icon'><FontAwesomeIcon icon={faMagnifyingGlass} /></span> Search
+          <li>
+            <Link to='/' className={`list ${currentPage === 'home' && 'isActive'}`}>
+              <span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home
+            </Link>
           </li>
 
           <li>
-            <span className='icon'><FontAwesomeIcon icon={faMusic} /></span> Genre
+            <Link to='/search' className={`list ${currentPage === 'search' && 'isActive'}`}>
+              <span className='icon'><FontAwesomeIcon icon={faMagnifyingGlass} /></span> Search
+            </Link>
           </li>
 
           <li>
-            <span className='icon'><FontAwesomeIcon icon={faCompactDisc} /></span> Album
+            <Link to='/' className='list'><span className='icon'><FontAwesomeIcon icon={faMusic} /></span> Genre</Link>
           </li>
 
           <li>
-            <span className='icon'><FontAwesomeIcon icon={faMicrophone} /></span> Artist
+            <Link to='/' className='list'><span className='icon'><FontAwesomeIcon icon={faCompactDisc} /></span> Album</Link>
+          </li>
+
+          <li>
+            <Link to='/' className='list'><span className='icon'><FontAwesomeIcon icon={faMicrophone} /></span> Artist</Link>
           </li>
         </ul>
       </div>
