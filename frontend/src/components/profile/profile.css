@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.userInfo {
+.profile .userInfo {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,22 +15,22 @@
   gap: 8px;
 }
 
-.userInfo .imgContainer {
+.profile .userInfo .imgContainer {
   display: flex;
   padding: 2px;
 }
 
-.userInfo img {
+.profile .userInfo img {
   height: 30px;
   width: 30px;
 }
 
-.userInfo h3 {
+.profile .userInfo .userName {
   white-space: nowrap;
   cursor: pointer;
 }
 
-.profileMenu {
+.profile .profileMenu {
   display: flex;
   flex-direction: column;
   padding: 6px;
@@ -42,15 +42,15 @@
   overflow: hidden;
 }
 
-.profileMenu .list {
+.profile .profileMenu .list {
   padding: 12px 14px;
   border-radius: 4px;
 }
 
-.profileMenu .list:hover {
+.profile .profileMenu .list:hover {
   background-color: rgb(104, 104, 104);
 }
 
-.profileMenu hr {
+.profile .profileMenu hr {
   border-color: rgb(64, 64, 64);
 }

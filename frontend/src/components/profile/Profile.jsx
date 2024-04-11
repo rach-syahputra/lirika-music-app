@@ -9,6 +9,7 @@ import { handleLogout } from '../../handlers/handleSubmit'
 const Profile = () => {
   const { currentUser } = useContext(AuthContext)
   const [profileMenu, setProfileMenu] = useState(false)
+  const userName = currentUser ? currentUser.name : 'User Name'
 
   const toggleMenu = () => {
     setProfileMenu(!profileMenu)
@@ -22,7 +23,11 @@ const Profile = () => {
         <div className="imgContainer">
           <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         </div>
-        <h3>{currentUser ? currentUser.name : 'User Name'}</h3>
+        <h3 className='userName'>
+          {userName.length > 15
+            ? userName.slice(0, 13) + '...'
+            : userName}
+        </h3>
       </div>
       {
         profileMenu && (

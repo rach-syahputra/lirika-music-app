@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./register.css"
 import AuthNavbar from '../../components/authNavbar/AuthNavbar'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useRegisterState from '../../hooks/useRegisterState'
 import { handleRegister } from '../../handlers/handleSubmit'
 
@@ -54,7 +54,9 @@ const Register = () => {
 
           <hr />
 
-          <p>Already have an account? <span>Log in here</span></p>
+          <p className='signIn'>
+            Already have an account? <Link to='/login' className='signInButton'>Log in here</Link>
+          </p>
         </form>
       </div>
     </div>

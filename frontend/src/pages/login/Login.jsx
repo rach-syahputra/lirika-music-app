@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import "./login.css"
 import AuthNavbar from '../../components/authNavbar/AuthNavbar'
 import useLoginState from '../../hooks/useLoginState'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { handleLogin } from '../../handlers/handleSubmit'
 import { AuthContext } from "../../hooks/authContext"
 
@@ -43,6 +43,11 @@ const Login = () => {
           <button className='signInButton' type='submit'>
             Log In
           </button>
+
+          <p className='signUp'>
+            Don't have an account yet? <Link to='/register' className='signUpButton'>Sign up for Lirika</Link>
+          </p>
+
         </form>
       </div>
     </div>

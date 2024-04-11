@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.signUp {
+.register .signUp {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,14 +17,14 @@
   padding: 10px;
 }
 
-.signUp .input {
+.register .signUp .input {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.signUp .input input {
+.register .signUp .input input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -35,12 +35,12 @@
   color: #fff;
 }
 
-.signUp .errorMessage {
+.register .signUp .errorMessage {
   color: red;
   font-size: 14px;
 }
 
-.signUp .nextButton {
+.register .signUp .nextButton {
   width: 100%;
   background-color: var(--main-color);
   color: #000;
@@ -54,20 +54,20 @@
   transition: all 0.3s;
 }
 
-.signUp .nextButton:hover {
+.register .signUp .nextButton:hover {
   background-color: var(--secondary-color);
 }
 
-.signUp hr {
+.register .signUp hr {
   width: 100%;
   border-color: var(--light);
 }
 
-.signUp p {
+.register .signUp .signIn {
   color: var(--light);
 }
 
-.signUp p span {
+.register .signUp .signIn .signInButton {
   color: #fff;
   text-decoration: underline;
   cursor: pointer;
