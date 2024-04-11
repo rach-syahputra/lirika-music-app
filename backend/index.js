@@ -3,6 +3,7 @@ import userRoute from "./routes/users.js"
 import authRoute from "./routes/auth.js"
 import songRoute from "./routes/songs.js"
 import artistRoute from "./routes/artists.js"
+import albumRoute from "./routes/albums.js"
 import cors from "cors"
 import cookieParser from "cookie-parser";
 import createConnection from "./connect.js";
@@ -21,12 +22,15 @@ app.use(cors({
 }))
 app.use(cookieParser())
 
+// ROUTES
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/song", songRoute)
 app.use("/api/song", songRoute)
 app.use("/api/artist", artistRoute)
+app.use("/api/album", albumRoute)
 
+// DATABASE CONNECTION CHECKING
 createConnection()
   .then(() => {
     app.listen(8800, () => {

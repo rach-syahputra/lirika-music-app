@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./topAlbum.css"
+import axios from 'axios'
 
 const TopAlbum = () => {
+  const [topAlbums, setTopAlbums] = useState()
+
+  useEffect(() => {
+    const getTopAlbums = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800/api/album/topAlbums")
+
+        setTopAlbums(res.data)
+      } catch (err) {
+        console.log('TopAlbums: ', err.message)
+      }
+    }
+    getTopAlbums()
+  }, [])
+
   return (
     <div className='topAlbum'>
       <div className="header">
@@ -9,106 +25,25 @@ const TopAlbum = () => {
       </div>
 
       <div className="albumList">
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://www.spirit-of-metal.com/les%20goupes/B/Beyond%20Creation/Algorythm/Algorythm_8172.jpg" alt="" />
+        {topAlbums && topAlbums.map(album => (
+          <div className="item" key={album.albumId}>
+            <div className="albumImg">
+              <img src={album.image} alt="" />
+            </div>
+            <div className="info">
+              <h3 className='albumName' >
+                {album.albumName.length > 16
+                  ? album.albumName.slice(0, 15) + '...'
+                  : album.albumName}
+              </h3>
+              <h4 className='artistName'>
+                {album.artistName.length > 18
+                  ? album.artistName.slice(0, 15) + '...'
+                  : album.artistName}
+              </h4>
+            </div>
           </div>
-          <div className="info">
-            <h3 className='albumName' >Shadow Of Hunger</h3>
-            <h4 className='artistName'>Nordjevel</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://cdn-p.smehost.net/sites/7f9737f2506941499994d771a29ad47a/wp-content/uploads/2022/03/SOP-Incurso-cover-art.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Incurso</h3>
-            <h4 className='artistName'>Spawn Of Posession</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://f4.bcbits.com/img/a4105670979_10.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Finisterre</h3>
-            <h4 className='artistName'>Der Weg Einer Freiheit</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://f4.bcbits.com/img/a2860959829_10.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Atrocitiesd</h3>
-            <h4 className='artistName'>Analepsy</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://cdn-p.smehost.net/sites/7f9737f2506941499994d771a29ad47a/wp-content/uploads/2022/03/SOP-Incurso-cover-art.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Incurso</h3>
-            <h4 className='artistName'>Spawn Of Posession</h4>
-          </div>
-        </div>
-
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://www.spirit-of-metal.com/les%20goupes/B/Beyond%20Creation/Algorythm/Algorythm_8172.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Shadow Of Hunger</h3>
-            <h4 className='artistName'>Nordjevel</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://cdn-p.smehost.net/sites/7f9737f2506941499994d771a29ad47a/wp-content/uploads/2022/03/SOP-Incurso-cover-art.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Incurso</h3>
-            <h4 className='artistName'>Spawn Of Posession</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://f4.bcbits.com/img/a4105670979_10.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Finisterre</h3>
-            <h4 className='artistName'>Der Weg Einer Freiheit</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://f4.bcbits.com/img/a2860959829_10.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Atrocities</h3>
-            <h4 className='artistName'>Analepsy</h4>
-          </div>
-        </div>
-
-        <div className="item">
-          <div className="albumImg">
-            <img src="https://cdn-p.smehost.net/sites/7f9737f2506941499994d771a29ad47a/wp-content/uploads/2022/03/SOP-Incurso-cover-art.jpg" alt="" />
-          </div>
-          <div className="info">
-            <h3 className='albumName' >Incurso</h3>
-            <h4 className='artistName'>Spawn Of Posession</h4>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   )

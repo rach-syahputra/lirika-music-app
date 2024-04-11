@@ -4,4 +4,6 @@
 
 .authNavbar .logo {
   font-size: 32px;
+  font-weight: bold;
+  color: var(--main-color);
 }

@@ -59,7 +59,7 @@
 }
 
 
-.topAlbum .albumList .item .artistImg {
+.topAlbum .albumList .item .albumImg {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
