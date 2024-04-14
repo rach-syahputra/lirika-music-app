@@ -4,9 +4,9 @@ export const getTopArtists = async (req, res) => {
   try {
     // get top 10 artist along with the country and image based on playedCount
     //
-    const query = `SELECT artist.artistId, artist.artistName, artist.country, artist.image, SUM(songs.playedCount) AS totalPlayed FROM songs 
-    INNER JOIN artist ON songs.artistId = artist.artistId
-    GROUP BY artist.artistId
+    const query = `SELECT artists.artistId, artists.artistName, artists.country, artists.image, SUM(songs.playedCount) AS totalPlayed FROM songs 
+    INNER JOIN artists ON songs.artistId = artists.artistId
+    GROUP BY artists.artistId
     ORDER BY totalPlayed DESC
     LIMIT 10`
 

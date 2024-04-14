@@ -32,8 +32,8 @@ const TopArtist = () => {
             </div>
             <div className="info">
               <h3 className='artistName' >
-                {artist.artistName.length > 18
-                  ? artist.artistName.slice(0, 15) + '...'
+                {artist.artistName.length > 15
+                  ? artist.artistName.slice(0, 13) + '...'
                   : artist.artistName}
               </h3>
               <h4 className='country'>{artist.country}</h4>

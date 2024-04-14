@@ -83,7 +83,7 @@
 }
 
 .topSong .songList .item .action .buttonPlus,
-.topSong .songList .item.action .buttonCheck {
+.topSong .songList .item .action .buttonCheck {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,7 +99,7 @@
 }
 
 .topSong .songList .item .action .buttonPlus .icon,
-.topSong .songList .item.action .buttonCheck .icon {
+.topSong .songList .item .action .buttonCheck .icon {
   color: var(--darker-bg);
   font-size: 10px;
 }

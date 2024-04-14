@@ -4,6 +4,7 @@ import authRoute from "./routes/auth.js"
 import songRoute from "./routes/songs.js"
 import artistRoute from "./routes/artists.js"
 import albumRoute from "./routes/albums.js"
+import searchRoute from "./routes/searches.js"
 import cors from "cors"
 import cookieParser from "cookie-parser";
 import createConnection from "./connect.js";
@@ -29,6 +30,7 @@ app.use("/api/song", songRoute)
 app.use("/api/song", songRoute)
 app.use("/api/artist", artistRoute)
 app.use("/api/album", albumRoute)
+app.use("/api/search", searchRoute)
 
 // DATABASE CONNECTION CHECKING
 createConnection()

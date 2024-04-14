@@ -1,0 +1,10 @@
+.searchResult {
+  height: 100%;
+  overflow: hidden;
+}
+
+.searchResult .searchContent {
+  padding: 10px 20px;
+  margin-left: 16%;
+  margin-top: 80px;
+}
