@@ -1,8 +1,9 @@
 import React from 'react'
 import "./sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCompactDisc, faHouse, faMagnifyingGlass, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
+import { faCompactDisc, faHouse, faMicrophone, faMusic } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { faCompass } from '@fortawesome/free-regular-svg-icons'
 
 const Sidebar = ({ currentPage }) => {
 
@@ -14,15 +15,17 @@ const Sidebar = ({ currentPage }) => {
       <div className="menu">
         <h5>MENU</h5>
         <ul>
+          {/* HOME */}
           <li>
             <Link to='/' className={`list ${currentPage === 'home' && 'isActive'}`}>
               <span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home
             </Link>
           </li>
 
+          {/* EXPLORE */}
           <li>
-            <Link to='/search' className={`list ${currentPage === 'search' && 'isActive'}`}>
-              <span className='icon'><FontAwesomeIcon icon={faMagnifyingGlass} /></span> Search
+            <Link to='/explore' className={`list ${currentPage === 'explore' && 'isActive'}`}>
+              <span className='icon'><FontAwesomeIcon icon={faCompass} className='compass' /></span> Explore
             </Link>
           </li>
 

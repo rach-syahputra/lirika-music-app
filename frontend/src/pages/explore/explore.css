@@ -1,9 +1,9 @@
-.searchResult {
+.explore {
   height: 100%;
   overflow: hidden;
 }
 
-.searchResult .searchContent {
+.explore .exploreChild {
   padding: 10px 20px;
   margin-left: 16%;
   margin-top: 80px;

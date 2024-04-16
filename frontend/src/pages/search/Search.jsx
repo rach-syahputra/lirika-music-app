@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import "./search.css"
-import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import SearchPage from '../../components/searchPage/SearchPage'
+import Navbar from '../../components/navbar/Navbar'
+import SearchResultContent from '../../components/searchContent/SearchContent'
 
 const Search = () => {
-
   return (
-    <div className="container">
+    <div className='container'>
       <Sidebar currentPage='search' />
       <div className="search">
         <Navbar />
-        <div className="searchContent">
-          <SearchPage />
+        <div className="searchChild">
+          <SearchResultContent />
         </div>
       </div>
     </div>

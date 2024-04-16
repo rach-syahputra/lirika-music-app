@@ -1,9 +1,9 @@
 import React from 'react'
-import "./albumResult.css"
+import "./albumSearch.css"
 
-const AlbumResult = () => {
+const AlbumSearch = () => {
   return (
-    <div className="albumResult">
+    <div className="albumSearch">
       <div className="header">
         <h2>Album</h2>
       </div>
@@ -31,4 +31,4 @@ const AlbumResult = () => {
   )
 }
 
-export default AlbumResult
+export default AlbumSearch

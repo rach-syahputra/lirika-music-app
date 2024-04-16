@@ -1,0 +1,95 @@
+.artistSearch {
+  padding: 15px 15px 10px 15px;
+  border-radius: 6px;
+  background-color: var(--dark-bg);
+  margin-bottom: 16px;
+  height: 295px;
+}
+
+.artistSearch .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.artistSearch .header h4 {
+  cursor: pointer;
+}
+
+.artistSearch .artistList {
+  display: flex;
+  overflow: hidden;
+}
+
+.artistSearch:hover .artistList {
+  overflow-x: scroll;
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--light);
+  border-radius: 50px;
+}
+
+.artistSearch .artistList .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 210px;
+  padding: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.artistSearch .artistList .item:hover {
+  background-color: var(--dark-bg-hover);
+
+}
+
+.artistSearch .artistList .item .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.artistSearch .artistList .item .artistImg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.artistSearch .artistList .item .artistImg img {
+  height: 148px;
+  width: 148px;
+  border-radius: 75px;
+  object-fit: cover;
+}
+
+.artistSearch .artistList .item .info .artistName {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.artistSearch .artistList .item .info .country {
+  display: flex;
+  align-items: center;
+  height: 14px;
+}
+
+.artistSearch .artistList .item .info .artistName {
+  text-align: center;
+}
+
+.artistSearch .artistList img,
+.artistSearch .artistList .item .info .artistName,
+.artistSearch .artistList .item .info .country {
+  cursor: pointer;
+}

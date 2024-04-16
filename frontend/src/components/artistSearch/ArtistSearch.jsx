@@ -1,9 +1,9 @@
 import React from 'react'
-import "./artistResult.css"
+import "./artistSearch.css"
 
-const ArtistResult = () => {
+const ArtistSearch = () => {
   return (
-    <div className="artistResult">
+    <div className="artistSearch">
       <div className="header">
         <h2>Artist</h2>
       </div>
@@ -31,4 +31,4 @@ const ArtistResult = () => {
   )
 }
 
-export default ArtistResult
+export default ArtistSearch
