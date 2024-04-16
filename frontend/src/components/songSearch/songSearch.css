@@ -1,0 +1,77 @@
+.songSearch {
+  padding: 15px;
+  border-radius: 6px;
+  background-color: var(--dark-bg);
+  margin-bottom: 16px;
+  max-width: 100%;
+}
+
+.songSearch .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.songSearch .songList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.songSearch .songList .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  transition: background-color 0.15s ease-in-out;
+  padding: 10px;
+}
+
+.songSearch .songList .item:hover {
+  background-color: var(--dark-bg-hover);
+}
+
+.songSearch .songList .item .info {
+  width: 100%;
+}
+
+.songSearch .songList .item .info .artistAndAlbumInfo {
+  display: flex;
+  gap: 8px;
+}
+
+.songSearch .songList .item .songImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.songSearch .songList .item .songImg img {
+  height: 50px;
+  width: 50px;
+}
+
+.songSearch .songList .item .playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.songSearch .songList .item:hover .playButton {
+  opacity: 1;
+}
+
+.songSearch .songList .item .playButton .icon {
+  font-size: 21px;
+}
+
+.songSearch .songList .item .playButton .icon:hover {
+  cursor: pointer;
+}
