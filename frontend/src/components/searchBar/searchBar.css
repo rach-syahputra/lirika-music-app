@@ -1,24 +1,70 @@
 .searchBar {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.searchBar .searchBarInput {
+  display: flex;
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  width: 65%;
-  margin: auto;
-  border-radius: 8px;
+  width: 450px;
+  border-radius: 10px;
   background-color: var(--dark-bg);
-  border: 0.1rem solid var(--light);
+  border: 2px solid var(--light);
+  box-sizing: border-box;
+  transition: border 0.3s ease;
 }
 
-.searchBar .icon {
+.searchBar .searchBarInput:focus-within {
+  /* border: 2px solid var(--dark-bg); */
+  /* border-top: 1px solid var(--light); */
+  /* border-bottom: 1px solid var(--light); */
+  border: 2px solid var(--dark-bg-hover);
+}
+
+.searchBar .searchBarInput .icon {
   font-size: 14px;
 }
 
-.searchBar input {
+.searchBar .searchBarInput input {
   background-color: transparent;
   outline: none;
   border: none;
   color: white;
   width: 100%;
   font-size: 16px;
+}
+
+.searchBar .dropdown {
+  display: flex;
+  flex-direction: column;
+  color: var(--light);
+  position: absolute;
+  top: 50%;
+  padding: 30px 0 14px;
+  width: 450px;
+  background-color: var(--dark-bg);
+  border: 2px solid var(--dark-bg);
+  border-radius: 10px;
+  z-index: -10;
+  user-select: none;
+}
+
+.searchBar .dropdown .item {
+  display: flex;
+  gap: 20px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.searchBar .dropdown .item:hover {
+  background-color: var(--dark-bg-hover);
+}
+
+.searchBar .dropdown .item h4 {
+  font-weight: bold;
+  font-size: 15px;
 }

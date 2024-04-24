@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./topAlbum.css"
 import axios from 'axios'
+import { truncateText } from "../../utils/truncation.js"
 
 const TopAlbum = () => {
   const [topAlbums, setTopAlbums] = useState()
@@ -32,14 +33,10 @@ const TopAlbum = () => {
             </div>
             <div className="info">
               <h3 className='albumName' >
-                {album.albumName.length > 16
-                  ? album.albumName.slice(0, 15) + '...'
-                  : album.albumName}
+                {truncateText(album.albumName, 17)}
               </h3>
               <h4 className='artistName'>
-                {album.artistName.length > 18
-                  ? album.artistName.slice(0, 15) + '...'
-                  : album.artistName}
+                {truncateText(album.artistName, 18)}
               </h4>
             </div>
           </div>

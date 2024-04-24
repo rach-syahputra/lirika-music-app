@@ -1,4 +1,6 @@
-const findSearchResults = (data, searchQuery) => {
+// findSearchAndTopResults //
+//
+export const findSearchAndTopResults = (data, searchQuery) => {
 
   // lowered the search query to avoid case-sensitive characters
   const searchQ = searchQuery.toLowerCase()
@@ -25,11 +27,11 @@ const findSearchResults = (data, searchQuery) => {
   }
 
   return {
-    searchResults,
     topResult: {
       ...topResult,
       totalPlayedCount
-    }
+    },
+    searchResults
   }
 }
 
@@ -111,5 +113,53 @@ function sortAndFilterData(data, searchQ) {
 
   return mergedResults
 }
+//
+//
 
-export default findSearchResults
+// separateSearchResultsDataByType
+//
+export const separateSearchResultsDataByType = (data) => {
+
+  // filter searchResults by type (artist, song, album)
+  const artistResults = data.filter(item => item.type === 'artist')
+  const songResults = data.filter(item => item.type === 'song')
+  const albumResults = data.filter(item => item.type === 'album')
+
+  // create new array that only contains necessary properties for each type (artist, song, album)
+  const artistData = artistResults.map(item => ({
+    artistId: item.artistId,
+    artistName: item.artist_name,
+    image: item.artist_image,
+    type: item.type
+  }))
+  const songData = songResults.map(item => ({
+    songId: item.songId,
+    songTitle: item.song_title,
+    songImage: item.song_image,
+    artistName: item.artist_name,
+    albumName: item.album_name,
+    type: item.type
+  }))
+  const albumData = albumResults.map(item => ({
+    albumId: item.albumId,
+    albumName: item.album_name,
+    albumImage: item.song_image,
+    type: item.type
+  }))
+
+  // filter out duplicate artist, song, album based on artistId, songId, albumId
+  const filteredArtists = [...new Map(artistData.filter(item => item.type === 'artist').map(item => [item.artistId, item])).values()];
+  const filteredSongs = [...new Map(songData.filter(item => item.type === 'song').map(item => [item.songId, item])).values()];
+  const filteredAlbums = [...new Map(albumData.filter(item => item.type === 'album').map(item => [item.albumId, item])).values()];
+
+
+  const searchResults = {
+    artists: filteredArtists,
+    songs: filteredSongs,
+    albums: filteredAlbums
+  }
+
+  return searchResults
+}
+//
+//

@@ -13,14 +13,15 @@ const Sidebar = ({ currentPage }) => {
         LIRIKA
       </div>
       <div className="menu">
-        <h5>MENU</h5>
+
         <ul>
           {/* HOME */}
-          <li>
-            <Link to='/' className={`list ${currentPage === 'home' && 'isActive'}`}>
+
+          <Link to='/'>
+            <li className={`list ${currentPage === 'home' && 'isActive'}`}>
               <span className='icon'><FontAwesomeIcon icon={faHouse} /></span> Home
-            </Link>
-          </li>
+            </li>
+          </Link>
 
           {/* EXPLORE */}
           <li>

@@ -1,7 +1,8 @@
 import React from 'react'
 import "./artistSearch.css"
+import { truncateText } from '../../utils/truncation'
 
-const ArtistSearch = () => {
+const ArtistSearch = ({ artists }) => {
   return (
     <div className="artistSearch">
       <div className="header">
@@ -9,23 +10,19 @@ const ArtistSearch = () => {
       </div>
 
       <div className="artistList">
-        {(() => {
-          const items = [];
-          for (let i = 0; i < 10; i++) {
-            items.push(
-              <div className="item" key={i}>
-                <div className="artistImg">
-                  <img src="https://lastfm.freetls.fastly.net/i/u/300x300/ea7f6168da2fdccd7014166aaeede714.jpg" alt="" />
-                </div>
-                <div className="info">
-                  <h3 className='artistName' >Shadow Of Hunger</h3>
-                  <h4 className='country'>Artist</h4>
-                </div>
-              </div>
-            );
-          }
-          return items;
-        })()}
+        {artists && artists.map(artist => (
+          <div className="item" key={artist.artistId}>
+            <div className="artistImg">
+              <img src={artist.image} alt="" />
+            </div>
+            <div className="info">
+              <h3 className='artistName' >
+                {truncateText(artist.artistName, 16)}
+              </h3>
+              <h4 className='type'>Artist</h4>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )

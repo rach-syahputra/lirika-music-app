@@ -36,8 +36,11 @@
 
 .albumSearch .albumList .item {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   height: 210px;
+  width: 180px;
   padding: 8px;
   margin-bottom: 8px;
   transition: background-color 0.15s ease-in-out;
@@ -51,6 +54,9 @@
 .albumSearch .albumList .item .info {
   display: flex;
   flex-direction: column;
+  width: 180px;
+  padding: 0 15px;
+  gap: 3px;
 }
 
 
@@ -72,14 +78,10 @@
   height: 20px;
 }
 
-.albumSearch .albumList .item .info .artistName {
+.albumSearch .albumList .item .info .type {
   display: flex;
   align-items: center;
   height: 14px;
-}
-
-.albumSearch .albumList .item .info .albumName {
-  text-align: center;
 }
 
 .albumSearch .albumList img,

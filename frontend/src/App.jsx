@@ -15,10 +15,10 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/register/identity' element={<RegisterIdentity />} />
-        <Route path='/explore' element={<Explore />} />
-        <Route path='/search' element={<Search />} />
         <Route element={<ProtectedRoute />}>
           <Route exact path='/' element={<Home />} />
+          <Route path='/explore' element={<Explore />} />
+          <Route path='/search' element={<Search />} />
         </Route>
       </Routes>
     </div>

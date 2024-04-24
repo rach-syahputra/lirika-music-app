@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./navbar.css"
 import Profile from '../profile/Profile'
 import SearchBar from '../searchBar/SearchBar'

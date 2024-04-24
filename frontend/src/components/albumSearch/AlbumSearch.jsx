@@ -1,7 +1,8 @@
 import React from 'react'
 import "./albumSearch.css"
+import { truncateText } from '../../utils/truncation'
 
-const AlbumSearch = () => {
+const AlbumSearch = ({ albums }) => {
   return (
     <div className="albumSearch">
       <div className="header">
@@ -9,23 +10,19 @@ const AlbumSearch = () => {
       </div>
 
       <div className="albumList">
-        {(() => {
-          const items = [];
-          for (let i = 0; i < 10; i++) {
-            items.push(
-              <div className="item" key={i}>
-                <div className="albumImg">
-                  <img src="https://www.spirit-of-metal.com/les%20goupes/B/Beyond%20Creation/Algorythm/Algorythm_8172.jpg" alt="" />
-                </div>
-                <div className="info">
-                  <h3 className='albumName' >Incurso</h3>
-                  <h4 className='genre'>Album</h4>
-                </div>
-              </div>
-            );
-          }
-          return items;
-        })()}
+        {albums && albums.map(album => (
+          <div className="item" key={album.albumId}>
+            <div className="albumImg">
+              <img src={album.albumImage} alt="" />
+            </div>
+            <div className="info">
+              <h3 className='albumName' >
+                {truncateText(album.albumName, 17)}
+              </h3>
+              <h4 className='type'>Album</h4>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
