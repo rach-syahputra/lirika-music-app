@@ -3,22 +3,22 @@ import "./topResultAlbum.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 
-const TopResultAlbum = () => {
+const TopResultAlbum = ({ topResult }) => {
   return (
     <div className="album">
       <div className="item">
         <div className="albumImg">
-          <img src="https://f4.bcbits.com/img/a2293656915_10.jpg" alt="" />
+          <img src={topResult.album_image} alt="" />
         </div>
         <div className="info">
           <div className="albumName">
-            <h2>Hymne To The Woeful Heart</h2>
+            <h2>{topResult.album_name}</h2>
           </div>
           <div className="details">
             <h4>
               <span className='type'>Album</span>
               •
-              <span className='artistName'>Pure Wrath</span>
+              <span className='artistName'>{topResult.artist_name}</span>
             </h4>
           </div>
           <div className="buttons">

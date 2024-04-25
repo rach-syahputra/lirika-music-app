@@ -16,7 +16,7 @@ const SongSearch = ({ songs }) => {
         {songs && songs.map((song) => (
           <div className="item" key={song.songId}>
             <div className="songImg">
-              <img src={song.songImage} alt="" />
+              <img src={song.albumImage} alt="" />
             </div>
             <div className="playButton">
               <FontAwesomeIcon icon={faPlay} className='icon' />

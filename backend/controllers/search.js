@@ -8,6 +8,7 @@ export const getSearch = async (req, res) => {
       s.songId,
       s.playedCount AS played_count,
       s.title AS song_title,
+      s.duration,
       a.artistId,
       a.artistName AS artist_name,
       a.image AS artist_image,

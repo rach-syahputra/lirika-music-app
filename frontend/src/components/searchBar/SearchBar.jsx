@@ -31,12 +31,14 @@ const SearchBar = () => {
       }
     }
 
+    getSearchResults()
+  }, [searchQuery])
+
+  useEffect(() => {
     if (!searchQuery) {
       navigate('/')
     }
-
-    getSearchResults()
-  }, [searchQuery])
+  }, [])
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value)

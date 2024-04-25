@@ -20,10 +20,10 @@ const Search = () => {
         const res = await axios.get(`http://localhost:8800/api/search?q=${encodeURIComponent(searchQuery)}`)
 
         const data = res.data
+        setTopResult(data.topResult)
         setArtists(data.searchResults.artists)
         setSongs(data.searchResults.songs)
         setAlbums(data.searchResults.albums)
-        setTopResult(data.topResult)
       } catch (err) {
         console.log('SongSearch: ', err.message)
       }
@@ -38,6 +38,7 @@ const Search = () => {
         <Navbar />
         <div className="searchChild">
           <SearchResultContent
+            topResult={topResult}
             artists={artists}
             songs={songs}
             albums={albums}

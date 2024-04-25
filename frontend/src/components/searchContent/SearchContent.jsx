@@ -5,10 +5,10 @@ import SongSearch from '../songSearch/SongSearch'
 import AlbumSearch from '../albumSearch/AlbumSearch'
 import TopResult from '../topResult/TopResult'
 
-const SearchContent = ({ artists, songs, albums }) => {
+const SearchContent = ({ topResult, artists, songs, albums }) => {
   return (
     <div className='searchContent'>
-      <TopResult />
+      {topResult && <TopResult topResult={topResult} />}
       {artists?.length > 0 && <ArtistSearch artists={artists} />}
       {songs?.length > 0 && <SongSearch songs={songs} />}
       {albums?.length > 0 && <AlbumSearch albums={albums} />}

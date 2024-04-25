@@ -4,7 +4,7 @@ import TopResultArtist from "../topResultArtist/TopResultArtist"
 import TopResultSong from "../topResultSong/TopResultSong"
 import TopResultAlbum from "../topResultAlbum/TopResultAlbum"
 
-const TopResult = () => {
+const TopResult = ({ topResult }) => {
   return (
     <div className='topResult'>
       <div className="header">
@@ -12,9 +12,12 @@ const TopResult = () => {
       </div>
 
       <div className="topResultContent">
-        <TopResultArtist />
-        <TopResultSong />
-        <TopResultAlbum />
+        {
+          topResult.type === 'artist' ? <TopResultArtist topResult={topResult} /> :
+            topResult.type === 'song' ? <TopResultSong topResult={topResult} /> :
+              topResult.type === 'album' ? <TopResultAlbum topResult={topResult} /> :
+                ''
+        }
       </div>
     </div>
   )
