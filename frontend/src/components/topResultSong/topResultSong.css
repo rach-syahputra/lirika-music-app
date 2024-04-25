@@ -1,0 +1,111 @@
+.topResult .song {
+  display: block;
+  overflow: hidden;
+}
+
+.topResult .song .item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 210px;
+  padding: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.topResult .song .item .info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.topResult .song .item .albumImg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.topResult .song .item .albumImg img {
+  height: 145px;
+  width: 145px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.topResult .song .item .info .songTitle {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.topResult .song .item .info .songTitle h2 {
+  font-size: 26px;
+}
+
+.topResult .song .item .info .details h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topResult .song .item .info .details h4 .artistName:hover,
+.topResult .song .item .info .details h4 .album:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.topResult .song .item .info .type {
+  display: flex;
+  align-items: center;
+  height: 14px;
+}
+
+.topResult .song img,
+.topResult .song .item .info .songTitle h2 {
+  cursor: pointer;
+}
+
+.topResult .song .item .info .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.topResult .song .item .info .buttons .playButton {
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.topResult .song .item .info .buttons .playButton:hover {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.topResult .song .item .info .buttons .addButton {
+  color: var(--dark-bg);
+  background-color: #fcfcfc;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.topResult .song .item .info .buttons .addButton:hover {
+  background-color: #dbdbdb;
+  cursor: pointer;
+}

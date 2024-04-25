@@ -1,0 +1,26 @@
+.topResult {
+  padding: 15px 15px 10px 15px;
+  border-radius: 6px;
+  background-color: var(--dark-bg);
+  margin-bottom: 16px;
+  max-width: 1300px;
+  /* height: 295px; */
+}
+
+.topResult .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* ARTIST */
+/*  */
+
+
+/* SONG */
+/*  */
+
+
+/* ALBUM */
+/*  */

@@ -1,0 +1,105 @@
+.topResult .artist {
+  display: block;
+  overflow: hidden;
+}
+
+.topResult .artist .item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 210px;
+  padding: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.topResult .artist .item .info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.topResult .artist .item .artistImg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.topResult .artist .item .artistImg img {
+  height: 148px;
+  width: 148px;
+  border-radius: 75px;
+  object-fit: cover;
+}
+
+.topResult .artist .item .info .artistName {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.topResult .artist .item .info .artistName h2 {
+  font-size: 26px;
+}
+
+.topResult .artist .item .info .details h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topResult .artist .item .info .type {
+  display: flex;
+  align-items: center;
+  height: 14px;
+}
+
+.topResult .artist img,
+.topResult .artist .item .info .artistName h2 {
+  cursor: pointer;
+}
+
+.topResult .artist .item .info .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.topResult .artist .item .info .buttons .playButton {
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.topResult .artist .item .info .buttons .playButton:hover {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.topResult .artist .item .info .buttons .shuffleButton {
+  color: var(--dark-bg);
+  background-color: #fcfcfc;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.topResult .artist .item .info .buttons .shuffleButton:hover {
+  background-color: #dbdbdb;
+  cursor: pointer;
+}
