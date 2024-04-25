@@ -30,6 +30,11 @@ const SearchBar = () => {
         console.log('SearchBar: ', err.message)
       }
     }
+
+    if (!searchQuery) {
+      navigate('/')
+    }
+
     getSearchResults()
   }, [searchQuery])
 
@@ -46,7 +51,6 @@ const SearchBar = () => {
       if (searchQuery) {
         navigate(`/search?q=${encodeURIComponent(searchQuery)}`)
       } else {
-        console.log('searchQuery: ', searchQuery)
         navigate('/')
       }
     }
