@@ -40,7 +40,7 @@
 }
 
 .topResult .artist .item .info .artistName h2 {
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .topResult .artist .item .info .details h4 {
@@ -75,7 +75,7 @@
   padding: 10px;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -95,7 +95,7 @@
   padding: 10px;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   transition: background-color 0.2s ease-in-out;
 }
 
