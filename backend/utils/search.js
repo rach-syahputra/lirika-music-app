@@ -135,7 +135,7 @@ export const separateSearchResultsDataByType = (data) => {
   const songData = songResults.map(item => ({
     songId: item.songId,
     songTitle: item.song_title,
-    songImage: item.song_image,
+    albumImage: item.album_image,
     artistName: item.artist_name,
     albumName: item.album_name,
     type: item.type
@@ -143,7 +143,7 @@ export const separateSearchResultsDataByType = (data) => {
   const albumData = albumResults.map(item => ({
     albumId: item.albumId,
     albumName: item.album_name,
-    albumImage: item.song_image,
+    albumImage: item.album_image,
     type: item.type
   }))
 

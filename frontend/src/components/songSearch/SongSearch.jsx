@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./songSearch.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios"
 import { truncateText } from '../../utils/truncation'
 
 const SongSearch = ({ songs }) => {
-  // Chunk the data into sub-arrays of 4 items each
-  // This ensures we prioritize filling the first 4 rows of the grid
-  const chunkedSongData = songs.reduce((acc, song, index) => {
-    const rowIndex = Math.floor(index / 4);
-    acc[rowIndex] = acc[rowIndex] || [];
-    acc[rowIndex].push(song);
-    return acc;
-  }, []);
 
   return (
     <div className='songSearch'>

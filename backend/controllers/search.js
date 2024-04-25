@@ -8,11 +8,11 @@ export const getSearch = async (req, res) => {
       s.songId,
       s.playedCount AS played_count,
       s.title AS song_title,
-      s.image AS song_image,
       a.artistId,
       a.artistName AS artist_name,
       a.image AS artist_image,
       al.albumId,
+      al.image AS album_image,
       al.albumName AS album_name
     FROM songs s
     LEFT JOIN artists a ON s.artistId = a.artistId

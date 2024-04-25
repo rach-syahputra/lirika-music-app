@@ -31,10 +31,13 @@ export const getSong = async (req, res) => {
 export const getTopSongs = async (req, res) => {
   try {
     const query = `
-    SELECT * FROM songs
-    ORDER BY playedCount DESC
+    SELECT s.*, a.image
+    FROM songs s
+    INNER JOIN albums a ON s.albumId = a.albumId
+    ORDER BY s.playedCount DESC
     LIMIT 10
     `
+
     const connection = await createConnection()
     const [songs] = await connection.execute(query)
 
