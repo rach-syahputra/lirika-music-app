@@ -34,12 +34,6 @@ const SearchBar = () => {
     getSearchResults()
   }, [searchQuery])
 
-  useEffect(() => {
-    if (!searchQuery) {
-      navigate('/')
-    }
-  }, [])
-
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value)
     setShowSuggestions(true)
