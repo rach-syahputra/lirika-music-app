@@ -17,7 +17,7 @@ const AlbumSearch = ({ albums }) => {
             </div>
             <div className="info">
               <h3 className='albumName' >
-                {truncateText(album.albumName, 17)}
+                {truncateText(album.albumName, 20)}
               </h3>
               <h4 className='type'>Album</h4>
             </div>
