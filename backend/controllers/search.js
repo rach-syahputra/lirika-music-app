@@ -20,7 +20,8 @@ export const getSearch = async (req, res) => {
     LEFT JOIN albums al ON s.albumId = al.albumId
     WHERE LOWER(s.title) LIKE LOWER(CONCAT('%', ?, '%'))
     OR LOWER(a.artistName) LIKE LOWER(CONCAT('%', ?, '%'))
-    OR LOWER(al.albumName) LIKE LOWER(CONCAT('%', ?, '%'));
+    OR LOWER(al.albumName) LIKE LOWER(CONCAT('%', ?, '%'))
+    LIMIT 18
     `
 
     const searchQuery = req.query.q
