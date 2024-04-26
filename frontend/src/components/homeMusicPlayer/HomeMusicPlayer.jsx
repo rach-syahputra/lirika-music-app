@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState, useTransition } from 'react'
-import "./musicPlayer.css"
+import React, { useContext, useEffect, useState } from 'react'
+import "./homeMusicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 import { ContextIsPlayedId } from '../../pages/home/Home'
 import axios from 'axios'
 
 
-const MusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
+const HomeMusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
   const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
@@ -84,4 +84,4 @@ const MusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handleP
   )
 }
 
-export default MusicPlayer
+export default HomeMusicPlayer
