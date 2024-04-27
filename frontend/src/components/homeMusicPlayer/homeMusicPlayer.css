@@ -1,4 +1,4 @@
-.musicPlayer {
+.homeMusicPlayer {
   height: 80%;
   background-color: var(--dark-bg);
   border-radius: 8px;
@@ -26,40 +26,40 @@
   height: 25px;
 }
 
-.musicPlayer .top .header {
+.homeMusicPlayer .top .header {
   display: flex;
   justify-content: space-between;
   padding: 0 18px;
   margin-bottom: 14px;
 }
 
-.musicPlayer .header .icon {
+.homeMusicPlayer .header .icon {
   cursor: pointer;
 }
 
-.musicPlayer .imgContainer {
+.homeMusicPlayer .imgContainer {
   width: 80%;
   height: 272px;
   border-radius: 4px;
 }
 
-.musicPlayer .imgContainer img {
+.homeMusicPlayer .imgContainer img {
   width: 100%;
   height: 100%;
 }
 
-.musicPlayer .progress {
+.homeMusicPlayer .progress {
   display: flex;
   align-items: center;
   margin: 10px 0;
   padding: 0 18px;
 }
 
-.musicPlayer .progress h4 {
+.homeMusicPlayer .progress h4 {
   color: #fff;
 }
 
-.musicPlayer .playedLine {
+.homeMusicPlayer .playedLine {
   position: relative;
   width: 110px;
   height: 2px;
@@ -67,7 +67,7 @@
   margin-left: 20px;
 }
 
-.musicPlayer .playedLine::before {
+.homeMusicPlayer .playedLine::before {
   content: "";
   background-color: #25252d;
   height: 10px;
@@ -79,14 +79,14 @@
   border-radius: 50%;
 }
 
-.musicPlayer .unplayedLine {
+.homeMusicPlayer .unplayedLine {
   width: 80px;
   height: 2px;
   background-color: #919191;
   margin-right: 20px;
 }
 
-.musicPlayer .bottom {
+.homeMusicPlayer .bottom {
   height: 26%;
   background-color: var(--main-color);
   padding: 16px;
@@ -97,19 +97,19 @@
   margin-top: 15px;
 }
 
-.musicPlayer .bottom .buttons {
+.homeMusicPlayer .bottom .buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 90px;
 }
 
-.musicPlayer .bottom .buttons .icon {
+.homeMusicPlayer .bottom .buttons .icon {
   cursor: pointer;
 }
 
-.musicPlayer .bottom .buttons .buttonPlay,
-.musicPlayer .bottom .buttons .buttonStop {
+.homeMusicPlayer .bottom .buttons .buttonPlay,
+.homeMusicPlayer .bottom .buttons .buttonStop {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,14 +120,14 @@
   cursor: pointer;
 }
 
-.musicPlayer .bottom .buttons .buttonPlay .icon,
-.musicPlayer .bottom .buttons .buttonStop .icon {
+.homeMusicPlayer .bottom .buttons .buttonPlay .icon,
+.homeMusicPlayer .bottom .buttons .buttonStop .icon {
   color: var(--main-color);
 }
 
 
 
-.musicPlayer .bottom .lyric {
+.homeMusicPlayer .bottom .lyric {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,6 +135,6 @@
   cursor: pointer;
 }
 
-.musicPlayer .bottom .lyric h4 {
+.homeMusicPlayer .bottom .lyric h4 {
   color: #fff;
 }

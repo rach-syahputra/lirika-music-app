@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect } from 'react'
 import "./home.css"
 import Sidebar from '../../components/sidebar/Sidebar'
 import Main from '../../components/main/Main'
@@ -7,6 +7,7 @@ import Navbar from '../../components/navbar/Navbar'
 import useHomeState from '../../hooks/useHomeState'
 import { handlePlay, handleStop, handleNext, handlePrev } from '../../handlers/handleSong'
 import axios from 'axios'
+import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 
 export const ContextIsPlayedId = createContext()
 
@@ -65,7 +66,9 @@ const Home = () => {
           </div>
         </ContextIsPlayedId.Provider>
       </div>
+      <MusicPlayer />
     </div>
+
   )
 }
 

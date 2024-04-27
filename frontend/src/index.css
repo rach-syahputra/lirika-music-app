@@ -4,9 +4,9 @@
   --main-color: #1db954;
   --secondary-color: #1ed750;
   --font-color: #ffffff;
-  --dark-bg: #18181d;
+  --dark-bg: #191920;
   --dark-bg-hover: #24242d;
-  --darker-bg: #050505;
+  --darker-bg: #0f0f0f;
   --light: #919191;
 }
 
@@ -69,8 +69,9 @@ body {
 .container {
   width: 100%;
   box-sizing: border-box;
-  background: #050505;
+  background: var(--darker-bg);
   color: white;
+  position: relative;
 }
 
 body::-webkit-scrollbar {

@@ -5,7 +5,6 @@ import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay } from '@fort
 import { ContextIsPlayedId } from '../../pages/home/Home'
 import axios from 'axios'
 
-
 const HomeMusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
   const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
   const [title, setTitle] = useState("")
@@ -30,7 +29,7 @@ const HomeMusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, han
   }, [songId])
 
   return (
-    <div className='musicPlayer'>
+    <div className='homeMusicPlayer'>
       <div className="top">
         <div className="header">
           <h3>Player</h3>

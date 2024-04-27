@@ -5,6 +5,7 @@ import Navbar from '../../components/navbar/Navbar'
 import SearchResultContent from '../../components/searchContent/SearchContent'
 import axios from "axios"
 import { useSearchParams } from 'react-router-dom'
+import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 
 const Search = () => {
   const [artists, setArtists] = useState(null)
@@ -45,6 +46,7 @@ const Search = () => {
           />
         </div>
       </div>
+      <MusicPlayer />
     </div>
   )
 }

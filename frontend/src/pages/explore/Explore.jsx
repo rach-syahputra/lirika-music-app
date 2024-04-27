@@ -3,6 +3,7 @@ import "./explore.css"
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import SearchPage from '../../components/exploreContent/ExploreContent'
+import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 
 const Explore = () => {
 
@@ -15,6 +16,7 @@ const Explore = () => {
           <SearchPage />
         </div>
       </div>
+      <MusicPlayer />
     </div>
   )
 }
