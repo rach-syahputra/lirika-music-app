@@ -3,6 +3,7 @@ import "./songSearch.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { truncateText } from '../../utils/truncation'
+import { handlePlay } from '../../handlers/handleSong'
 
 const SongSearch = ({ songs }) => {
 
@@ -19,7 +20,7 @@ const SongSearch = ({ songs }) => {
               <div className="songImg">
                 <img src={song.albumImage} alt="" />
               </div>
-              <div className="playButton">
+              <div className="playButton" onClick={() => handlePlay}>
                 <FontAwesomeIcon icon={faPlay} className='icon' />
               </div>
               <div className="info">

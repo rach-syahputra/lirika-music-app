@@ -25,6 +25,8 @@ const Search = () => {
         setArtists(data.searchResults.artists)
         setSongs(data.searchResults.songs)
         setAlbums(data.searchResults.albums)
+        console.log('topResult: ', data.topResult)
+        console.log('searchResult: ', data.searchResults)
       } catch (err) {
         console.log('SongSearch: ', err.message)
       }

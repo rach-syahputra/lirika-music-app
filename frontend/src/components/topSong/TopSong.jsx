@@ -6,8 +6,8 @@ import axios from 'axios'
 import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 import { handleToggleLike, isLiked } from '../../handlers/handleSong'
 
-const TopSong = ({ setSongId, handlePlay, handleStop }) => {
-  const { isPlayedId, playSong } = useContext(SongPlaybackContext)
+const TopSong = ({ handlePlay, handleStop }) => {
+  const { isPlayedId, playSong, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
   const [likedIds, setLikedIds] = useState([])
   const [topSongs, setTopSongs] = useState()
 
@@ -23,9 +23,6 @@ const TopSong = ({ setSongId, handlePlay, handleStop }) => {
     }
     getTopSongs()
   }, [])
-
-  // determine whether a particular song is liked or not
-  // const isLiked = (songId) => likedId.includes(songId);
 
   return (
     <div className='topSong'>
@@ -54,7 +51,7 @@ const TopSong = ({ setSongId, handlePlay, handleStop }) => {
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
-                <div className="buttonPlay" onClick={() => handlePlay(setSongId, song.songId, playSong)}>
+                <div className="buttonPlay" onClick={() => handlePlay(song.songId, setCurrentSelectedSongId, playSong)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </div>
               }

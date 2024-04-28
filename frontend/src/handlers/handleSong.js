@@ -1,6 +1,6 @@
-export const handlePlay = (setSongId, songId, playSong) => {
+export const handlePlay = (songId, setCurrentSelectedSongId, playSong) => {
   playSong(songId)
-  setSongId(songId)
+  setCurrentSelectedSongId(songId)
 }
 
 export const handleStop = (playSong) => {
