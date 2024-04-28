@@ -1,8 +1,8 @@
 import React from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBackwardStep, faForwardStep, faPause, faPlay, faPlus, faRepeat, faShuffle, faVolumeLow } from '@fortawesome/free-solid-svg-icons'
-
+import { faBackwardStep, faForwardStep, faHandDots, faPause, faPlay, faPlus, faRepeat, faShuffle, faVolumeLow } from '@fortawesome/free-solid-svg-icons'
+// import { handleToggleLike, isLiked } from '../../handlers/handleSong'
 
 const MusicPlayer = () => {
   return (

@@ -24,3 +24,15 @@ export const handlePrev = (songs, songId, setSongId, playSong) => {
     playSong(songs[nextIndex].songId);
   }
 };
+
+export const handleToggleLike = (likedIds, setlikedIds, songId) => {
+  if (likedIds.includes(songId)) {
+    setlikedIds(likedIds.filter((id) => id !== songId))
+  } else {
+    setlikedIds([...likedIds, songId])
+  }
+}
+
+export const isLiked = (likedIds, songId) => {
+  return likedIds.includes(songId)
+}

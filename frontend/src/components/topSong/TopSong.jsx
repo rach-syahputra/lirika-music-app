@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
+import { handleToggleLike, isLiked } from '../../handlers/handleSong'
 
 const TopSong = ({ setSongId, handlePlay, handleStop }) => {
   const { isPlayedId, playSong } = useContext(SongPlaybackContext)
-  const [likedId, setLikedId] = useState([])
+  const [likedIds, setLikedIds] = useState([])
   const [topSongs, setTopSongs] = useState()
 
   useEffect(() => {
@@ -23,15 +24,8 @@ const TopSong = ({ setSongId, handlePlay, handleStop }) => {
     getTopSongs()
   }, [])
 
-  const handleToggleLike = (songId) => {
-    if (likedId.includes(songId)) {
-      setLikedId(likedId.filter((id) => id !== songId))
-    } else {
-      setLikedId([...likedId, songId])
-    }
-  }
-
-  const isLiked = (songId) => likedId.includes(songId);
+  // determine whether a particular song is liked or not
+  // const isLiked = (songId) => likedId.includes(songId);
 
   return (
     <div className='topSong'>
@@ -65,13 +59,13 @@ const TopSong = ({ setSongId, handlePlay, handleStop }) => {
                 </div>
               }
 
-              {isLiked(song.songId)
+              {isLiked(likedIds, song.songId)
                 ?
-                <div className="buttonCheck" onClick={() => handleToggleLike(song.songId)}>
+                <div className="buttonCheck" onClick={() => handleToggleLike(likedIds, setLikedIds, song.songId)}>
                   <FontAwesomeIcon icon={faCheck} className='icon' />
                 </div>
                 :
-                <div className="buttonPlus" onClick={() => handleToggleLike(song.songId)}>
+                <div className="buttonPlus" onClick={() => handleToggleLike(likedIds, setLikedIds, song.songId)}>
                   <FontAwesomeIcon icon={faPlus} className='icon' />
                 </div>
               }
