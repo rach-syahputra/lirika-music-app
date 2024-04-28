@@ -5,14 +5,14 @@ export const getTopAlbums = async (req, res) => {
     // get top 20 albums along with the albumName, albumGenre, artistName and image based on playedCount
     //
     const query = `
-    SELECT  albums.albumId,
-            albums.albumName,
-            songs.image,
-            artists.artistName,
-            SUM(songs.playedCount) AS totalPlayed FROM songs 
-    INNER JOIN albums ON songs.albumId = albums.albumId
-    INNER JOIN artists ON songs.artistId = artists.artistId
-    GROUP BY albums.albumId
+    SELECT  al.albumId,
+            al.albumName,
+            al.image,
+            a.artistName,
+            SUM(s.playedCount) AS totalPlayed FROM songs s 
+    INNER JOIN albums al ON s.albumId = al.albumId
+    INNER JOIN artists a ON s.artistId = a.artistId
+    GROUP BY al.albumId
     ORDER BY totalPlayed DESC
     LIMIT 20
     `

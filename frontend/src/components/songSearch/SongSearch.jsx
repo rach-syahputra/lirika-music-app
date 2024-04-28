@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./songSearch.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 import { truncateText } from '../../utils/truncation'
-import { handlePlay } from '../../handlers/handleSong'
+import { handlePlay, handleStop } from '../../handlers/handleSong'
+import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 
 const SongSearch = ({ songs }) => {
+
+  const { isPlayedId, playSong, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
 
   return (
     <div className='songSearch'>
@@ -20,9 +23,16 @@ const SongSearch = ({ songs }) => {
               <div className="songImg">
                 <img src={song.albumImage} alt="" />
               </div>
-              <div className="playButton" onClick={() => handlePlay}>
-                <FontAwesomeIcon icon={faPlay} className='icon' />
-              </div>
+              {isPlayedId === song.songId
+                ?
+                <div className="pauseButton" onClick={() => handleStop(playSong)}>
+                  <FontAwesomeIcon icon={faPause} className='icon' />
+                </div>
+                :
+                <div className="playButton" onClick={() => handlePlay(song.songId, setCurrentSelectedSongId, playSong)}>
+                  <FontAwesomeIcon icon={faPlay} className='icon' />
+                </div>
+              }
               <div className="info">
                 <h3 className='songTitle' >
                   {truncateText(song.songTitle, 35)}

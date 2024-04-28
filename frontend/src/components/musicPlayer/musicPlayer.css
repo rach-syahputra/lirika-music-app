@@ -75,12 +75,14 @@
   gap: 40px;
 }
 
-.musicPlayer .middleControl .controlButtons .icon {
+.musicPlayer .middleControl .controlButtons .buttonNext .icon,
+.musicPlayer .middleControl .controlButtons .buttonPrev .icon {
   font-size: 20px;
   cursor: pointer;
 }
 
-.musicPlayer .middleControl .controlButtons .playIcon {
+.musicPlayer .middleControl .controlButtons .buttonPlay .icon,
+.musicPlayer .middleControl .controlButtons .buttonPause .icon {
   font-size: 30px;
   cursor: pointer;
 }

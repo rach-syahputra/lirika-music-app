@@ -85,10 +85,24 @@
   opacity: 1;
 }
 
-.songSearch .songList .item .playButton .icon {
+.songSearch .songList .item .pauseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 8px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.songSearch .songList .item .playButton .icon,
+.songSearch .songList .item .pauseButton .icon {
   font-size: 21px;
 }
 
-.songSearch .songList .item .playButton .icon:hover {
+.songSearch .songList .item .playButton .icon:hover,
+.songSearch .songList .item .pauseButton .icon:hover {
   cursor: pointer;
 }

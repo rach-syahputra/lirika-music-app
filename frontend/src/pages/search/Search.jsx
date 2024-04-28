@@ -48,7 +48,7 @@ const Search = () => {
           />
         </div>
       </div>
-      <MusicPlayer />
+      <MusicPlayer songs={songs} />
     </div>
   )
 }

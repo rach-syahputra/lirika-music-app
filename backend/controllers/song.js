@@ -18,7 +18,13 @@ export const getSongs = async (req, res) => {
 export const getSong = async (req, res) => {
   try {
     const songId = req.params.songId
-    const query = "SELECT * FROM songs WHERE songId = ?"
+    // const query = "SELECT * FROM songs WHERE songId = ?"
+    const query = `
+    SELECT s.*, al.albumName, al.image
+    FROM songs s
+    INNER JOIN albums al ON s.albumId = al.albumId
+    WHERE songId = ?
+    `
     const connection = await createConnection()
     const [song] = await connection.execute(query, [songId])
 
@@ -31,9 +37,9 @@ export const getSong = async (req, res) => {
 export const getTopSongs = async (req, res) => {
   try {
     const query = `
-    SELECT s.*, a.image
+    SELECT s.*, al.image
     FROM songs s
-    INNER JOIN albums a ON s.albumId = a.albumId
+    INNER JOIN albums al ON s.albumId = al.albumId
     ORDER BY s.playedCount DESC
     LIMIT 10
     `

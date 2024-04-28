@@ -22,7 +22,7 @@ const HomeMusicPlayer = ({ songs, handleNext, handlePrev, handlePlay, handleStop
         setArtist(song.artist)
         setImage(song.image)
       } catch (error) {
-        console.log('MusicPlayer', error)
+        console.log('HomeMusicPlayer Error: ', error)
       }
     }
     fetchData();
