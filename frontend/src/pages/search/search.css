@@ -1,6 +1,7 @@
 .search {
   height: 100%;
   overflow: hidden;
+  padding-bottom: 75px;
 }
 
 .search .searchChild {

@@ -4,7 +4,7 @@
   align-items: center;
   background-color: var(--darker-bg);
   width: 100%;
-  height: 90px;
+  height: 75px;
   z-index: 200;
   position: fixed;
   bottom: 0;

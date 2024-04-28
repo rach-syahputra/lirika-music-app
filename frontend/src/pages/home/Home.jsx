@@ -41,7 +41,8 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="container">
+
+    <div className="layout">
       <Sidebar currentPage='home' />
       <div className="mainPage">
         <Navbar />
@@ -62,9 +63,7 @@ const Home = () => {
           />
         </div>
       </div>
-      <MusicPlayer />
     </div>
-
   )
 }
 

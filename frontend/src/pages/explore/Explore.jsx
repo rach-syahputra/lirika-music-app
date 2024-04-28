@@ -8,7 +8,7 @@ import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 const Explore = () => {
 
   return (
-    <div className="container">
+    <div className="layout">
       <Sidebar currentPage='explore' />
       <div className="explore">
         <Navbar />

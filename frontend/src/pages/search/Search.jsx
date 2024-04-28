@@ -33,7 +33,7 @@ const Search = () => {
   }, [searchQuery])
 
   return (
-    <div className='container'>
+    <div className='layout'>
       <Sidebar currentPage='search' />
       <div className="search">
         <Navbar />

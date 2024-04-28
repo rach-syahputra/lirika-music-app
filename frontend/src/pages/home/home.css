@@ -1,5 +1,13 @@
-.container {
+.home {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.container {
+  height: 100%;
+  padding-bottom: 75px;
 }
 
 .mainPage {

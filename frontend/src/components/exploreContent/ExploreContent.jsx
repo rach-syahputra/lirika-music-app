@@ -4,7 +4,7 @@ import RecommendedAlbum from '../recommendedAlbum/RecommendedAlbum'
 import NewReleases from '../newReleases/NewReleases'
 import TrendingSong from '../trendingSong/TrendingSong'
 
-const SearchPage = () => {
+const ExploreContent = () => {
   return (
     <div className='exploreContent'>
       <RecommendedAlbum />
@@ -14,4 +14,4 @@ const SearchPage = () => {
   )
 }
 
-export default SearchPage
+export default ExploreContent
