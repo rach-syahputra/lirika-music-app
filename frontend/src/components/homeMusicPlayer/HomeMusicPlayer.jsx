@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./homeMusicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { ContextIsPlayedId } from '../../pages/home/Home'
 import axios from 'axios'
+import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 
 const HomeMusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {
-  const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
+  const { isPlayedId, playSong } = useContext(SongPlaybackContext)
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [image, setImage] = useState("")
@@ -56,21 +56,21 @@ const HomeMusicPlayer = ({ songs, songId, setSongId, handleNext, handlePrev, han
       </div>
       <div className="bottom">
         <div className="buttons">
-          <div className="buttonPrev" onClick={() => handlePrev(songs, songId, setSongId, setIsPlayedId)}>
+          <div className="buttonPrev" onClick={() => handlePrev(songs, songId, setSongId, playSong)}>
             <FontAwesomeIcon icon={faBackward} className='icon' />
           </div>
           {isPlayedId === songId
             ?
-            <div className="buttonStop" onClick={() => handleStop(setIsPlayedId)}>
+            <div className="buttonStop" onClick={() => handleStop(playSong)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(setIsPlayedId, setSongId, songId)}>
+            <div className="buttonPlay" onClick={() => handlePlay(setSongId, songId, playSong)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
 
           }
-          <div className="buttonNext" onClick={() => handleNext(songs, songId, setSongId, setIsPlayedId)}>
+          <div className="buttonNext" onClick={() => handleNext(songs, songId, setSongId, playSong)}>
             <FontAwesomeIcon icon={faForward} className='icon' />
           </div>
         </div>

@@ -6,8 +6,10 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Navbar from '../../components/navbar/Navbar'
 import useHomeState from '../../hooks/useHomeState'
 import { handlePlay, handleStop, handleNext, handlePrev } from '../../handlers/handleSong'
+// import { handlePlay, handleStop } from '../../handlers/handleSong'
 import axios from 'axios'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
+import { SongPlaybackProvider } from '../../hooks/songPlaybackContext'
 
 export const ContextIsPlayedId = createContext()
 
@@ -15,8 +17,6 @@ const Home = () => {
   const {
     songId,
     setSongId,
-    isPlayedId,
-    setIsPlayedId,
     songs,
     setSongs
   } = useHomeState()
@@ -45,26 +45,22 @@ const Home = () => {
       <Sidebar currentPage='home' />
       <div className="mainPage">
         <Navbar />
-        <ContextIsPlayedId.Provider value={[isPlayedId, setIsPlayedId]}>
-          <div className="mainContent">
-            <Main
-              songs={songs}
-              songId={songId}
-              setSongId={setSongId}
-              handlePlay={handlePlay}
-              handleStop={handleStop}
-            />
-            <Rightbar
-              songs={songs}
-              songId={songId}
-              setSongId={setSongId}
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-              handlePlay={handlePlay}
-              handleStop={handleStop}
-            />
-          </div>
-        </ContextIsPlayedId.Provider>
+        <div className="mainContent">
+          <Main
+            setSongId={setSongId}
+            handlePlay={handlePlay}
+            handleStop={handleStop}
+          />
+          <Rightbar
+            songs={songs}
+            songId={songId}
+            setSongId={setSongId}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+            handlePlay={handlePlay}
+            handleStop={handleStop}
+          />
+        </div>
       </div>
       <MusicPlayer />
     </div>

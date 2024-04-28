@@ -7,6 +7,7 @@ import ProtectedRoute from './utils/ProtectedRoute.jsx'
 import Explore from './pages/explore/Explore.jsx'
 import Search from './pages/search/Search.jsx'
 import { useEffect } from 'react'
+import { SongPlaybackProvider } from './hooks/songPlaybackContext.jsx'
 
 
 
@@ -31,10 +32,24 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/register/identity' element={<RegisterIdentity />} />
+
         <Route element={<ProtectedRoute />}>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/explore' element={<Explore />} />
-          <Route path='/search' element={<Search />} />
+
+          <Route exact path='/' element={
+            <SongPlaybackProvider>
+              <Home />
+            </SongPlaybackProvider>
+          } />
+          <Route path='/explore' element={
+            <SongPlaybackProvider>
+              <Explore />
+            </SongPlaybackProvider>
+          } />
+          <Route path='/search' element={
+            <SongPlaybackProvider>
+              <Search />
+            </SongPlaybackProvider>}
+          />
         </Route>
       </Routes>
     </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import "./rightbar.css"
-import Profile from '../profile/Profile'
 import HomeMusicPlayer from '../homeMusicPlayer/HomeMusicPlayer'
 
 const Rightbar = ({ songs, songId, setSongId, handleNext, handlePrev, handlePlay, handleStop }) => {

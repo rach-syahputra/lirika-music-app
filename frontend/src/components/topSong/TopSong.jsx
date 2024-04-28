@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faPause, faPlay, faPlus, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { ContextIsPlayedId } from '../../pages/home/Home'
+import { faCheck, faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 
-const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
-  const [isPlayedId, setIsPlayedId] = useContext(ContextIsPlayedId)
+const TopSong = ({ setSongId, handlePlay, handleStop }) => {
+  const { isPlayedId, playSong } = useContext(SongPlaybackContext)
   const [likedId, setLikedId] = useState([])
   const [topSongs, setTopSongs] = useState()
 
@@ -56,11 +56,11 @@ const TopSong = ({ songs, songId, setSongId, handlePlay, handleStop }) => {
 
               {isPlayedId === song.songId
                 ?
-                <div className="buttonStop" onClick={() => handleStop(setIsPlayedId)}>
+                <div className="buttonStop" onClick={() => handleStop(playSong)}>
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
-                <div className="buttonPlay" onClick={() => handlePlay(setIsPlayedId, setSongId, song.songId)}>
+                <div className="buttonPlay" onClick={() => handlePlay(setSongId, song.songId, playSong)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </div>
               }
