@@ -81,6 +81,15 @@
   cursor: pointer;
 }
 
+.musicPlayer .middleControl .controlButtons .buttonPlay,
+.musicPlayer .middleControl .controlButtons .buttonPause {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 28px;
+}
+
 .musicPlayer .middleControl .controlButtons .buttonPlay .icon,
 .musicPlayer .middleControl .controlButtons .buttonPause .icon {
   font-size: 30px;

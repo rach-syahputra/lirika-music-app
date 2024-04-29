@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./topResultSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
+import { handlePlay } from '../../handlers/handleSong'
 
 const TopResultSong = ({ topResult }) => {
+  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
+
   return (
     <div className="song">
       <div className="item">
@@ -26,7 +30,7 @@ const TopResultSong = ({ topResult }) => {
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton">
+            <div className="playButton" onClick={() => handlePlay(topResult.songId, setCurrentSelectedSongId, playSong)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
             <div className="addButton">

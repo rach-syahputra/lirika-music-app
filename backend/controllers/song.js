@@ -18,7 +18,6 @@ export const getSongs = async (req, res) => {
 export const getSong = async (req, res) => {
   try {
     const songId = req.params.songId
-    // const query = "SELECT * FROM songs WHERE songId = ?"
     const query = `
     SELECT s.*, al.albumName, al.image
     FROM songs s
@@ -48,6 +47,48 @@ export const getTopSongs = async (req, res) => {
     const [songs] = await connection.execute(query)
 
     res.status(200).json(songs)
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get song data' })
+  }
+}
+
+export const getTopSongFromArtist = async (req, res) => {
+  try {
+    const artistId = req.params.artistId
+    const query = `
+    SELECT s.*, al.albumName, al.image, ar.artistName
+    FROM songs s
+    INNER JOIN albums al ON s.albumId = al.albumId
+    INNER JOIN artists ar ON s.artistId = ar.artistId
+    WHERE s.artistId = ?
+    ORDER BY s.playedCount DESC
+    LIMIT 1
+    `
+    const connection = await createConnection()
+    const [song] = await connection.execute(query, [artistId])
+
+    res.status(200).json(song)
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get song data' })
+  }
+}
+
+export const getTopSongFromAlbum = async (req, res) => {
+  try {
+    const albumId = req.params.albumId
+    const query = `
+    SELECT s.*, al.albumName, al.image, ar.artistName
+    FROM songs s
+    INNER JOIN albums al ON s.albumId = al.albumId
+    INNER JOIN artists ar ON s.artistId = ar.artistId
+    WHERE s.albumId = ?
+    ORDER BY s.playedCount DESC
+    LIMIT 1
+    `
+    const connection = await createConnection()
+    const [song] = await connection.execute(query, [albumId])
+
+    res.status(200).json(song)
   } catch (err) {
     res.status(500).json({ message: 'failed to get song data' })
   }

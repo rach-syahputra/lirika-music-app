@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./topResultAlbum.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
+import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
+import axios from 'axios'
+import { handlePlay } from '../../handlers/handleSong'
 
 const TopResultAlbum = ({ topResult }) => {
+  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
+  const [songId, setSongId] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8800/api/song/find/topSongFromAlbum/${topResult.albumId}`)
+
+        const song = res.data
+        setSongId(song[0].songId)
+      } catch (error) {
+        console.log('TopResultAlbum ', error.message)
+      }
+    }
+    fetchData()
+  }, [topResult])
+
   return (
     <div className="album">
       <div className="item">
@@ -22,7 +42,7 @@ const TopResultAlbum = ({ topResult }) => {
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton">
+            <div className="playButton" onClick={() => handlePlay(songId, setCurrentSelectedSongId, playSong)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
             <div className="shuffleButton">

@@ -1,10 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const SongPlaybackContext = createContext()
 
 export const SongPlaybackProvider = ({ children }) => {
-  const [isPlayedId, setIsPlayedId] = useState(null)
-  const [currentSongId, setCurrentSongId] = useState(null)
+  const [isPlayedId, setIsPlayedId] = useState(
+    JSON.parse(localStorage.getItem('isPlayedId')) || null
+  )
+  const [currentSongId, setCurrentSongId] = useState(
+    JSON.parse(localStorage.getItem('currentSongId')) || null
+  )
+
+  useEffect(() => {
+    console.log('currentSongId: ', currentSongId)
+    localStorage.setItem('isPlayedId', JSON.stringify(isPlayedId))
+    localStorage.setItem('currentSongId', JSON.stringify(currentSongId))
+  }, [isPlayedId, currentSongId])
 
   const playSong = (songId) => {
     setIsPlayedId(songId)
