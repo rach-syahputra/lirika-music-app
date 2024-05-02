@@ -7,7 +7,6 @@ import ProtectedRoute from './utils/ProtectedRoute.jsx'
 import Explore from './pages/explore/Explore.jsx'
 import Search from './pages/search/Search.jsx'
 import { useEffect } from 'react'
-import { SongPlaybackProvider } from './hooks/songPlaybackContext.jsx'
 import store from './redux/store.js'
 import { Provider } from 'react-redux'
 
@@ -27,6 +26,12 @@ function App() {
     }
     console.log('currentPath: ', currentPath)
   }, [currentPath])
+
+  // useEffect(() => {
+  //   console.log('CURRENT SONG ID', currentSongId)
+  //   console.log('IS PLAYED ID', isPlayedId)
+  //   console.log('SONG LIST', songList)
+  // }, [songList])
 
   return (
     <div className="App">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBackwardStep, faForwardStep, faPause, faPlay, faPlus, faRepeat, faShuffle, faVolumeLow } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentSongId } from '../../redux/reducers/currentSongSlice.js'
 import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice.js'
 
-const MusicPlayer = ({ songs }) => {
+const MusicPlayer = () => {
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [image, setImage] = useState("")
@@ -31,8 +31,6 @@ const MusicPlayer = ({ songs }) => {
         setDuration(song.duration)
         setAlbumName(song.albumName)
 
-        console.log('isPlayedId: ', isPlayedId)
-        console.log('currentSongId ', currentSongId)
       } catch (error) {
         console.log('MusicPlayer Error: ', error)
       }

@@ -5,6 +5,7 @@ export const handlePlay = (songId, dispatch, setCurrentSongId, setIsPlayedId) =>
 
 export const handleStop = (dispatch, setIsPlayedId) => {
   dispatch(setIsPlayedId(null))
+  localStorage.removeItem('isPlayedId')
 }
 
 export const handleNext = (songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId) => {

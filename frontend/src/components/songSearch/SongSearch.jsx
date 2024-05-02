@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./songSearch.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
@@ -9,12 +9,23 @@ import { setCurrentSongId } from '../../redux/reducers/currentSongSlice.js'
 import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice.js'
 import { setSongList } from '../../redux/reducers/songListSlice.js'
 
+
 const SongSearch = ({ songs }) => {
   const isPlayedId = useSelector(state => state.isPlayedId.id)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    console.log('SONGS DATA FROM SEARCH', songs)
+  }, [songs])
+
+
   const handlePlayButton = (songId) => {
     dispatch(setSongList(songs))
+
+    // store songIds to local storage
+    const songIds = songs.map(song => song.songId)
+    localStorage.setItem('songIdList', songIds)
+
     handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
   }
 

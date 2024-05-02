@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  id: null
+  id: parseInt(localStorage.getItem('currentSongId')) || null
 }
 
 const currentSongSlice = createSlice({
@@ -9,6 +9,7 @@ const currentSongSlice = createSlice({
   initialState,
   reducers: {
     setCurrentSongId: (state, action) => {
+      localStorage.setItem('currentSongId', action.payload)
       return {
         id: action.payload
       }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +14,7 @@ const TopSong = () => {
   const isPlayedId = useSelector((state) => state.isPlayedId.id)
   const dispatch = useDispatch()
   const [likedIds, setLikedIds] = useState([])
-  const [topSongs, setTopSongs] = useState()
+  const [topSongs, setTopSongs] = useState([])
 
   useEffect(() => {
     const getTopSongs = async () => {
@@ -22,6 +22,12 @@ const TopSong = () => {
         const res = await axios.get("http://localhost:8800/api/song/topSongs")
 
         setTopSongs(res.data)
+
+        // if user just logged in or the page is first time rendered
+        if (!currentSongId) {
+          dispatch(fetchTopSongs())
+        }
+
       } catch (err) {
         console.log('TopSongs Error: ', err.message)
       }
@@ -42,7 +48,7 @@ const TopSong = () => {
       </div>
 
       <div className="songList">
-        {topSongs && topSongs.map((song, index) => (
+        {topSongs.length > 0 && topSongs.map((song, index) => (
           <div className="item" key={song.songId}>
             <div className="info">
               <h4 className='number'>{index + 1}</h4>
@@ -79,7 +85,7 @@ const TopSong = () => {
             </div>
           </div>
         ))}
-        <span>{`isPlayedId: ${isPlayedId}`}</span>
+
       </div>
     </div>
   )

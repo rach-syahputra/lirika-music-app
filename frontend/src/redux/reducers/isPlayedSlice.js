@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  id: null
+  id: parseInt(localStorage.getItem('isPlayedId')) || null
 }
 
 const isPlayedSlice = createSlice({
@@ -9,6 +9,7 @@ const isPlayedSlice = createSlice({
   initialState,
   reducers: {
     setIsPlayedId: (state, action) => {
+      localStorage.setItem('isPlayedId', action.payload)
       return {
         id: action.payload
       }

@@ -1,9 +1,10 @@
 import express from "express"
-import { getAllSongFromAlbum, getAllSongFromArtist, getSong, getSongs, getTopSongFromAlbum, getTopSongFromArtist, getTopSongs } from "../controllers/song.js"
+import { getAllSongFromAlbum, getAllSongFromArtist, getAllSongs, getSong, getSongs, getTopSongFromAlbum, getTopSongFromArtist, getTopSongs } from "../controllers/song.js"
 
 const router = express.Router()
 
-router.get('/', getSongs)
+router.get('/', getAllSongs)
+router.get('/find/songs/:songIds', getSongs)
 router.get('/find/:songId', getSong)
 router.get('/topSongs', getTopSongs)
 router.get('/artist/:artistId/songs', getAllSongFromArtist)

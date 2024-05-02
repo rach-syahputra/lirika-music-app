@@ -27,13 +27,13 @@ export const AuthContextProvider = ({ children }) => {
         withCredentials: true
       })
 
-      console.log(res.data.authenticated);
+      // console.log(res.data.authenticated);
 
       // return true
       return res.data.authenticated
 
     } catch (err) {
-      console.log('CheckAuth err: ', err.response.data)
+      // console.log('CheckAuth err: ', err.response.data)
       // return false
     }
   }

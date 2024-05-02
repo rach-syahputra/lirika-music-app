@@ -1,6 +1,6 @@
 import createConnection from "../connect.js"
 
-export const getSongs = async (req, res) => {
+export const getAllSongs = async (req, res) => {
   try {
     const query = `
     SELECT * FROM songs
@@ -28,6 +28,35 @@ export const getSong = async (req, res) => {
     const [song] = await connection.execute(query, [songId])
 
     res.status(200).json(song[0])
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get songs data' })
+  }
+}
+
+export const getSongs = async (req, res) => {
+  const songIds = req.params.songIds.split(',').map(id => parseInt(id))
+
+  if (!songIds) {
+    return res.status(400).send('Missing songId parameter')
+  }
+
+  // Generate placeholders dynamically based on the count of parameters
+  const placeholders = songIds.map(() => '?').join(',');
+
+  try {
+    const query = `
+    SELECT s.*, al.albumName, al.image, ar.artistName
+    FROM songs s
+    INNER JOIN albums al ON s.albumId = al.albumId
+    INNER JOIN artists ar ON s.artistId = ar.artistId
+    WHERE s.songId IN (${placeholders})
+    ORDER BY FIELD(songId, ${songIds.join(',')})
+    `
+
+    const connection = await createConnection()
+    const [songs] = await connection.execute(query, songIds)
+
+    res.status(200).json(songs)
   } catch (err) {
     res.status(500).json({ message: 'failed to get songs data' })
   }
