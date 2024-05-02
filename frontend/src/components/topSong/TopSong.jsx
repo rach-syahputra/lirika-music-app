@@ -3,11 +3,16 @@ import "./topSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
-import { handleToggleLike, isLiked } from '../../handlers/handleSong'
+import { handleToggleLike, isLiked, handlePlay, handleStop } from '../../handlers/handleSong'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
+import { fetchTopSongs } from '../../redux/reducers/songListSlice'
 
-const TopSong = ({ handlePlay, handleStop }) => {
-  const { isPlayedId, playSong, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
+const TopSong = () => {
+  const currentSongId = useSelector((state) => state.currentSongId.id)
+  const isPlayedId = useSelector((state) => state.isPlayedId.id)
+  const dispatch = useDispatch()
   const [likedIds, setLikedIds] = useState([])
   const [topSongs, setTopSongs] = useState()
 
@@ -23,6 +28,11 @@ const TopSong = ({ handlePlay, handleStop }) => {
     }
     getTopSongs()
   }, [])
+
+  const handlePlayButton = (songId) => {
+    dispatch(fetchTopSongs())
+    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
+  }
 
   return (
     <div className='topSong'>
@@ -47,11 +57,11 @@ const TopSong = ({ handlePlay, handleStop }) => {
 
               {isPlayedId === song.songId
                 ?
-                <div className="buttonStop" onClick={() => handleStop(playSong)}>
+                <div className="buttonStop" onClick={() => handleStop(dispatch, setIsPlayedId)}>
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
-                <div className="buttonPlay" onClick={() => handlePlay(song.songId, setCurrentSelectedSongId, playSong)}>
+                <div className="buttonPlay" onClick={() => handlePlayButton(song.songId)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </div>
               }
@@ -69,6 +79,7 @@ const TopSong = ({ handlePlay, handleStop }) => {
             </div>
           </div>
         ))}
+        <span>{`isPlayedId: ${isPlayedId}`}</span>
       </div>
     </div>
   )

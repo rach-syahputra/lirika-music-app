@@ -1,28 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import "./topResultArtist.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 import { handlePlay } from '../../handlers/handleSong'
-import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { fetchArtistSongs } from '../../redux/reducers/songListSlice'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
 
 const TopResultArtist = ({ topResult }) => {
-  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
-  const [songId, setSongId] = useState(null)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`http://localhost:8800/api/song/find/topSongFromArtist/${topResult.artistId}`)
-
-        const song = res.data
-        setSongId(song[0].songId)
-      } catch (error) {
-        console.log('TopResultArtist ', error.message)
-      }
-    }
-    fetchData()
-  }, [topResult])
+  const handlePlayButton = (artistId) => {
+    dispatch(fetchArtistSongs({ artistId }))
+  }
 
   return (
     <div className="artist">
@@ -42,7 +33,10 @@ const TopResultArtist = ({ topResult }) => {
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton" onClick={() => handlePlay(songId, setCurrentSelectedSongId, playSong)}>
+            <div
+              className="playButton"
+              onClick={() => (handlePlayButton(topResult.artistId, topResult.songId))}
+            >
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
             <div className="shuffleButton">

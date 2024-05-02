@@ -2,15 +2,11 @@ import React from 'react'
 import "./rightbar.css"
 import HomeMusicPlayer from '../homeMusicPlayer/HomeMusicPlayer'
 
-const Rightbar = ({ songs, handleNext, handlePrev, handlePlay, handleStop }) => {
+const Rightbar = () => {
   return (
     <div className='rightbar'>
       <HomeMusicPlayer
-        songs={songs}
-        handleNext={handleNext}
-        handlePrev={handlePrev}
-        handlePlay={handlePlay}
-        handleStop={handleStop}
+      // songs={songs}
       />
     </div>
   )

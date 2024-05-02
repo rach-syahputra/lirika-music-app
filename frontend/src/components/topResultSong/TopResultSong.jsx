@@ -1,12 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import "./topResultSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 import { handlePlay } from '../../handlers/handleSong'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
+import { useDispatch } from 'react-redux'
+import { fetchArtistSongs } from '../../redux/reducers/songListSlice'
 
 const TopResultSong = ({ topResult }) => {
-  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
+  const dispatch = useDispatch()
+
+  const handlePlayButton = (artistId, songId) => {
+    dispatch(fetchArtistSongs({ artistId, songId }))
+  }
 
   return (
     <div className="song">
@@ -30,7 +37,7 @@ const TopResultSong = ({ topResult }) => {
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton" onClick={() => handlePlay(topResult.songId, setCurrentSelectedSongId, playSong)}>
+            <div className="playButton" onClick={() => handlePlayButton(topResult.artistId, topResult.songId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
             <div className="addButton">

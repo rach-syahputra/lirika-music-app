@@ -4,11 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 import { truncateText } from '../../utils/truncation'
 import { handlePlay, handleStop } from '../../handlers/handleSong'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice.js'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice.js'
+import { setSongList } from '../../redux/reducers/songListSlice.js'
 
 const SongSearch = ({ songs }) => {
+  const isPlayedId = useSelector(state => state.isPlayedId.id)
+  const dispatch = useDispatch()
 
-  const { isPlayedId, playSong, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
+  const handlePlayButton = (songId) => {
+    dispatch(setSongList(songs))
+    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
+  }
 
   return (
     <div className='songSearch'>
@@ -25,11 +33,11 @@ const SongSearch = ({ songs }) => {
               </div>
               {isPlayedId === song.songId
                 ?
-                <div className="pauseButton" onClick={() => handleStop(playSong)}>
+                <div className="pauseButton" onClick={() => handleStop(dispatch, setIsPlayedId)}>
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :
-                <div className="playButton" onClick={() => handlePlay(song.songId, setCurrentSelectedSongId, playSong)}>
+                <div className="playButton" onClick={() => handlePlayButton(song.songId)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </div>
               }

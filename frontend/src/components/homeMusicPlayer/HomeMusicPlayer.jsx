@@ -3,14 +3,20 @@ import "./homeMusicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
+import { handleNext, handlePrev, handlePlay, handleStop } from "../../handlers/handleSong.js"
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice.js'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice.js'
 
-const HomeMusicPlayer = ({ songs, handleNext, handlePrev, handlePlay, handleStop }) => {
-  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
+const HomeMusicPlayer = () => {
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [image, setImage] = useState("")
   const isLarge = title && title.length > 20 ? true : false
+  const currentSongId = useSelector(state => state.currentSongId.id)
+  const isPlayedId = useSelector(state => state.isPlayedId.id)
+  const songs = useSelector(state => state.songList.data)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,21 +62,21 @@ const HomeMusicPlayer = ({ songs, handleNext, handlePrev, handlePlay, handleStop
       </div>
       <div className="bottom">
         <div className="buttons">
-          <div className="buttonPrev" onClick={() => handlePrev(songs, currentSongId, setCurrentSelectedSongId, playSong)}>
+          <div className="buttonPrev" onClick={() => handlePrev(songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
             <FontAwesomeIcon icon={faBackward} className='icon' />
           </div>
           {isPlayedId
             ?
-            <div className="buttonStop" onClick={() => handleStop(playSong)}>
+            <div className="buttonStop" onClick={() => handleStop(dispatch, setIsPlayedId)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, setCurrentSelectedSongId, playSong)}>
+            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
 
           }
-          <div className="buttonNext" onClick={() => handleNext(songs, currentSongId, setCurrentSelectedSongId, playSong)}>
+          <div className="buttonNext" onClick={() => handleNext(songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
             <FontAwesomeIcon icon={faForward} className='icon' />
           </div>
         </div>

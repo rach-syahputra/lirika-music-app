@@ -8,6 +8,8 @@ import Explore from './pages/explore/Explore.jsx'
 import Search from './pages/search/Search.jsx'
 import { useEffect } from 'react'
 import { SongPlaybackProvider } from './hooks/songPlaybackContext.jsx'
+import store from './redux/store.js'
+import { Provider } from 'react-redux'
 
 
 
@@ -36,19 +38,20 @@ function App() {
         <Route element={<ProtectedRoute />}>
 
           <Route exact path='/' element={
-            <SongPlaybackProvider>
+            <Provider store={store}>
               <Home />
-            </SongPlaybackProvider>
+            </Provider>
           } />
           <Route path='/explore' element={
-            <SongPlaybackProvider>
+            <Provider store={store}>
               <Explore />
-            </SongPlaybackProvider>
+            </Provider>
           } />
           <Route path='/search' element={
-            <SongPlaybackProvider>
+            <Provider store={store}>
               <Search />
-            </SongPlaybackProvider>}
+            </Provider>
+          }
           />
         </Route>
       </Routes>

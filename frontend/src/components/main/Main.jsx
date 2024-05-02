@@ -4,15 +4,12 @@ import TopSong from '../topSong/TopSong'
 import TopArtist from '../topArtist/TopArtist'
 import TopAlbum from '../topAlbum/TopAlbum'
 
-const Main = ({ handlePlay, handleStop }) => {
+const Main = () => {
   return (
     <div className='main'>
       <TopArtist />
       <TopAlbum />
-      <TopSong
-        handlePlay={handlePlay}
-        handleStop={handleStop}
-      />
+      <TopSong />
     </div>
   )
 }

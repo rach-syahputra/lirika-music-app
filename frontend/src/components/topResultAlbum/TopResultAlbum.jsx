@@ -5,24 +5,18 @@ import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 import axios from 'axios'
 import { handlePlay } from '../../handlers/handleSong'
+import { useDispatch } from 'react-redux'
+import { fetchAlbumSongs } from '../../redux/reducers/songListSlice'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
 
 const TopResultAlbum = ({ topResult }) => {
-  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
-  const [songId, setSongId] = useState(null)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`http://localhost:8800/api/song/find/topSongFromAlbum/${topResult.albumId}`)
-
-        const song = res.data
-        setSongId(song[0].songId)
-      } catch (error) {
-        console.log('TopResultAlbum ', error.message)
-      }
-    }
-    fetchData()
-  }, [topResult])
+  const handlePlayButton = (albumId, songId) => {
+    dispatch(fetchAlbumSongs(albumId))
+    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
+  }
 
   return (
     <div className="album">
@@ -42,7 +36,7 @@ const TopResultAlbum = ({ topResult }) => {
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton" onClick={() => handlePlay(songId, setCurrentSelectedSongId, playSong)}>
+            <div className="playButton" onClick={() => handlePlayButton(topResult.albumId, topResult.songId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
             <div className="shuffleButton">

@@ -2,18 +2,22 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./musicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBackwardStep, faForwardStep, faPause, faPlay, faPlus, faRepeat, faShuffle, faVolumeLow } from '@fortawesome/free-solid-svg-icons'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
 import axios from 'axios'
 import { handleNext, handlePlay, handlePrev, handleStop } from '../../handlers/handleSong'
-// import { handleToggleLike, isLiked } from '../../handlers/handleSong'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentSongId } from '../../redux/reducers/currentSongSlice.js'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice.js'
 
 const MusicPlayer = ({ songs }) => {
-  const { isPlayedId, playSong, currentSongId, setCurrentSelectedSongId } = useContext(SongPlaybackContext)
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [image, setImage] = useState("")
   const [duration, setDuration] = useState("")
   const [albumName, setAlbumName] = useState("")
+  const songList = useSelector(state => state.songList.data)
+  const currentSongId = useSelector(state => state.currentSongId.id)
+  const isPlayedId = useSelector(state => state.isPlayedId.id)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +31,7 @@ const MusicPlayer = ({ songs }) => {
         setDuration(song.duration)
         setAlbumName(song.albumName)
 
-        console.log('song: ', song)
+        console.log('isPlayedId: ', isPlayedId)
         console.log('currentSongId ', currentSongId)
       } catch (error) {
         console.log('MusicPlayer Error: ', error)
@@ -53,20 +57,20 @@ const MusicPlayer = ({ songs }) => {
 
       <div className="middleControl">
         <div className="controlButtons">
-          <div className="buttonPrev" onClick={() => handlePrev(songs, currentSongId, setCurrentSelectedSongId, playSong)}>
+          <div className="buttonPrev" onClick={() => handlePrev(songList, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
             <FontAwesomeIcon icon={faBackwardStep} className='icon' />
           </div>
           {isPlayedId
             ?
-            <div className="buttonPause" onClick={() => handleStop(playSong)}>
+            <div className="buttonPause" onClick={() => handleStop(dispatch, setIsPlayedId)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, setCurrentSelectedSongId, playSong)}>
+            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
           }
-          <div className="buttonNext" onClick={() => handleNext(songs, currentSongId, setCurrentSelectedSongId, playSong)}>
+          <div className="buttonNext" onClick={() => handleNext(songList, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
             <FontAwesomeIcon icon={faForwardStep} className='icon' />
           </div>
         </div>

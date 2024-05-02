@@ -11,7 +11,6 @@ export const SongPlaybackProvider = ({ children }) => {
   )
 
   useEffect(() => {
-    console.log('currentSongId: ', currentSongId)
     localStorage.setItem('isPlayedId', JSON.stringify(isPlayedId))
     localStorage.setItem('currentSongId', JSON.stringify(currentSongId))
   }, [isPlayedId, currentSongId])
