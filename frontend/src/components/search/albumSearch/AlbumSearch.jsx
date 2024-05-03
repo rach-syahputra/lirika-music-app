@@ -1,6 +1,6 @@
 import React from 'react'
 import "./albumSearch.css"
-import { truncateText } from '../../utils/truncation'
+import { truncateText } from '../../../utils/truncation'
 
 const AlbumSearch = ({ albums }) => {
   return (

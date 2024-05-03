@@ -2,13 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./topResultAlbum.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
-import { SongPlaybackContext } from '../../hooks/songPlaybackContext'
-import axios from 'axios'
-import { handlePlay } from '../../handlers/handleSong'
+import { handlePlay } from '../../../handlers/handleSong'
 import { useDispatch } from 'react-redux'
-import { fetchAlbumSongs } from '../../redux/reducers/songListSlice'
-import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
-import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
+import { fetchAlbumSongs } from '../../../redux/reducers/songListSlice'
+import { setCurrentSongId } from '../../../redux/reducers/currentSongSlice'
+import { setIsPlayedId } from '../../../redux/reducers/isPlayedSlice'
 
 const TopResultAlbum = ({ topResult }) => {
   const dispatch = useDispatch()

@@ -1,6 +1,6 @@
 import React from 'react'
 import "./artistSearch.css"
-import { truncateText } from '../../utils/truncation'
+import { truncateText } from '../../../utils/truncation'
 
 const ArtistSearch = ({ artists }) => {
   return (

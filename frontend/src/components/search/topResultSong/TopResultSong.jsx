@@ -2,11 +2,8 @@ import React from 'react'
 import "./topResultSong.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { handlePlay } from '../../handlers/handleSong'
-import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
-import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
 import { useDispatch } from 'react-redux'
-import { fetchArtistSongs } from '../../redux/reducers/songListSlice'
+import { fetchArtistSongs } from '../../../redux/reducers/songListSlice'
 
 const TopResultSong = ({ topResult }) => {
   const dispatch = useDispatch()

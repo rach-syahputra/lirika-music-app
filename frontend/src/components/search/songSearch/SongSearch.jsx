@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import "./songSearch.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { truncateText } from '../../utils/truncation'
-import { handlePlay, handleStop } from '../../handlers/handleSong'
+import { truncateText } from '../../../utils/truncation.js'
+import { handlePlay, handleStop } from '../../../handlers/handleSong.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCurrentSongId } from '../../redux/reducers/currentSongSlice.js'
-import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice.js'
-import { setSongList } from '../../redux/reducers/songListSlice.js'
+import { setCurrentSongId } from '../../../redux/reducers/currentSongSlice.js'
+import { setIsPlayedId } from '../../../redux/reducers/isPlayedSlice.js'
+import { setSongList } from '../../../redux/reducers/songListSlice.js'
 
 
 const SongSearch = ({ songs }) => {

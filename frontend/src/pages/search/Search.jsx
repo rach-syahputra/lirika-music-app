@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./search.css"
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
-import SearchResultContent from '../../components/searchContent/SearchContent'
+import SearchResultContent from '../../components/search/searchContent/SearchContent'
 import axios from "axios"
 import { useSearchParams } from 'react-router-dom'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
