@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import store from './redux/store.js'
 import { Provider } from 'react-redux'
 import Artist from './pages/artist/Artist.jsx'
+import ArtistSongs from './pages/artistSongs/ArtistSongs.jsx'
 
 
 
@@ -61,6 +62,11 @@ function App() {
           <Route path='/artist' element={
             <Provider store={store}>
               <Artist />
+            </Provider>
+          } />
+          <Route path='/artist/:artistId/songs' element={
+            <Provider store={store}>
+              <ArtistSongs />
             </Provider>
           } />
         </Route>

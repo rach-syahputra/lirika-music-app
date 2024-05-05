@@ -1,12 +1,12 @@
 import React from 'react'
-import "./artistSongs.css"
+import "./popularArtistSongs.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
 import TopButtons from '../topButtons/TopButtons'
 
-const ArtistSongs = () => {
+const PopularArtistSongs = () => {
   return (
-    <div className='artist-songs'>
+    <div className='popular-artist-songs'>
       <TopButtons />
       <div className="header">
         <h2>Songs</h2>
@@ -24,12 +24,12 @@ const ArtistSongs = () => {
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEvPmMxS53u0HCL9tbELW1fTr-c793tq0jfUG1SQncBw&s" alt="" />
                 </div>
 
-                {/* <div className="pause-button">
+                <div className="pause-button">
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 <div className="play-button">
                   <FontAwesomeIcon icon={faPlay} className='icon' />
-                </div> */}
+                </div>
 
 
                 <h3 className='song-title' >
@@ -62,4 +62,4 @@ const ArtistSongs = () => {
   )
 }
 
-export default ArtistSongs
+export default PopularArtistSongs

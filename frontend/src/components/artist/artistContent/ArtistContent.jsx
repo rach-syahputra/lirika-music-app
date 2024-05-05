@@ -1,7 +1,7 @@
 import React from 'react'
 import "./artistContent.css"
 import ArtistImageCover from '../artistImageCover/ArtistImageCover'
-import ArtistSongs from '../artistSongs/ArtistSongs'
+import PopularArtistSongs from '../popularArtistSongs/PopularArtistSongs'
 import ArtistAlbums from '../artistAlbums/ArtistAlbums'
 import ArtistAbout from '../artistAbout/ArtistAbout'
 
@@ -9,7 +9,7 @@ const ArtistContent = () => {
   return (
     <div className="artist-content">
       <ArtistImageCover />
-      <ArtistSongs />
+      <PopularArtistSongs />
       <ArtistAlbums />
       <ArtistAbout />
     </div>

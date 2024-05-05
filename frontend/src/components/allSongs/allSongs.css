@@ -1,0 +1,128 @@
+.all-songs {
+  padding: 15px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: var(--dark-bg);
+  margin-bottom: 16px;
+  max-width: 100%;
+}
+
+.all-songs .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.all-songs .song-list {
+  width: 100%;
+}
+
+.all-songs .song-list .item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5% 4.5% 26% 20% 20% 20% 5%;
+  align-items: center;
+  width: 100%;
+  transition: background-color 0.15s ease-in-out;
+  padding: 8px;
+}
+
+.all-songs .song-list .item h4 {
+  font-size: 15px;
+}
+
+.all-songs .song-list .item:hover {
+  background-color: var(--dark-bg-hover);
+}
+
+.all-songs .song-list .item .song-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.all-songs .song-list .item .song-info .artist-album-info {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.all-songs .song-list .item .song-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5%;
+}
+
+.all-songs .song-list .item .song-img img {
+  height: 43px;
+  width: 43px;
+}
+
+.all-songs .song-list .item .play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 41.5px;
+  width: 43px;
+  height: 43px;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.all-songs .song-list .item:hover .play-button {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.all-songs .song-list .item .pause-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 41.5px;
+  width: 43px;
+  height: 43px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.all-songs .song-list .item .song-title {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.all-songs .song-list .item .artist-name {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.all-songs .song-list .item .played-count {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.all-songs .song-list .see-more {
+  display: flex;
+  width: fit-content;
+  margin-top: 12px;
+  margin-left: 6px;
+}
+
+.all-songs .song-list .see-more h4 {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.all-songs .song-list .see-more:hover h4 {
+  text-decoration: underline;
+}
