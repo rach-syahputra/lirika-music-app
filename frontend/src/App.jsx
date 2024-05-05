@@ -11,6 +11,7 @@ import store from './redux/store.js'
 import { Provider } from 'react-redux'
 import Artist from './pages/artist/Artist.jsx'
 import ArtistSongs from './pages/artistSongs/ArtistSongs.jsx'
+import AlbumSongs from './pages/albumSongs/AlbumSongs.jsx'
 
 
 
@@ -59,7 +60,7 @@ function App() {
               <Search />
             </Provider>
           } />
-          <Route path='/artist' element={
+          <Route path='/artist/:artistId' element={
             <Provider store={store}>
               <Artist />
             </Provider>
@@ -67,6 +68,11 @@ function App() {
           <Route path='/artist/:artistId/songs' element={
             <Provider store={store}>
               <ArtistSongs />
+            </Provider>
+          } />
+          <Route path='/album/:albumId/songs' element={
+            <Provider store={store}>
+              <AlbumSongs />
             </Provider>
           } />
         </Route>

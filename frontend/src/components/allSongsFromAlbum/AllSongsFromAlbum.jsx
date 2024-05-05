@@ -1,14 +1,36 @@
 import React from 'react'
-import "./allSongs.css"
+import "./allSongsFromAlbum.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faPause, faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 
-const AllSongs = () => {
+const AllSongsFromAlbum = () => {
   return (
-    <div className="all-songs">
-      <div className="header">
-        <h2>Songs</h2>
+    <div className="all-songs-from-album">
+      <div className="album-container">
+        <div className="img-container">
+          <img src="https://upload.wikimedia.org/wikipedia/id/thumb/3/3a/Mayhem_demysteriisdomsathanas.jpg/640px-Mayhem_demysteriisdomsathanas.jpg" alt="" />
+        </div>
+
+        <div className="album-info">
+          <h1 className='album-name'>Dehumanization by Supremacy: The Instrumentals</h1>
+
+          <div className="more-album-details">
+            <h4 className='album-and-artist-details'>Album • Artist Name</h4>
+            <h4 className='total-songs-and-duration'>10 songs • 30 minutes</h4>
+          </div>
+
+          <div className="buttons">
+            <div className='play-button'>
+              <FontAwesomeIcon icon={faPlay} className='icon' /> Play
+            </div>
+            <div className='shuffle-button'>
+              <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
+            </div>
+          </div>
+        </div>
       </div>
+
+      <hr />
 
       <div className='song-list'>
         {(() => {
@@ -61,4 +83,4 @@ const AllSongs = () => {
   )
 }
 
-export default AllSongs
+export default AllSongsFromAlbum

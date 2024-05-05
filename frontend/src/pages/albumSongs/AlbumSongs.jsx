@@ -1,18 +1,18 @@
 import React from 'react'
-import "./artistSongs.css"
+import "./albumSongs.css"
+import AllSongsFromAlbum from '../../components/allSongsFromAlbum/AllSongsFromAlbum'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
-import AllSongsFromArtist from '../../components/allSongsFromArtist/AllSongsFromArtist'
 
-const ArtistSongs = () => {
+const AlbumSongs = () => {
   return (
     <div className="layout">
       <Sidebar />
-      <div className="artist-songs">
+      <div className="album-songs">
         <Navbar />
-        <div className="artist-songs-child">
-          <AllSongsFromArtist />
+        <div className="album-songs-child">
+          <AllSongsFromAlbum />
         </div>
       </div>
       <MusicPlayer />
@@ -20,4 +20,4 @@ const ArtistSongs = () => {
   )
 }
 
-export default ArtistSongs
+export default AlbumSongs
