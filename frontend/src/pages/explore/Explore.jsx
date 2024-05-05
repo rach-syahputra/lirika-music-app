@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import "./explore.css"
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import SearchPage from '../../components/exploreContent/ExploreContent'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
+import ExploreContent from '../../components/exploreContent/ExploreContent'
 
 const Explore = () => {
 
@@ -13,7 +13,7 @@ const Explore = () => {
       <div className="explore">
         <Navbar />
         <div className="exploreChild">
-          <SearchPage />
+          <ExploreContent />
         </div>
       </div>
       <MusicPlayer />

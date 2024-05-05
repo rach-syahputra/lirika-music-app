@@ -1,0 +1,46 @@
+.artist-image-cover {
+  position: relative;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: var(--dark-bg);
+  max-width: 100%;
+  height: 350px;
+}
+
+.artist-image-cover .img-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.artist-image-cover .img-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.artist-image-cover .img-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.32);
+}
+
+.artist-image-cover .artist-details {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.artist-image-cover .artist-details .artist-name {
+  font-size: 42px;
+}
+
+.artist-image-cover .artist-details .monthly-listener {
+  font-weight: 100;
+}

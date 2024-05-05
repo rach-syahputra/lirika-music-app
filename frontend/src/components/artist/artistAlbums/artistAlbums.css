@@ -1,0 +1,98 @@
+.artist-albums {
+  padding: 15px;
+  border-radius: 6px;
+  background-color: var(--dark-bg);
+  margin-bottom: 16px;
+  max-width: 100%;
+}
+
+.artist-albums .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.artist-albums .album-list {
+  display: flex;
+  overflow: hidden;
+}
+
+.artist-album:hover .album-list {
+  overflow-x: scroll;
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--light);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.artist-albums .album-list .item {
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  padding: 14px;
+  margin-bottom: 8px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.artist-albums .album-list .item:hover {
+  background-color: var(--dark-bg-hover);
+
+}
+
+.artist-albums .album-list .item .info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.artist-albums .album-list .item .album-img {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.artist-albums .album-list .item .album-img img {
+  height: 148px;
+  width: 148px;
+  object-fit: cover;
+}
+
+.artist-albums .album-list .item .info .album-name {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  font-size: 14px;
+}
+
+.artist-albums .album-list .item .info .releaeYear-type {
+  display: flex;
+  align-items: center;
+  height: 14px;
+}
+
+.artist-albums .album-list .item .info .album-name {
+  text-align: center;
+}
+
+.artist-albums .album-list img,
+.artist-albums .album-list .item .info .album-name,
+.artist-albums .album-list .item .info .releaseYear-type {
+  cursor: pointer;
+}
+
+.artist-albums .show-all h4 {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.artist-albums .show-all:hover h4 {
+  text-decoration: underline;
+}
