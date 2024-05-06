@@ -25,3 +25,21 @@ export const getTopAlbums = async (req, res) => {
     res.status(500).json({ message: 'failed to get album data' })
   }
 }
+
+export const getAllAlbumFromArtist = async (req, res) => {
+  try {
+    const artistId = req.params.artistId
+    const query = `
+    SELECT al.*, ar.artistName
+    FROM albums al
+    INNER JOIN artists ar ON al.artistId = ar.artistId
+    WHERE al.artistId = ?
+    `
+    const connection = await createConnection()
+    const [albums] = await connection.execute(query, [artistId])
+
+    res.status(200).json(albums)
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get albums data from artist' })
+  }
+}

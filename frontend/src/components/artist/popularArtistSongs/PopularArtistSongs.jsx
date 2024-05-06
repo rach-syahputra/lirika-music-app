@@ -28,7 +28,7 @@ const PopularArtistSongs = () => {
       const data = res.data
       setSongs(data)
     } catch (error) {
-      console.log('ArtistImageCover Error', error.message)
+      console.log('PopularArtistSongs Error', error.message)
     }
   }
 
