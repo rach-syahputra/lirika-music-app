@@ -122,6 +122,27 @@ export const getAllSongFromArtist = async (req, res) => {
   }
 }
 
+export const getPopularSongsFromArtist = async (req, res) => {
+  try {
+    const artistId = req.params.artistId
+    const query = `
+    SELECT s.*, al.albumName, al.image, ar.artistName
+    FROM songs s
+    INNER JOIN albums al ON s.albumId = al.albumId
+    INNER JOIN artists ar ON s.artistId = ar.artistId
+    WHERE s.artistId = ?
+    ORDER BY s.playedCount DESC
+    LIMIT 5
+    `
+    const connection = await createConnection()
+    const [songs] = await connection.execute(query, [artistId])
+
+    res.status(200).json(songs)
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get songs data from artist' })
+  }
+}
+
 export const getTopSongFromAlbum = async (req, res) => {
   try {
     const albumId = req.params.albumId

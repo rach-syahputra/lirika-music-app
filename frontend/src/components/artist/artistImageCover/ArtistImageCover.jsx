@@ -18,7 +18,6 @@ const ArtistImageCover = () => {
       const res = await axios.get(`http://localhost:8800/api/artist/${artistId}/artistImageCover`)
 
       const data = res.data[0]
-      console.log(data.artistName)
       setArtist(data)
     } catch (error) {
       console.log('ArtistImageCover Error', error.message)
