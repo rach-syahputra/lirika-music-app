@@ -18,3 +18,23 @@ export const getTopArtists = async (req, res) => {
     res.status(500).json({ message: 'failed to get artist data' })
   }
 }
+
+export const getArtistImageCoverData = async (req, res) => {
+  try {
+    // get data for artist image cover component
+    //
+    const artistId = req.params.artistId
+    const query = `
+    SELECT artists.artistName, artists.image
+    FROM artists
+    WHERE artists.artistId = (?) 
+    `
+
+    const connection = await createConnection()
+    const [artist] = await connection.execute(query, [artistId])
+
+    res.status(200).json(artist)
+  } catch (err) {
+    res.status(500).json({ message: 'failed to get artist data' })
+  }
+}

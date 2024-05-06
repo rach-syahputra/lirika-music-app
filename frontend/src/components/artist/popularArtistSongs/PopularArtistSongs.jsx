@@ -16,7 +16,7 @@ const PopularArtistSongs = () => {
           const items = []
           for (let i = 0; i < 5; i++) {
             items.push(
-              <div className="item">
+              <div className="item" key={i}>
                 <h3 className='no'>
                   {i + 1}
                 </h3>
