@@ -37,9 +37,11 @@ const TopAlbum = () => {
                 <h3 className='albumName' >
                   {truncateText(album.albumName, 17)}
                 </h3>
-                <h4 className='artistName'>
-                  {truncateText(album.artistName, 18)}
-                </h4>
+                <Link to={`/artist/${album.artistId}`}>
+                  <h4 className='artistName'>
+                    {truncateText(album.artistName, 18)}
+                  </h4>
+                </Link>
               </div>
             </div>
           </Link>

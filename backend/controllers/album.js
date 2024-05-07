@@ -8,10 +8,11 @@ export const getTopAlbums = async (req, res) => {
     SELECT  al.albumId,
             al.albumName,
             al.image,
-            a.artistName,
+            ar.artistId,
+            ar.artistName,
             SUM(s.playedCount) AS totalPlayed FROM songs s 
     INNER JOIN albums al ON s.albumId = al.albumId
-    INNER JOIN artists a ON s.artistId = a.artistId
+    INNER JOIN artists ar ON s.artistId = ar.artistId
     GROUP BY al.albumId
     ORDER BY totalPlayed DESC
     LIMIT 20

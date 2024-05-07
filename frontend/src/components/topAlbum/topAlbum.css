@@ -84,6 +84,10 @@
   height: 14px;
 }
 
+.topAlbum .albumList .item .info .artistName:hover {
+  text-decoration: underline;
+}
+
 .topAlbum .albumList .item .info .albumName {
   text-align: center;
 }
