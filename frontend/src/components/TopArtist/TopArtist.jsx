@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import "./topArtist.css"
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const TopArtist = () => {
   const [topArtists, setTopArtists] = useState()
 
   useEffect(() => {
-    const getTopArtists = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/api/artist/topArtist")
-
-        setTopArtists(res.data)
-      } catch (err) {
-        console.log('TopArtist: ', err.message)
-      }
-    }
     getTopArtists()
   }, [])
+
+  const getTopArtists = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/api/artist/topArtist")
+
+      setTopArtists(res.data)
+    } catch (err) {
+      console.log('TopArtist: ', err.message)
+    }
+  }
 
   return (
     <div className='topArtist'>
@@ -26,19 +28,21 @@ const TopArtist = () => {
 
       <div className="artistList">
         {topArtists && topArtists.map(artist => (
-          <div className="item" key={artist.artistId}>
-            <div className="artistImg">
-              <img src={artist.image} alt="" />
+          <Link to={`/artist/${artist.artistId}`} key={artist.artistId}>
+            <div className="item" >
+              <div className="artistImg">
+                <img src={artist.image} alt="" />
+              </div>
+              <div className="info">
+                <h3 className='artistName' >
+                  {artist.artistName.length > 15
+                    ? artist.artistName.slice(0, 13) + '...'
+                    : artist.artistName}
+                </h3>
+                <h4 className='country'>{artist.country}</h4>
+              </div>
             </div>
-            <div className="info">
-              <h3 className='artistName' >
-                {artist.artistName.length > 15
-                  ? artist.artistName.slice(0, 13) + '...'
-                  : artist.artistName}
-              </h3>
-              <h4 className='country'>{artist.country}</h4>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

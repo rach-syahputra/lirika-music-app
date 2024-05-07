@@ -1,62 +1,67 @@
-.topSong {
+.top-songs {
   padding: 15px;
   border-radius: 6px;
   background-color: var(--dark-bg);
 }
 
-.topSong .header {
+.top-songs .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.topSong .header h4 {
+.top-songs .header h4 {
   cursor: pointer;
 }
 
-.topSong .songList {
+.top-songs .top-songs-list {
   display: flex;
   gap: 20px;
   flex-direction: column;
 }
 
-.topSong .songList .item {
+.top-songs .top-songs-list .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.topSong .songList .item img {
+.top-songs .top-songs-list .item img {
   height: 50px;
 }
 
-.topSong .songList .info {
+.top-songs .top-songs-list .info {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.topSong .songList .info .number {
+.top-songs .top-songs-list .info .number {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 16px;
 }
 
-.topSong .songList .detail {
+.top-songs .top-songs-list .detail .title-and-artist {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.topSong .songList .info .title,
-.topSong .songList .info .artist {
+.top-songs .top-songs-list .info .title,
+.top-songs .top-songs-list .info .artist-name,
+.top-songs .top-songs-list .item img {
   cursor: pointer;
 }
 
-.topSong .songList .item .action {
+.top-songs .top-songs-list .info .artist-name:hover {
+  text-decoration: underline;
+}
+
+.top-songs .top-songs-list .item .action {
   display: flex;
   align-items: center;
   gap: 35px;
@@ -64,8 +69,8 @@
 
 
 
-.topSong .songList .item .action .buttonPlay,
-.topSong .songList .item .action .buttonStop {
+.top-songs .top-songs-list .item .action .play-button,
+.top-songs .top-songs-list .item .action .stop-button {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -76,14 +81,14 @@
   border-radius: 50px;
 }
 
-.topSong .songList .item .action .icon {
+.top-songs .top-songs-list .item .action .icon {
   color: var(--main-color);
   font-size: 12px;
   text-align: center;
 }
 
-.topSong .songList .item .action .buttonPlus,
-.topSong .songList .item .action .buttonCheck {
+.top-songs .top-songs-list .item .action .plus-button,
+.top-songs .top-songs-list .item .action .check-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,12 +99,12 @@
   border-radius: 4px;
 }
 
-.topSong .songList .item .action .buttonCheck {
+.top-songs .top-songs-list .item .action .check-button {
   background-color: var(--main-color);
 }
 
-.topSong .songList .item .action .buttonPlus .icon,
-.topSong .songList .item .action .buttonCheck .icon {
+.top-songs .top-songs-list .item .action .plus-button .icon,
+.top-songs .top-songs-list .item .action .check-button .icon {
   color: var(--darker-bg);
   font-size: 10px;
 }

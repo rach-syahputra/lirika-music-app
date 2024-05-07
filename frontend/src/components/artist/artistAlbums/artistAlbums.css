@@ -36,8 +36,11 @@
 .artist-albums .album-list .item {
   display: flex;
   flex-direction: column;
-  height: 220px;
+  justify-content: left;
+  height: fit-content;
+  width: 180px;
   padding: 14px;
+  flex-shrink: 1;
   margin-bottom: 8px;
   transition: background-color 0.15s ease-in-out;
 }
@@ -49,6 +52,7 @@
 
 .artist-albums .album-list .item .info {
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
 }
 
@@ -66,20 +70,18 @@
 }
 
 .artist-albums .album-list .item .info .album-name {
-  display: flex;
-  align-items: center;
-  height: 20px;
+  display: inline-block;
+  text-align: left;
+  height: 40px;
+  max-width: 100%;
   font-size: 14px;
+  vertical-align: top;
 }
 
 .artist-albums .album-list .item .info .releaeYear-type {
   display: flex;
   align-items: center;
   height: 14px;
-}
-
-.artist-albums .album-list .item .info .album-name {
-  text-align: center;
 }
 
 .artist-albums .album-list img,

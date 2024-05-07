@@ -9,7 +9,7 @@ import Search from './pages/search/Search.jsx'
 import { useEffect } from 'react'
 import store from './redux/store.js'
 import { Provider } from 'react-redux'
-import Artist from './pages/artist/Artist.jsx'
+import ArtistPage from './pages/artist/ArtistPage.jsx'
 import ArtistSongs from './pages/artistSongs/ArtistSongs.jsx'
 import AlbumSongs from './pages/albumSongs/AlbumSongs.jsx'
 
@@ -62,7 +62,7 @@ function App() {
           } />
           <Route path='/artist/:artistId' element={
             <Provider store={store}>
-              <Artist />
+              <ArtistPage />
             </Provider>
           } />
           <Route path='/artist/:artistId/songs' element={

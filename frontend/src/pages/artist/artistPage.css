@@ -1,10 +1,10 @@
-.artist {
+.artist-page {
   height: 100%;
   overflow: hidden;
   padding-bottom: 75px;
 }
 
-.artist .artist-child {
+.artist-page .artist-page-child {
   padding: 10px 20px;
   margin-left: 16%;
   margin-top: 80px;

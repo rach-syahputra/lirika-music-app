@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./topAlbum.css"
 import axios from 'axios'
 import { truncateText } from "../../utils/truncation.js"
+import { Link } from 'react-router-dom'
 
 const TopAlbum = () => {
   const [topAlbums, setTopAlbums] = useState()
@@ -27,19 +28,21 @@ const TopAlbum = () => {
 
       <div className="albumList">
         {topAlbums && topAlbums.map(album => (
-          <div className="item" key={album.albumId}>
-            <div className="albumImg">
-              <img src={album.image} alt="" />
+          <Link to={`/album/${album.albumId}/songs`} key={album.albumId}>
+            <div className="item">
+              <div className="albumImg">
+                <img src={album.image} alt="" />
+              </div>
+              <div className="info">
+                <h3 className='albumName' >
+                  {truncateText(album.albumName, 17)}
+                </h3>
+                <h4 className='artistName'>
+                  {truncateText(album.artistName, 18)}
+                </h4>
+              </div>
             </div>
-            <div className="info">
-              <h3 className='albumName' >
-                {truncateText(album.albumName, 17)}
-              </h3>
-              <h4 className='artistName'>
-                {truncateText(album.artistName, 18)}
-              </h4>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

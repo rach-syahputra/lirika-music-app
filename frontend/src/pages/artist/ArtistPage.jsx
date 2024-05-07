@@ -1,17 +1,17 @@
 import React from 'react'
-import "./artist.css"
+import "./artistPage.css"
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 import ArtistContent from '../../components/artist/artistContent/ArtistContent'
 
-const Artist = () => {
+const ArtistPage = () => {
   return (
     <div className="layout">
       <Sidebar />
-      <div className="artist">
+      <div className="artist-page">
         <Navbar />
-        <div className="artist-child">
+        <div className="artist-page-child">
           <ArtistContent />
         </div>
       </div>
@@ -20,4 +20,4 @@ const Artist = () => {
   )
 }
 
-export default Artist
+export default ArtistPage
