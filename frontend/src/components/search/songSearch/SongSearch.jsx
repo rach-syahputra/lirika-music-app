@@ -18,7 +18,6 @@ const SongSearch = ({ songs }) => {
     console.log('SONGS DATA FROM SEARCH', songs)
   }, [songs])
 
-
   const handlePlayButton = (songId) => {
     dispatch(setSongList(songs))
 

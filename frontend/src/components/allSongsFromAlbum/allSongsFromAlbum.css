@@ -93,12 +93,12 @@
 
 .all-songs-from-album .song-list .item {
   position: relative;
-  display: grid;
-  grid-template-columns: 4.5% 4.5% 26% 20% 20% 20% 5%;
+  display: flex;
   align-items: center;
   width: 100%;
   transition: background-color 0.15s ease-in-out;
-  padding: 8px;
+  padding: 0 20px;
+  height: 55px;
 }
 
 .all-songs-from-album .song-list .item h4 {
@@ -124,29 +124,17 @@
   text-overflow: ellipsis;
 }
 
-.all-songs-from-album .song-list .item .song-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 5%;
-}
-
-.all-songs-from-album .song-list .item .song-img img {
-  height: 43px;
-  width: 43px;
-}
-
 .all-songs-from-album .song-list .item .play-button {
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  left: 41.5px;
-  width: 43px;
-  height: 43px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .all-songs-from-album .song-list .item:hover .play-button {
@@ -154,34 +142,53 @@
   cursor: pointer;
 }
 
+.all-songs-from-album .song-list .item:hover .number {
+  opacity: 0;
+}
+
 .all-songs-from-album .song-list .item .pause-button {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 41.5px;
-  width: 43px;
-  height: 43px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 2px;
+}
+
+.all-songs-from-album .song-list .item .number {
+  width: 30px;
 }
 
 .all-songs-from-album .song-list .item .song-title {
   display: flex;
   align-items: center;
   padding-right: 10px;
+  min-width: 500px;
+  flex-grow: 1;
 }
 
 .all-songs-from-album .song-list .item .artist-name {
   display: flex;
   align-items: center;
   padding-right: 10px;
+  min-width: 250px;
 }
 
 .all-songs-from-album .song-list .item .played-count {
   display: flex;
   align-items: center;
   padding-right: 10px;
+  min-width: 250px;
+}
+
+.all-songs-from-album .song-list .item .duration {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  min-width: 100px;
 }
 
 .all-songs-from-album .song-list .see-more {

@@ -95,7 +95,13 @@ export const fetchAlbumSongs = createAsyncThunk(
   async (albumId) => {
     try {
       const res = await axios.get(`http://localhost:8800/api/song/album/${albumId}/songs`)
-      return res.data
+      const albumSongs = res.data
+
+      // store songIds to local storage
+      const songIds = albumSongs.map(song => song.songId)
+      localStorage.setItem('songIdList', songIds)
+
+      return albumSongs
     } catch (error) {
       console.log('fetchArtistSongs error', error.message)
     }
@@ -109,6 +115,11 @@ const songListSlice = createSlice({
   initialState,
   reducers: {
     setSongList: (state, action) => {
+      // store songIds to local storage
+      const songs = action.payload
+      const songIds = songs.map(song => song.songId)
+      localStorage.setItem('songIdList', songIds)
+
       return {
         data: action.payload
       }
