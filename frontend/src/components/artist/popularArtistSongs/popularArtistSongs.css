@@ -7,7 +7,58 @@
   max-width: 100%;
 }
 
-.popular-artist-songs .header {
+.popular-artist-songs .top-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+  margin-bottom: 28px;
+}
+
+.popular-artist-songs .top-buttons .play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  background-color: #fff;
+  color: var(--dark-bg);
+  border-radius: 50px;
+  gap: 8px;
+}
+
+.popular-artist-songs .top-buttons .shuffle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  background-color: #fff;
+  color: var(--dark-bg);
+  border-radius: 50px;
+  gap: 8px;
+}
+
+.popular-artist-songs .top-buttons .play-button:hover,
+.popular-artist-songs .top-buttons .shuffle-button:hover {
+  cursor: pointer;
+}
+
+.popular-artist-songs .top-buttons .follow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  background-color: var(--dark-bg);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  gap: 8px;
+}
+
+.popular-artist-songs .top-buttons .follow-button:hover {
+  cursor: pointer;
+}
+
+.popular-artist-songs .popular-artist-songs .header {
   display: flex;
   align-items: center;
   justify-content: space-between;

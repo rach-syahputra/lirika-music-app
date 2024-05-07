@@ -24,15 +24,6 @@ const AllSongsFromAlbum = () => {
     getAllSongsFromAlbum()
   }, [])
 
-  useEffect(() => {
-    console.log('SONGS FROM ALBUM', songs)
-  }, [songs])
-
-  const handlePlayButton = (songId) => {
-    dispatch(setSongList(songs))
-    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
-  }
-
   const getAllSongsFromAlbum = async () => {
     try {
       const res = await axios.get(`http://localhost:8800/api/song/album/${albumId}/songs`)
@@ -46,6 +37,11 @@ const AllSongsFromAlbum = () => {
     } catch (error) {
       console.log('PopularArtistSongs Error', error.message)
     }
+  }
+
+  const handlePlayButton = (songId) => {
+    dispatch(setSongList(songs))
+    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
   }
 
   return (

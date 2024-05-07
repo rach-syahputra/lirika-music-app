@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./artistAlbums.css"
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const ArtistAlbums = () => {
@@ -30,15 +30,17 @@ const ArtistAlbums = () => {
 
       <div className="album-list">
         {albums && albums.map((album) => (
-          <div className="item" key={album.albumId}>
-            <div className="album-img">
-              <img src={album.image} alt="" />
+          <Link to={`/album/${album.albumId}/songs`}>
+            <div className="item" key={album.albumId}>
+              <div className="album-img">
+                <img src={album.image} alt="" />
+              </div>
+              <div className="info">
+                <h3 className='album-name' >{album.albumName}</h3>
+                <h4 className='releaseYear-type'>2017 • Album</h4>
+              </div>
             </div>
-            <div className="info">
-              <h3 className='album-name' >{album.albumName}</h3>
-              <h4 className='releaseYear-type'>2017 • Album</h4>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="show-all">

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./popularArtistSongs.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
-import TopButtons from '../topButtons/TopButtons'
+import { faPause, faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,7 +12,8 @@ import { setCurrentSongId } from '../../../redux/reducers/currentSongSlice'
 
 const PopularArtistSongs = () => {
   const { artistId } = useParams()
-  const [songs, setSongs] = useState()
+  const [songs, setSongs] = useState([])
+  const [firstSongId, setFirstSongId] = useState(null)
   const isPlayedId = useSelector((state) => state.isPlayedId.id)
   const dispatch = useDispatch()
 
@@ -27,6 +27,7 @@ const PopularArtistSongs = () => {
 
       const data = res.data
       setSongs(data)
+      setFirstSongId(data[0].songId)
     } catch (error) {
       console.log('PopularArtistSongs Error', error.message)
     }
@@ -39,7 +40,17 @@ const PopularArtistSongs = () => {
 
   return (
     <div className='popular-artist-songs'>
-      <TopButtons />
+      <div className="top-buttons">
+        <div className='play-button' onClick={() => handlePlayButton(firstSongId)}>
+          <FontAwesomeIcon icon={faPlay} className='icon' /> Play
+        </div>
+        <div className='shuffle-button'>
+          <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
+        </div>
+        <div className='follow-button'>
+          Follow
+        </div>
+      </div>
       <div className="header">
         <h2>Songs</h2>
       </div>
