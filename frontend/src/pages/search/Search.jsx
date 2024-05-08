@@ -32,6 +32,10 @@ const Search = () => {
     getSearchResults()
   }, [searchQuery])
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [])
+
   return (
     <div className='layout'>
       <Sidebar currentPage='search' />

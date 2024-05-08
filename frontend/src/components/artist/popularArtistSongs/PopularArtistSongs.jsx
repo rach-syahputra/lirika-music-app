@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./popularArtistSongs.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIsPlayedId } from '../../../redux/reducers/isPlayedSlice'
@@ -93,9 +93,11 @@ const PopularArtistSongs = () => {
 
           </div>
         ))}
-        <div className="see-more">
-          <h4>See more</h4>
-        </div>
+        <Link to={`/artist/${artistId}/songs`}>
+          <div className="see-more">
+            <h4>See more</h4>
+          </div>
+        </Link>
       </div>
 
     </div>

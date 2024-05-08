@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./albumSongs.css"
 import AllSongsFromAlbum from '../../components/allSongsFromAlbum/AllSongsFromAlbum'
 import Sidebar from '../../components/sidebar/Sidebar'
@@ -6,6 +6,10 @@ import Navbar from '../../components/navbar/Navbar'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 
 const AlbumSongs = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [])
+
   return (
     <div className="layout">
       <Sidebar />

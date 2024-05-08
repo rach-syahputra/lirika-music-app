@@ -21,6 +21,7 @@ const AllSongsFromAlbum = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    window.scrollTo({ top: 0 })
     getAllSongsFromAlbum()
   }, [])
 
@@ -41,7 +42,7 @@ const AllSongsFromAlbum = () => {
 
   const handlePlayButton = (songId) => {
     dispatch(setSongList(songs))
-    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
+    handlePlay(songId, setCurrentSongId, setIsPlayedId, dispatch)
   }
 
   return (
@@ -87,7 +88,7 @@ const AllSongsFromAlbum = () => {
 
                 {isPlayedId === song.songId
                   ?
-                  <div className="pause-button" onClick={() => handleStop(dispatch, setIsPlayedId)}>
+                  <div className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
                     <FontAwesomeIcon icon={faPause} className='icon' />
                   </div>
                   :

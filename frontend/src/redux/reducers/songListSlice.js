@@ -61,11 +61,12 @@ export const fetchTopSongs = createAsyncThunk(
   }
 )
 
-// FETCH SONGS FROM ARTIST
+// FETCH ALL SONGS FROM ARTIST
 export const fetchArtistSongs = createAsyncThunk(
   'songs/fetchArtistSongs',
   async ({ artistId, songId }, { dispatch }) => {
     try {
+      // get all songs from artist API
       const res = await axios.get(`http://localhost:8800/api/song/artist/${artistId}/songs`)
       const artistSongs = res.data
 
@@ -73,6 +74,8 @@ export const fetchArtistSongs = createAsyncThunk(
         // if songId is not defined then
         // first songId of song list from artistSongs value is assigned to songId
         const newSongId = songId || artistSongs[0].songId
+
+        // set the playback
         await dispatch(setCurrentSongId(newSongId))
         await dispatch(setIsPlayedId(newSongId))
 
@@ -89,7 +92,7 @@ export const fetchArtistSongs = createAsyncThunk(
   }
 )
 
-// FETCH SONGS FROM ALBUM
+// FETCH ALL SONGS FROM ALBUM
 export const fetchAlbumSongs = createAsyncThunk(
   'songs/fetchAlbumSongs',
   async ({ albumId, songId }, { dispatch }) => {
@@ -97,14 +100,20 @@ export const fetchAlbumSongs = createAsyncThunk(
       const res = await axios.get(`http://localhost:8800/api/song/album/${albumId}/songs`)
       const albumSongs = res.data
 
-      const newSongId = songId || albumSongs[0].songId
-      await dispatch(setCurrentSongId(newSongId))
-      await dispatch(setIsPlayedId(newSongId))
+      if (albumSongs.length > 0) {
+        // if songId is not defined then
+        // first songId of song list from artistSongs value is assigned to songId
+        const newSongId = songId || albumSongs[0].songId
+
+        // set the playback
+        await dispatch(setCurrentSongId(newSongId))
+        await dispatch(setIsPlayedId(newSongId))
 
 
-      // store songIds to local storage
-      const songIds = albumSongs.map(song => song.songId)
-      localStorage.setItem('songIdList', songIds)
+        // store songIds to local storage
+        const songIds = albumSongs.map(song => song.songId)
+        localStorage.setItem('songIdList', songIds)
+      }
 
       return albumSongs
     } catch (error) {
@@ -112,8 +121,6 @@ export const fetchAlbumSongs = createAsyncThunk(
     }
   }
 )
-
-
 
 const songListSlice = createSlice({
   name: 'songList',

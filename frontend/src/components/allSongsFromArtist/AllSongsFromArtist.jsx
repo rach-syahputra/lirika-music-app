@@ -1,9 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./allSongsFromArtist.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchArtistSongs } from '../../redux/reducers/songListSlice'
+import { handleStop } from '../../handlers/handleSong'
+import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
+import { useParams } from 'react-router-dom'
 
 const AllSongsFromArtist = () => {
+  const { artistId } = useParams()
+  const [songs, setSongs] = useState([])
+  const isPlayedId = useSelector((state) => state.isPlayedId.id)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getAllSongsFromArtist()
+  }, [])
+
+  const getAllSongsFromArtist = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8800/api/song/artist/${artistId}/songs`)
+
+      const data = res.data
+
+      setSongs(data)
+    } catch (error) {
+      console.log('AllSongsFromArtist Error', error.message)
+    }
+  }
+
+  const handlePlayButton = (artistId, songId) => {
+    dispatch(fetchArtistSongs({ artistId, songId }))
+  }
+
   return (
     <div className="all-songs-from-artist">
       <div className="header">
@@ -11,51 +42,60 @@ const AllSongsFromArtist = () => {
       </div>
 
       <div className='song-list'>
-        {(() => {
-          const items = []
-          for (let i = 0; i < 20; i++) {
-            items.push(
-              <div className="item">
-                <h3 className='no'>
-                  {i + 1}
-                </h3>
-                <div className="song-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEvPmMxS53u0HCL9tbELW1fTr-c793tq0jfUG1SQncBw&s" alt="" />
-                </div>
+        {songs && songs.map((song, index) => (
+          <ul className="item" key={song.songId}>
+            <li>
+              <h3 className='no'>
+                {index + 1}
+              </h3>
+            </li>
 
-                <div className="pause-button">
-                  <FontAwesomeIcon icon={faPause} className='icon' />
-                </div>
-                <div className="play-button">
-                  <FontAwesomeIcon icon={faPlay} className='icon' />
-                </div>
+            <li className="song-img">
+              <img src={song.image} alt="" />
+            </li>
 
+            {isPlayedId === song.songId
+              ?
+              <li className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
+                <FontAwesomeIcon icon={faPause} className='icon' />
+              </li>
+              :
+              <li className="play-button" onClick={() => handlePlayButton(artistId, song.songId)}>
+                <FontAwesomeIcon icon={faPlay} className='icon' />
+              </li>
+            }
 
-                <h3 className='song-title' >
-                  Song Title
-                </h3>
+            <li>
+              <h3 className='song-title'>
+                {song.title}
+              </h3>
+            </li>
 
-                <h4 className='artist-name'>
-                  Artist Name
-                </h4>
+            <li>
+              <h4 className='artist-name'>
+                {song.artistName}
+              </h4>
+            </li>
 
-                <h4 className='played-count'>
-                  100k Plays
-                </h4>
+            <li>
+              <h4 className='played-count'>
+                {`${song.playedCount} Plays`}
+              </h4>
+            </li>
 
-                <h4 className='album-name'>
-                  Album Name
-                </h4>
+            <li>
+              <h4 className='album-name'>
+                {song.albumName}
+              </h4>
+            </li>
 
-                <h4 className='duration'>
-                  5.00
-                </h4>
-
-              </div>
-            )
-          }
-          return items
-        })()}
+            <li >
+              <h4 className='duration'>
+                {song.duration}
+              </h4>
+            </li>
+          </ul>
+        ))}
       </div>
     </div>
   )

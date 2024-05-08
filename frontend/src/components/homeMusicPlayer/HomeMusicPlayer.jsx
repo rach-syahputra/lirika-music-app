@@ -62,21 +62,21 @@ const HomeMusicPlayer = () => {
       </div>
       <div className="bottom">
         <div className="buttons">
-          <div className="buttonPrev" onClick={() => handlePrev(songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
+          <div className="buttonPrev" onClick={() => handlePrev(songs, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
             <FontAwesomeIcon icon={faBackward} className='icon' />
           </div>
           {isPlayedId
             ?
-            <div className="buttonStop" onClick={() => handleStop(dispatch, setIsPlayedId)}>
+            <div className="buttonStop" onClick={() => handleStop(setIsPlayedId, dispatch)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
+            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
 
           }
-          <div className="buttonNext" onClick={() => handleNext(songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
+          <div className="buttonNext" onClick={() => handleNext(songs, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
             <FontAwesomeIcon icon={faForward} className='icon' />
           </div>
         </div>

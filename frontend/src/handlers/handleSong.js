@@ -1,28 +1,29 @@
-export const handlePlay = (songId, dispatch, setCurrentSongId, setIsPlayedId) => {
+export const handlePlay = (songId, setCurrentSongId, setIsPlayedId, dispatch) => {
   dispatch(setCurrentSongId(songId))
   dispatch(setIsPlayedId(songId))
 }
 
-export const handleStop = (dispatch, setIsPlayedId) => {
+export const handleStop = (setIsPlayedId, dispatch) => {
   dispatch(setIsPlayedId(null))
-  localStorage.removeItem('isPlayedId')
 }
 
-export const handleNext = (songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId) => {
+export const handleNext = (songs, currentSongId, setCurrentSongId, setIsPlayedId, dispatch) => {
   if (songs && songs.length > 0) {
     const currentIndex = songs.findIndex((item) => item.songId === currentSongId);
-    const nextIndex = (currentIndex + 1) % songs.length;
+    const nextIndex = (currentIndex + 1) % songs.length
     dispatch(setCurrentSongId(songs[nextIndex].songId))
     dispatch(setIsPlayedId(songs[nextIndex].songId))
+    console.log('CURRENT SONG', songs[currentIndex])
+    console.log('NEXT SONG', songs[nextIndex])
   }
 };
 
-export const handlePrev = (songs, currentSongId, dispatch, setCurrentSongId, setIsPlayedId) => {
+export const handlePrev = (songs, currentSongId, setCurrentSongId, setIsPlayedId, dispatch) => {
   if (songs && songs.length > 0) {
     const currentIndex = songs.findIndex((item) => item.songId === currentSongId);
-    const nextIndex = (currentIndex - 1) % songs.length;
-    dispatch(setCurrentSongId(songs[nextIndex].songId))
-    dispatch(setIsPlayedId(songs[nextIndex].songId))
+    const prevIndex = currentIndex === 0 ? songs.length - 1 : (currentIndex - 1) % songs.length
+    dispatch(setCurrentSongId(songs[prevIndex].songId))
+    dispatch(setIsPlayedId(songs[prevIndex].songId))
   }
 };
 

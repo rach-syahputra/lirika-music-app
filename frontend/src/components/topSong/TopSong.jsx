@@ -38,7 +38,7 @@ const TopSong = () => {
 
   const handlePlayButton = (songId) => {
     dispatch(fetchTopSongs())
-    handlePlay(songId, dispatch, setCurrentSongId, setIsPlayedId)
+    handlePlay(songId, setCurrentSongId, setIsPlayedId, dispatch)
   }
 
   return (
@@ -72,7 +72,7 @@ const TopSong = () => {
 
               {isPlayedId === song.songId
                 ?
-                <div className="stop-button" onClick={() => handleStop(dispatch, setIsPlayedId)}>
+                <div className="stop-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </div>
                 :

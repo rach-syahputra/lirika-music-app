@@ -55,20 +55,20 @@ const MusicPlayer = () => {
 
       <div className="middleControl">
         <div className="controlButtons">
-          <div className="buttonPrev" onClick={() => handlePrev(songList, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
+          <div className="buttonPrev" onClick={() => handlePrev(songList, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
             <FontAwesomeIcon icon={faBackwardStep} className='icon' />
           </div>
           {isPlayedId
             ?
-            <div className="buttonPause" onClick={() => handleStop(dispatch, setIsPlayedId)}>
+            <div className="buttonPause" onClick={() => handleStop(setIsPlayedId, dispatch)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
+            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
           }
-          <div className="buttonNext" onClick={() => handleNext(songList, currentSongId, dispatch, setCurrentSongId, setIsPlayedId)}>
+          <div className="buttonNext" onClick={() => handleNext(songList, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
             <FontAwesomeIcon icon={faForwardStep} className='icon' />
           </div>
         </div>
