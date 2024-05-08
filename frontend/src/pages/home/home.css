@@ -1,22 +1,10 @@
-.home {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.container {
-  height: 100%;
-  padding-bottom: 75px;
-}
-
-.mainPage {
+.home-page {
   height: 100%;
   overflow: hidden;
   display: grid;
 }
 
-.mainContent {
+.home-page .home-page-child {
   display: grid;
   grid-template-columns: 70% 30%;
   padding: 10px 20px;

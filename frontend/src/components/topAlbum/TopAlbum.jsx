@@ -21,24 +21,24 @@ const TopAlbum = () => {
   }, [])
 
   return (
-    <div className='topAlbum'>
+    <div className='top-album'>
       <div className="header">
         <h2>Top Albums</h2>
       </div>
 
-      <div className="albumList">
+      <div className="album-list">
         {topAlbums && topAlbums.map(album => (
           <Link to={`/album/${album.albumId}/songs`} key={album.albumId}>
             <div className="item">
-              <div className="albumImg">
+              <div className="album-img">
                 <img src={album.image} alt="" />
               </div>
               <div className="info">
-                <h3 className='albumName' >
+                <h3 className='album-name' >
                   {truncateText(album.albumName, 17)}
                 </h3>
                 <Link to={`/artist/${album.artistId}`}>
-                  <h4 className='artistName'>
+                  <h4 className='artist-name'>
                     {truncateText(album.artistName, 18)}
                   </h4>
                 </Link>

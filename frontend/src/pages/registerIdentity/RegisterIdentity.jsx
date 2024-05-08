@@ -30,7 +30,7 @@ const RegisterIdentity = () => {
               <h5>This name will appear in your profile.</h5>
             </div>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            {error.name && <p className='errorMessage'>{error.name}</p>}
+            {error.name && <p className='error-message'>{error.name}</p>}
           </div>
 
           <div className="gender input">
@@ -60,10 +60,10 @@ const RegisterIdentity = () => {
                 Female
               </div>
             </div>
-            {error.gender && <p className='errorMessage'>{error.gender}</p>}
+            {error.gender && <p className='error-message'>{error.gender}</p>}
           </div>
 
-          <button className='signUpButton' type='submit'>
+          <button className='sign-up-button' type='submit'>
             Sign Up
           </button>
         </form>

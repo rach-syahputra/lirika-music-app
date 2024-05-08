@@ -16,15 +16,15 @@ const TopResultArtist = ({ topResult }) => {
   }
 
   return (
-    <div className="artist">
+    <div className="top-result-artist">
       <div className="item">
-        <div className="artistImg">
+        <div className="artist-img">
           <Link to={`/artist/${topResult.artistId}`}>
             <img src={topResult.artist_image} alt="" />
           </Link>
         </div>
         <div className="info">
-          <div className="artistName">
+          <div className="artist-name">
             <Link to={`/artist/${topResult.artistId}`}>
               <h2>{topResult.artist_name}</h2>
             </Link>
@@ -38,12 +38,12 @@ const TopResultArtist = ({ topResult }) => {
           </div>
           <div className="buttons">
             <div
-              className="playButton"
+              className="play-button"
               onClick={() => (handlePlayButton(topResult.artistId, topResult.songId))}
             >
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
-            <div className="shuffleButton">
+            <div className="shuffle-button">
               <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
             </div>
           </div>

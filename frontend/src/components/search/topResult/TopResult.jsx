@@ -6,12 +6,12 @@ import TopResultAlbum from "../topResultAlbum/TopResultAlbum"
 
 const TopResult = ({ topResult }) => {
   return (
-    <div className='topResult'>
+    <div className='top-result'>
       <div className="header">
         <h2>Top Result</h2>
       </div>
 
-      <div className="topResultContent">
+      <div className="top-result-content">
         {
           topResult.type === 'artist' ? <TopResultArtist topResult={topResult} /> :
             topResult.type === 'song' ? <TopResultSong topResult={topResult} /> :

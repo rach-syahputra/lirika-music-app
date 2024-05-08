@@ -1,4 +1,4 @@
-.topArtist {
+.top-artist {
   padding: 15px 15px 10px 15px;
   border-radius: 6px;
   background-color: var(--dark-bg);
@@ -7,23 +7,23 @@
   height: 295px;
 }
 
-.topArtist .header {
+.top-artist .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.topArtist .header h4 {
+.top-artist .header h4 {
   cursor: pointer;
 }
 
-.topArtist .artistList {
+.top-artist .artist-list {
   display: flex;
   overflow: hidden;
 }
 
-.topArtist:hover .artistList {
+.top-artist:hover .artist-list {
   overflow-x: scroll;
   scrollbar-gutter: stable;
 }
@@ -38,7 +38,7 @@
   border-radius: 50px;
 }
 
-.topArtist .artistList .item {
+.top-artist .artist-list .item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,12 +48,12 @@
   transition: background-color 0.15s ease-in-out;
 }
 
-.topArtist .artistList .item:hover {
+.top-artist .artist-list .item:hover {
   background-color: var(--dark-bg-hover);
 
 }
 
-.topArtist .artistList .item .info {
+.top-artist .artist-list .item .info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,37 +61,37 @@
 }
 
 
-.topArtist .artistList .item .artistImg {
+.top-artist .artist-list .item .artist-img {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.topArtist .artistList .item .artistImg img {
+.top-artist .artist-list .item .artist-img img {
   height: 148px;
   width: 148px;
   border-radius: 75px;
   object-fit: cover;
 }
 
-.topArtist .artistList .item .info .artistName {
+.top-artist .artist-list .item .info .artist-name {
   display: flex;
   align-items: center;
   height: 20px;
 }
 
-.topArtist .artistList .item .info .country {
+.top-artist .artist-list .item .info .country {
   display: flex;
   align-items: center;
   height: 14px;
 }
 
-.topArtist .artistList .item .info .artistName {
+.top-artist .artist-list .item .info .artist-name {
   text-align: center;
 }
 
-.topArtist .artistList img,
-.topArtist .artistList .item .info .artistName,
-.topArtist .artistList .item .info .country {
+.top-artist .artist-list img,
+.top-artist .artist-list .item .info .artist-name,
+.top-artist .artist-list .item .info .country {
   cursor: pointer;
 }

@@ -20,27 +20,27 @@ const TopResultAlbum = ({ topResult }) => {
   }
 
   return (
-    <div className="album">
+    <div className="top-result-album">
       <div className="item">
-        <div className="albumImg">
+        <div className="album-img">
           <img src={topResult.album_image} alt="" />
         </div>
         <div className="info">
-          <div className="albumName">
+          <div className="album-name">
             <h2>{topResult.album_name}</h2>
           </div>
           <div className="details">
             <h4>
               <span className='type'>Album</span>
               •
-              <span className='artistName'>{topResult.artist_name}</span>
+              <span className='artist-name'>{topResult.artist_name}</span>
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton" onClick={() => handlePlayButton(topResult.albumId)}>
+            <div className="play-button" onClick={() => handlePlayButton(topResult.albumId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
-            <div className="shuffleButton">
+            <div className="shuffle-button">
               <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
             </div>
           </div>

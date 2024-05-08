@@ -1,12 +1,12 @@
 import React from 'react'
-import "./main.css"
+import "./homeContent.css"
 import TopSong from '../topSong/TopSong'
 import TopArtist from '../topArtist/TopArtist'
 import TopAlbum from '../topAlbum/TopAlbum'
 
-const Main = () => {
+const HomeContent = () => {
   return (
-    <div className='main'>
+    <div className='home-content'>
       <TopArtist />
       <TopAlbum />
       <TopSong />
@@ -14,4 +14,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default HomeContent

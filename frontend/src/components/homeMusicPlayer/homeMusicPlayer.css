@@ -1,11 +1,22 @@
-.homeMusicPlayer {
+.home-music-player {
   height: 80%;
   background-color: var(--dark-bg);
   border-radius: 8px;
   padding-top: 10px;
 }
 
-.songContainer {
+.home-music-player .top .header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px;
+  margin-bottom: 14px;
+}
+
+.home-music-player .header .icon {
+  cursor: pointer;
+}
+
+.home-music-player .songs-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,53 +24,42 @@
   padding: 0 18px;
 }
 
-.songInfo {
+.home-music-player .songs-container .song-info {
   display: flex;
   flex-direction: column;
   gap: 4px;
   align-items: center;
 }
 
-.songInfo .songTitle {
+.home-music-player .songs-container .song-info .songTitle {
   display: flex;
   align-items: center;
   height: 25px;
 }
 
-.homeMusicPlayer .top .header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 18px;
-  margin-bottom: 14px;
-}
-
-.homeMusicPlayer .header .icon {
-  cursor: pointer;
-}
-
-.homeMusicPlayer .imgContainer {
+.home-music-player .songs-container .img-container {
   width: 80%;
   height: 272px;
   border-radius: 4px;
 }
 
-.homeMusicPlayer .imgContainer img {
+.home-music-player .songs-container .img-container img {
   width: 100%;
   height: 100%;
 }
 
-.homeMusicPlayer .progress {
+.home-music-player .songs-container .progress {
   display: flex;
   align-items: center;
   margin: 10px 0;
   padding: 0 18px;
 }
 
-.homeMusicPlayer .progress h4 {
+.home-music-player .songs-container .progress h4 {
   color: #fff;
 }
 
-.homeMusicPlayer .playedLine {
+.home-music-player .songs-container .progress .played-line {
   position: relative;
   width: 110px;
   height: 2px;
@@ -67,7 +67,7 @@
   margin-left: 20px;
 }
 
-.homeMusicPlayer .playedLine::before {
+.home-music-player .songs-container .progress .played-line::before {
   content: "";
   background-color: #25252d;
   height: 10px;
@@ -79,14 +79,14 @@
   border-radius: 50%;
 }
 
-.homeMusicPlayer .unplayedLine {
+.home-music-player .songs-container .progress .unplayed-line {
   width: 80px;
   height: 2px;
   background-color: #919191;
   margin-right: 20px;
 }
 
-.homeMusicPlayer .bottom {
+.home-music-player .bottom {
   height: 26%;
   background-color: var(--main-color);
   padding: 16px;
@@ -97,19 +97,19 @@
   margin-top: 15px;
 }
 
-.homeMusicPlayer .bottom .buttons {
+.home-music-player .bottom .buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 90px;
 }
 
-.homeMusicPlayer .bottom .buttons .icon {
+.home-music-player .bottom .buttons .icon {
   cursor: pointer;
 }
 
-.homeMusicPlayer .bottom .buttons .buttonPlay,
-.homeMusicPlayer .bottom .buttons .buttonStop {
+.home-music-player .bottom .buttons .play-button,
+.home-music-player .bottom .buttons .stop-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,14 +120,14 @@
   cursor: pointer;
 }
 
-.homeMusicPlayer .bottom .buttons .buttonPlay .icon,
-.homeMusicPlayer .bottom .buttons .buttonStop .icon {
+.home-music-player .bottom .buttons .play-button .icon,
+.home-music-player .bottom .buttons .stop-button .icon {
   color: var(--main-color);
 }
 
 
 
-.homeMusicPlayer .bottom .lyric {
+.home-music-player .bottom .lyric {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,6 +135,6 @@
   cursor: pointer;
 }
 
-.homeMusicPlayer .bottom .lyric h4 {
+.home-music-player .bottom .lyric h4 {
   color: #fff;
 }

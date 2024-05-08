@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import "./home.css"
 import Sidebar from '../../components/sidebar/Sidebar'
-import Main from '../../components/main/Main'
+import HomeContent from '../../components/homeContent/HomeContent'
 import Rightbar from '../../components/rightbar/Rightbar'
 import Navbar from '../../components/navbar/Navbar'
 
@@ -13,10 +13,10 @@ const Home = () => {
   return (
     <div className="layout">
       <Sidebar currentPage='home' />
-      <div className="mainPage">
+      <div className="home-page">
         <Navbar />
-        <div className="mainContent">
-          <Main />
+        <div className="home-page-child">
+          <HomeContent />
           <Rightbar />
         </div>
       </div>

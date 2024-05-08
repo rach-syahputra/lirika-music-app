@@ -39,36 +39,36 @@ const MusicPlayer = () => {
   }, [currentSongId])
 
   return (
-    <div className='musicPlayer'>
-      <div className="leftControl">
-        <div className="imgContainer">
+    <div className='music-player'>
+      <div className="left-control">
+        <div className="img-container">
           <img src={image ? `${image}` : 'https://f4.bcbits.com/img/a4139357031_10.jpg'} alt="" />
         </div>
-        <div className='songDetails'>
-          <h2 className='songTitle'>{title}</h2>
-          <h4 className='moreSongDetails'>{`${artist} • ${albumName} • 2008`}</h4>
+        <div className='song-details'>
+          <h2 className='song-title'>{title}</h2>
+          <h4 className='more-song-details'>{`${artist} • ${albumName} • 2008`}</h4>
         </div>
-        <div className="buttonPlus">
+        <div className="plus-button">
           <FontAwesomeIcon icon={faPlus} className='icon' />
         </div>
       </div>
 
-      <div className="middleControl">
-        <div className="controlButtons">
-          <div className="buttonPrev" onClick={() => handlePrev(songList, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
+      <div className="middle-control">
+        <div className="control-buttons">
+          <div className="prev-button" onClick={() => handlePrev(songList, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
             <FontAwesomeIcon icon={faBackwardStep} className='icon' />
           </div>
           {isPlayedId
             ?
-            <div className="buttonPause" onClick={() => handleStop(setIsPlayedId, dispatch)}>
+            <div className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
               <FontAwesomeIcon icon={faPause} className='icon' />
             </div>
             :
-            <div className="buttonPlay" onClick={() => handlePlay(currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
+            <div className="play-button" onClick={() => handlePlay(currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
               <FontAwesomeIcon icon={faPlay} className='icon' />
             </div>
           }
-          <div className="buttonNext" onClick={() => handleNext(songList, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
+          <div className="next-button" onClick={() => handleNext(songList, currentSongId, setCurrentSongId, setIsPlayedId, dispatch)}>
             <FontAwesomeIcon icon={faForwardStep} className='icon' />
           </div>
         </div>
@@ -77,8 +77,8 @@ const MusicPlayer = () => {
         </div>
       </div>
 
-      <div className="rightControl">
-        <div className="controlButtons">
+      <div className="right-control">
+        <div className="control-buttons">
           <FontAwesomeIcon icon={faVolumeLow} className='icon' />
           <FontAwesomeIcon icon={faRepeat} className='icon' />
           <FontAwesomeIcon icon={faShuffle} className='icon' />

@@ -1,108 +1,107 @@
-.topResult .album {
-  display: block;
-  overflow: hidden;
-}
+ .top-result-album {
+   display: block;
+   overflow: hidden;
+ }
 
-.topResult .album .item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 175px;
-  padding: 8px;
-  transition: background-color 0.15s ease-in-out;
-}
+ .top-result-album .item {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   height: 175px;
+   padding: 8px;
+   transition: background-color 0.15s ease-in-out;
+ }
 
-.topResult .album .item .info {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+ .top-result-album .item .info {
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
+ }
 
+ .top-result-album .item .album-img {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+ }
 
-.topResult .album .item .albumImg {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
+ .top-result-album .item .album-img img {
+   height: 148px;
+   width: 148px;
+   border-radius: 10px;
+   object-fit: cover;
+ }
 
-.topResult .album .item .albumImg img {
-  height: 148px;
-  width: 148px;
-  border-radius: 10px;
-  object-fit: cover;
-}
+ .top-result-album .item .info .album-name {
+   display: flex;
+   align-items: center;
+   height: 20px;
+ }
 
-.topResult .album .item .info .albumName {
-  display: flex;
-  align-items: center;
-  height: 20px;
-}
+ .top-result-album .item .info .album-name h2 {
+   font-size: 22px;
+ }
 
-.topResult .album .item .info .albumName h2 {
-  font-size: 22px;
-}
+ .top-result-album .item .info .details h4 {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+ }
 
-.topResult .album .item .info .details h4 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+ .top-result-album .item .info .details h4 .artits-name:hover {
+   text-decoration: underline;
+ }
 
-.topResult .album .item .info .details h4 .artistName:hover {
-  text-decoration: underline;
-}
+ .top-result-album .item .info .type {
+   display: flex;
+   align-items: center;
+   height: 14px;
+ }
 
-.topResult .album .item .info .type {
-  display: flex;
-  align-items: center;
-  height: 14px;
-}
+ .top-result-album img,
+ .top-result-album .item .info .album-name h2 {
+   cursor: pointer;
+ }
 
-.topResult .album img,
-.topResult .album .item .info .albumName h2 {
-  cursor: pointer;
-}
+ .top-result-album .item .info .buttons {
+   display: flex;
+   gap: 10px;
+ }
 
-.topResult .album .item .info .buttons {
-  display: flex;
-  gap: 10px;
-}
+ .top-result-album .item .info .buttons .play-button {
+   background-color: var(--main-color);
+   display: flex;
+   justify-content: center;
+   gap: 6px;
+   width: 100px;
+   height: 40px;
+   padding: 10px;
+   border-radius: 20px;
+   font-weight: bold;
+   font-size: 15px;
+   transition: background-color 0.2s ease-in-out;
+ }
 
-.topResult .album .item .info .buttons .playButton {
-  background-color: var(--main-color);
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  width: 100px;
-  height: 40px;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 15px;
-  transition: background-color 0.2s ease-in-out;
-}
+ .top-result-album .item .info .buttons .play-button:hover {
+   background-color: var(--secondary-color);
+   cursor: pointer;
+ }
 
-.topResult .album .item .info .buttons .playButton:hover {
-  background-color: var(--secondary-color);
-  cursor: pointer;
-}
+ .top-result-album .item .info .buttons .shuffle-button {
+   color: var(--dark-bg);
+   background-color: #fcfcfc;
+   display: flex;
+   justify-content: center;
+   gap: 6px;
+   width: 100px;
+   height: 40px;
+   padding: 10px;
+   border-radius: 20px;
+   font-weight: bold;
+   font-size: 15px;
+   transition: background-color 0.2s ease-in-out;
+ }
 
-.topResult .album .item .info .buttons .shuffleButton {
-  color: var(--dark-bg);
-  background-color: #fcfcfc;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  width: 100px;
-  height: 40px;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 15px;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.topResult .album .item .info .buttons .shuffleButton:hover {
-  background-color: #dbdbdb;
-  cursor: pointer;
-}
+ .top-result-album .item .info .buttons .shuffle-button:hover {
+   background-color: #dbdbdb;
+   cursor: pointer;
+ }

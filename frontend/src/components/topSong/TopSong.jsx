@@ -95,46 +95,6 @@ const TopSong = () => {
           </div>
         ))}
       </div>
-
-      {/* <div className="top-songs-list">
-        {topSongs.length > 0 && topSongs.map((song, index) => (
-          <div className="item" key={song.songId}>
-            <div className="info">
-              <h4 className='number'>{index + 1}</h4>
-              <img src={song.image} alt="" />
-              <div className="title-and-artist">
-                <h3 className='title'>{song.title}</h3>
-                <h4 className='artist'>{song.artist}</h4>
-              </div>
-            </div>
-            <div className="action">
-              <h3>{song.duration}</h3>
-
-              {isPlayedId === song.songId
-                ?
-                <div className="buttonStop" onClick={() => handleStop(dispatch, setIsPlayedId)}>
-                  <FontAwesomeIcon icon={faPause} className='icon' />
-                </div>
-                :
-                <div className="buttonPlay" onClick={() => handlePlayButton(song.songId)}>
-                  <FontAwesomeIcon icon={faPlay} className='icon' />
-                </div>
-              }
-
-              {isLiked(likedIds, song.songId)
-                ?
-                <div className="buttonCheck" onClick={() => handleToggleLike(likedIds, setLikedIds, song.songId)}>
-                  <FontAwesomeIcon icon={faCheck} className='icon' />
-                </div>
-                :
-                <div className="buttonPlus" onClick={() => handleToggleLike(likedIds, setLikedIds, song.songId)}>
-                  <FontAwesomeIcon icon={faPlus} className='icon' />
-                </div>
-              }
-            </div>
-          </div>
-        ))}
-      </div> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-.topResult {
+.top-result {
   padding: 15px 15px 10px 15px;
   border-radius: 6px;
   background-color: var(--dark-bg);
@@ -7,20 +7,9 @@
   /* height: 295px; */
 }
 
-.topResult .header {
+.top-result .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
-
-/* ARTIST */
-/*  */
-
-
-/* SONG */
-/*  */
-
-
-/* ALBUM */
-/*  */

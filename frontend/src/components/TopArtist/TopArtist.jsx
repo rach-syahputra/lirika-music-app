@@ -21,20 +21,20 @@ const TopArtist = () => {
   }
 
   return (
-    <div className='topArtist'>
+    <div className='top-artist'>
       <div className="header">
         <h2>Top Artists</h2>
       </div>
 
-      <div className="artistList">
+      <div className="artist-list">
         {topArtists && topArtists.map(artist => (
           <Link to={`/artist/${artist.artistId}`} key={artist.artistId}>
             <div className="item" >
-              <div className="artistImg">
+              <div className="artist-img">
                 <img src={artist.image} alt="" />
               </div>
               <div className="info">
-                <h3 className='artistName' >
+                <h3 className='artist-name' >
                   {artist.artistName.length > 15
                     ? artist.artistName.slice(0, 13) + '...'
                     : artist.artistName}

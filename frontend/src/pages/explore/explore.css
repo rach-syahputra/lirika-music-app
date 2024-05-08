@@ -1,10 +1,10 @@
-.explore {
+.explore-page {
   height: 100%;
   overflow: hidden;
   padding-bottom: 75px;
 }
 
-.explore .exploreChild {
+.explore-page .explore-page-child {
   padding: 10px 20px;
   margin-left: 16%;
   margin-top: 80px;

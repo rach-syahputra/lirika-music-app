@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.login .signIn {
+.login .sign-in-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,14 +17,14 @@
   padding: 10px;
 }
 
-.login .signIn .input {
+.login .sign-in-form .input {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.login .signIn .input input {
+.login .sign-in-form .input input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -35,12 +35,12 @@
   color: #fff;
 }
 
-.login .signIn .errorMessage {
+.login .sign-in-form .error-message {
   color: red;
   font-size: 14px;
 }
 
-.login .signIn .signInButton {
+.login .sign-in-form .sign-in-button {
   width: 100%;
   background-color: var(--main-color);
   color: #000;
@@ -54,20 +54,20 @@
   transition: all 0.3s;
 }
 
-.login .signIn .signInButton:hover {
+.login .sign-in-form .sign-in-button:hover {
   background-color: var(--secondary-color);
 }
 
-.login .signIn hr {
+.login .sign-in-form hr {
   width: 100%;
   border-color: var(--light);
 }
 
-.login .signIn .signUp {
+.login .sign-in-form .sign-up {
   color: var(--light);
 }
 
-.login .signIn .signUp .signUpButton {
+.login .sign-in-form .sign-up .sign-up-botton {
   color: #fff;
   text-decoration: underline;
   cursor: pointer;

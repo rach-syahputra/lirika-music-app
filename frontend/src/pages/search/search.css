@@ -1,10 +1,10 @@
-.search {
+.search-page {
   height: 100%;
   overflow: hidden;
   padding-bottom: 75px;
 }
 
-.search .searchChild {
+.search-page .search-page-child {
   padding: 10px 20px;
   margin-left: 16%;
   margin-top: 80px;

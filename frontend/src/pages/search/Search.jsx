@@ -39,9 +39,9 @@ const Search = () => {
   return (
     <div className='layout'>
       <Sidebar currentPage='search' />
-      <div className="search">
+      <div className="search-page">
         <Navbar />
-        <div className="searchChild">
+        <div className="search-page-child">
           <SearchResultContent
             topResult={topResult}
             artists={artists}

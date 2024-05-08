@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./register.css"
 import AuthNavbar from '../../components/authNavbar/AuthNavbar'
 import { Link, useNavigate } from 'react-router-dom'
@@ -24,38 +24,38 @@ const Register = () => {
       <AuthNavbar />
       <div className="section">
         <form
-          className='signUp'
+          className='sign-up'
           onSubmit={handleRegister(email, password, confirmPassword, setError, navigate)}>
           <h1>Sign up to start listening</h1>
 
           <div className="email input">
             <h3>Email address</h3>
             <input type="text" placeholder='name@domain.com' value={email} onChange={(e) => setEmail(e.target.value)} />
-            {error.email && <p className='errorMessage'>{error.email}</p>}
+            {error.email && <p className='error-message'>{error.email}</p>}
           </div>
 
           <div className="password input">
             <h3>Password</h3>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            {error.password && <p className='errorMessage'>{error.password}</p>}
+            {error.password && <p className='error-message'>{error.password}</p>}
           </div>
 
-          <div className="confirmPassword input">
+          <div className="confirm-password input">
             <h3>Confirm Password</h3>
             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-            {error.confirmPassword && <p className='errorMessage'>{error.confirmPassword}</p>}
+            {error.confirmPassword && <p className='error-message'>{error.confirmPassword}</p>}
 
           </div>
 
-          {error.message && <p className='errorMessage'>{error.message}</p>}
-          <button className='nextButton' type='submit'>
+          {error.message && <p className='error-message'>{error.message}</p>}
+          <button className='next-button' type='submit'>
             Next
           </button>
 
           <hr />
 
-          <p className='signIn'>
-            Already have an account? <Link to='/login' className='signInButton'>Log in here</Link>
+          <p className='sign-in'>
+            Already have an account? <Link to='/login' className='sign-in-button'>Log in here</Link>
           </p>
         </form>
       </div>

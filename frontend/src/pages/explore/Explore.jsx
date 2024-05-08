@@ -13,9 +13,9 @@ const Explore = () => {
   return (
     <div className="layout">
       <Sidebar currentPage='explore' />
-      <div className="explore">
+      <div className="explore-page">
         <Navbar />
-        <div className="exploreChild">
+        <div className="explore-page-child">
           <ExploreContent />
         </div>
       </div>

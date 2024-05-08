@@ -1,9 +1,9 @@
-.topResult .artist {
+.top-result-artist {
   display: block;
   overflow: hidden;
 }
 
-.topResult .artist .item {
+.top-result-artist .item {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -12,59 +12,59 @@
   transition: background-color 0.15s ease-in-out;
 }
 
-.topResult .artist .item .info {
+.top-result-artist .item .info {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 
-.topResult .artist .item .artistImg {
+.top-result-artist .item .artist-img {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.topResult .artist .item .artistImg img {
+.top-result-artist .item .artist-img img {
   height: 148px;
   width: 148px;
   border-radius: 75px;
   object-fit: cover;
 }
 
-.topResult .artist .item .info .artistName {
+.top-result-artist .item .info .artist-name {
   display: flex;
   align-items: center;
   height: 20px;
 }
 
-.topResult .artist .item .info .artistName h2 {
+.top-result-artist .item .info .artist-name h2 {
   font-size: 22px;
 }
 
-.topResult .artist .item .info .details h4 {
+.top-result-artist .item .info .details h4 {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.topResult .artist .item .info .type {
+.top-result-artist .item .info .type {
   display: flex;
   align-items: center;
   height: 14px;
 }
 
-.topResult .artist img,
-.topResult .artist .item .info .artistName h2 {
+.top-result-artist img,
+.top-result-artist .item .info .artist-name h2 {
   cursor: pointer;
 }
 
-.topResult .artist .item .info .buttons {
+.top-result-artist .item .info .buttons {
   display: flex;
   gap: 10px;
 }
 
-.topResult .artist .item .info .buttons .playButton {
+.top-result-artist .item .info .buttons .play-button {
   background-color: var(--main-color);
   display: flex;
   justify-content: center;
@@ -78,12 +78,12 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.topResult .artist .item .info .buttons .playButton:hover {
+.top-result-artist .item .info .buttons .play-button:hover {
   background-color: var(--secondary-color);
   cursor: pointer;
 }
 
-.topResult .artist .item .info .buttons .shuffleButton {
+.top-result-artist .item .info .buttons .shuffle-button {
   color: var(--dark-bg);
   background-color: #fcfcfc;
   display: flex;
@@ -98,7 +98,7 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.topResult .artist .item .info .buttons .shuffleButton:hover {
+.top-result-artist .item .info .buttons .shuffle-button:hover {
   background-color: #dbdbdb;
   cursor: pointer;
 }

@@ -16,20 +16,20 @@ const TopResultSong = ({ topResult }) => {
   }
 
   return (
-    <div className="song">
+    <div className="top-result-song">
       <div className="item">
-        <div className="albumImg">
+        <div className="album-img">
           <img src={topResult.album_image} alt="" />
         </div>
         <div className="info">
-          <div className="songTitle">
+          <div className="song-title">
             <h2>{topResult.song_title}</h2>
           </div>
           <div className="details">
             <h4>
               <span className='type'>Song</span>
               •
-              <span className='artistName'>{topResult.artist_name}</span>
+              <span className='artist-name'>{topResult.artist_name}</span>
               •
               <span className='album'>{topResult.album_name}</span>
               •
@@ -37,10 +37,10 @@ const TopResultSong = ({ topResult }) => {
             </h4>
           </div>
           <div className="buttons">
-            <div className="playButton" onClick={() => handlePlayButton(topResult.artistId, topResult.songId)}>
+            <div className="play-button" onClick={() => handlePlayButton(topResult.artistId, topResult.songId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
-            <div className="addButton">
+            <div className="add-button">
               <FontAwesomeIcon icon={faPlus} className='icon' /> Add
             </div>
           </div>
