@@ -72,9 +72,9 @@ export const fetchArtistSongs = createAsyncThunk(
       if (artistSongs.length > 0) {
         // if songId is not defined then
         // first songId of song list from artistSongs value is assigned to songId
-        songId = songId || artistSongs[0].songId
-        dispatch(setCurrentSongId(songId))
-        dispatch(setIsPlayedId(songId))
+        const newSongId = songId || artistSongs[0].songId
+        await dispatch(setCurrentSongId(newSongId))
+        await dispatch(setIsPlayedId(newSongId))
 
         // store songIds to local storage
         const songIds = artistSongs.map(song => song.songId)
@@ -92,10 +92,15 @@ export const fetchArtistSongs = createAsyncThunk(
 // FETCH SONGS FROM ALBUM
 export const fetchAlbumSongs = createAsyncThunk(
   'songs/fetchAlbumSongs',
-  async (albumId) => {
+  async ({ albumId, songId }, { dispatch }) => {
     try {
       const res = await axios.get(`http://localhost:8800/api/song/album/${albumId}/songs`)
       const albumSongs = res.data
+
+      const newSongId = songId || albumSongs[0].songId
+      await dispatch(setCurrentSongId(newSongId))
+      await dispatch(setIsPlayedId(newSongId))
+
 
       // store songIds to local storage
       const songIds = albumSongs.map(song => song.songId)
@@ -103,7 +108,7 @@ export const fetchAlbumSongs = createAsyncThunk(
 
       return albumSongs
     } catch (error) {
-      console.log('fetchArtistSongs error', error.message)
+      console.log('fetchAlbumSongs error', error.message)
     }
   }
 )

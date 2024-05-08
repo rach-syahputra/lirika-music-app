@@ -4,12 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { fetchArtistSongs } from '../../../redux/reducers/songListSlice'
+import { useNavigate } from 'react-router-dom'
 
 const TopResultSong = ({ topResult }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const handlePlayButton = (artistId, songId) => {
-    dispatch(fetchArtistSongs({ artistId, songId }))
+  const handlePlayButton = async (artistId, songId) => {
+    await dispatch(fetchArtistSongs({ artistId, songId })).unwrap()
+    navigate(`/artist/${artistId}/songs`)
   }
 
   return (

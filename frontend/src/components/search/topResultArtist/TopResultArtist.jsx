@@ -4,23 +4,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { fetchArtistSongs } from '../../../redux/reducers/songListSlice'
+import { Link, useNavigate } from 'react-router-dom'
 
 const TopResultArtist = ({ topResult }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const handlePlayButton = (artistId) => {
-    dispatch(fetchArtistSongs({ artistId }))
+  const handlePlayButton = async (artistId) => {
+    await dispatch(fetchArtistSongs({ artistId })).unwrap()
+    navigate(`/artist/${topResult.artistId}`)
   }
 
   return (
     <div className="artist">
       <div className="item">
         <div className="artistImg">
-          <img src={topResult.artist_image} alt="" />
+          <Link to={`/artist/${topResult.artistId}`}>
+            <img src={topResult.artist_image} alt="" />
+          </Link>
         </div>
         <div className="info">
           <div className="artistName">
-            <h2>{topResult.artist_name}</h2>
+            <Link to={`/artist/${topResult.artistId}`}>
+              <h2>{topResult.artist_name}</h2>
+            </Link>
           </div>
           <div className="details">
             <h4>
