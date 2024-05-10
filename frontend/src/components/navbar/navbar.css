@@ -9,7 +9,6 @@
   position: fixed;
   background-color: var(--darker-bg);
   z-index: 10;
-  overflow: hidden;
   box-sizing: border-box;
 }
 
