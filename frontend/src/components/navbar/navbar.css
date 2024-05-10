@@ -1,11 +1,32 @@
 .navbar {
-  display: grid;
-  grid-template-columns: 80% 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 70px;
+  width: 100%;
   padding: 10px 40px;
-  margin-left: 16%;
-  width: 84%;
+  margin-left: 265px;
   position: fixed;
-  background-color: #050505;
+  background-color: var(--darker-bg);
   z-index: 10;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar {
+    margin-left: 200px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar {
+    margin-left: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    margin-left: 80px;
+  }
 }

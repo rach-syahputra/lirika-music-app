@@ -64,9 +64,11 @@ export const getSongs = async (req, res) => {
 
 export const getTopSongs = async (req, res) => {
   try {
+    // GET TOP 10 SONGS
     const query = `
-    SELECT s.*, al.image
+    SELECT s.*, al.image, al.albumName, ar.artistName
     FROM songs s
+    INNER JOIN artists ar ON s.artistId = ar.artistId
     INNER JOIN albums al ON s.albumId = al.albumId
     ORDER BY s.playedCount DESC
     LIMIT 10

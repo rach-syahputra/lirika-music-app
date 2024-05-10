@@ -20,25 +20,27 @@ const MusicPlayer = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/api/song/find/" + currentSongId)
-        const song = res.data
-
-        setTitle(song.title)
-        setArtist(song.artist)
-        setImage(song.image)
-        setDuration(song.duration)
-        setAlbumName(song.albumName)
-
-      } catch (error) {
-        console.log('MusicPlayer Error: ', error)
-      }
-    }
     fetchData();
-  }, [currentSongId])
+  }, [currentSongId, isPlayedId])
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/api/song/find/" + currentSongId)
+      const song = res.data
+
+      setTitle(song.title)
+      setArtist(song.artist)
+      setImage(song.image)
+      setDuration(song.duration)
+      setAlbumName(song.albumName)
+
+    } catch (error) {
+      console.log('MusicPlayer Error: ', error)
+    }
+  }
 
   return (
+
     <div className='music-player'>
       <div className="left-control">
         <div className="img-container">

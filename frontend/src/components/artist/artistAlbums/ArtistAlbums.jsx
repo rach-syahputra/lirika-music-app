@@ -30,8 +30,8 @@ const ArtistAlbums = () => {
 
       <div className="album-list">
         {albums && albums.map((album) => (
-          <Link to={`/album/${album.albumId}/songs`}>
-            <div className="item" key={album.albumId}>
+          <Link to={`/album/${album.albumId}/songs`} key={album.albumId}>
+            <div className="item" >
               <div className="album-img">
                 <img src={album.image} alt="" />
               </div>

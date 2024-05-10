@@ -1,6 +1,7 @@
 .rightbar {
   position: fixed;
-  width: 375px;
+  width: 300px;
   right: 20px;
-  height: 100%;
+  height: fit-content;
+  border: 1px solid white;
 }

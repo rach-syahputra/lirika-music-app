@@ -3,11 +3,18 @@
   justify-content: end;
   align-items: center;
   gap: 24px;
-  cursor: pointer;
-  position: relative;
+  position: fixed;
+  right: 20px;
 }
 
-.profile .userInfo {
+.profile .notification-icon,
+.profile .setting-icon {
+  display: flex;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.profile .user-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,22 +22,24 @@
   gap: 8px;
 }
 
-.profile .userInfo .imgContainer {
+.profile .user-info .img-container {
   display: flex;
   padding: 2px;
-}
-
-.profile .userInfo img {
   height: 30px;
   width: 30px;
 }
 
-.profile .userInfo .userName {
+.profile .user-info img {
+  height: 100%;
+  width: 100%;
+}
+
+.profile .user-info .username {
   white-space: nowrap;
   cursor: pointer;
 }
 
-.profile .profileMenu {
+.profile .profile-menu {
   display: flex;
   flex-direction: column;
   padding: 6px;
@@ -42,15 +51,44 @@
   overflow: hidden;
 }
 
-.profile .profileMenu .list {
+.profile .profile-menu .list {
   padding: 12px 14px;
   border-radius: 4px;
 }
 
-.profile .profileMenu .list:hover {
+.profile .profile-menu .list:hover {
   background-color: rgb(104, 104, 104);
 }
 
-.profile .profileMenu hr {
+.profile .profile-menu hr {
   border-color: rgb(64, 64, 64);
+}
+
+@media screen and (max-width: 1024px) {
+  .profile {
+    gap: 20px;
+  }
+
+  .profile .user-info .username {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    gap: 16px;
+  }
+
+  .profile .icon {
+    font-size: 14px;
+  }
+
+  .profile .user-info .img-container {
+    height: 26px;
+    width: 26px;
+  }
+
+  .profile .user-info .username {
+    font-size: 13px;
+  }
 }

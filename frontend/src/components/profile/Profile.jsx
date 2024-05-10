@@ -16,14 +16,20 @@ const Profile = () => {
   }
 
   return (
-    <div className='profile' onClick={toggleMenu}>
-      <FontAwesomeIcon icon={faBell} className='icon' />
-      <FontAwesomeIcon icon={faGear} className='icon' />
-      <div className="userInfo">
-        <div className="imgContainer">
+    <div className='profile'>
+      <div className="notification-icon">
+        <FontAwesomeIcon icon={faBell} className='icon' />
+      </div>
+
+      <div className="setting-icon">
+        <FontAwesomeIcon icon={faGear} className='icon' />
+      </div>
+
+      <div className="user-info" onClick={toggleMenu}>
+        <div className="img-container">
           <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         </div>
-        <h3 className='userName'>
+        <h3 className='username'>
           {userName.length > 15
             ? userName.slice(0, 13) + '...'
             : userName}
@@ -31,13 +37,13 @@ const Profile = () => {
       </div>
       {
         profileMenu && (
-          <div className="profileMenu">
-            <div className="list">Profile</div>
-            <div className="list">Upgrade to Premium</div>
-            <div className="list">Setting</div>
+          <ul className="profile-menu">
+            <li className="list">Profile</li>
+            <li className="list">Upgrade to Premium</li>
+            <li className="list">Setting</li>
             <hr />
-            <div className="list" onClick={handleLogout}>Logout</div>
-          </div>
+            <li className="list" onClick={handleLogout}>Logout</li>
+          </ul>
         )
       }
     </div>

@@ -50,7 +50,7 @@ const Search = () => {
           />
         </div>
       </div>
-      <MusicPlayer songs={songs} />
+      <MusicPlayer />
     </div>
   )
 }

@@ -76,8 +76,8 @@ export const fetchArtistSongs = createAsyncThunk(
         const newSongId = songId || artistSongs[0].songId
 
         // set the playback
-        await dispatch(setCurrentSongId(newSongId))
-        await dispatch(setIsPlayedId(newSongId))
+        dispatch(setCurrentSongId(newSongId))
+        dispatch(setIsPlayedId(newSongId))
 
         // store songIds to local storage
         const songIds = artistSongs.map(song => song.songId)
@@ -106,8 +106,8 @@ export const fetchAlbumSongs = createAsyncThunk(
         const newSongId = songId || albumSongs[0].songId
 
         // set the playback
-        await dispatch(setCurrentSongId(newSongId))
-        await dispatch(setIsPlayedId(newSongId))
+        dispatch(setCurrentSongId(newSongId))
+        dispatch(setIsPlayedId(newSongId))
 
 
         // store songIds to local storage

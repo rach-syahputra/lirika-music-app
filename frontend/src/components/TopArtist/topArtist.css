@@ -1,9 +1,9 @@
 .top-artist {
   padding: 15px 15px 10px 15px;
-  border-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   background-color: var(--dark-bg);
   margin-bottom: 16px;
-  max-width: 860px;
   height: 295px;
 }
 
@@ -42,7 +42,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 210px;
+  height: fit-content;
   padding: 8px;
   margin-bottom: 10px;
   transition: background-color 0.15s ease-in-out;
@@ -64,14 +64,60 @@
 .top-artist .artist-list .item .artist-img {
   display: flex;
   align-items: center;
+  position: relative;
   margin-bottom: 10px;
+  height: 148px;
+  width: 148px;
 }
 
 .top-artist .artist-list .item .artist-img img {
-  height: 148px;
-  width: 148px;
+  height: 100%;
+  width: 100%;
   border-radius: 75px;
   object-fit: cover;
+}
+
+.top-artist .artist-list .item .artist-img .play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(25, 25, 32, 0.7);
+  height: 45px;
+  width: 45px;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.top-artist .artist-list .item .artist-img .play-button:hover .icon {
+  transition: all 0.3s ease;
+}
+
+.top-artist .artist-list .item:hover .artist-img .play-button {
+  opacity: 1;
+  bottom: 10px;
+}
+
+.top-artist .artist-list .item .artist-img .play-button:hover {
+  background-color: rgba(25, 25, 32, 1);
+  transform: scale(1.12);
+}
+
+.top-artist .artist-list .item .artist-img .play-button:hover .icon {
+  transform: scale(1.12);
+}
+
+.top-artist .artist-list .item .info .artist-name {
+  font-size: 13px;
+}
+
+.top-artist .artist-list .item .info .country {
+  font-size: 12px;
 }
 
 .top-artist .artist-list .item .info .artist-name {
@@ -94,4 +140,55 @@
 .top-artist .artist-list .item .info .artist-name,
 .top-artist .artist-list .item .info .country {
   cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .top-artist .artist-list .item .artist-img {
+    height: 144px;
+    width: 144px;
+  }
+
+  .top-artist .artist-list .item .info .artist-name {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .top-artist {
+    height: 290px;
+  }
+
+  .top-artist .artist-list .item .artist-img {
+    height: 140px;
+    width: 140px;
+  }
+
+  .top-artist .artist-list .item .info .artist-name {
+    font-size: 14px;
+  }
+
+  .top-artist .artist-list .item .info .country {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .top-artist .header h2 {
+    font-size: 18px;
+  }
+
+  .top-artist .header h4 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-artist {
+    height: 240px;
+  }
+
+  .top-artist .artist-list .item .artist-img {
+    height: 100px;
+    width: 100px;
+  }
 }

@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react'
 import "./topAlbum.css"
 import axios from 'axios'
 import { truncateText } from "../../utils/truncation.js"
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAlbumSongs } from '../../redux/reducers/songListSlice.js'
 
 const TopAlbum = () => {
   const [topAlbums, setTopAlbums] = useState()
+  const isPlayedId = useSelector((state) => state.isPlayedId.id)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getTopAlbums = async () => {
@@ -20,6 +27,12 @@ const TopAlbum = () => {
     getTopAlbums()
   }, [])
 
+  const handlePlayButton = async (albumId) => {
+    console.log(await dispatch(fetchAlbumSongs({ albumId })).unwrap())
+    // console.log('IS PLAYED ID', isPlayedId)
+    navigate(`/album/${albumId}/songs`)
+  }
+
   return (
     <div className='top-album'>
       <div className="header">
@@ -28,23 +41,32 @@ const TopAlbum = () => {
 
       <div className="album-list">
         {topAlbums && topAlbums.map(album => (
-          <Link to={`/album/${album.albumId}/songs`} key={album.albumId}>
-            <div className="item">
-              <div className="album-img">
-                <img src={album.image} alt="" />
-              </div>
-              <div className="info">
-                <h3 className='album-name' >
-                  {truncateText(album.albumName, 17)}
-                </h3>
-                <Link to={`/artist/${album.artistId}`}>
-                  <h4 className='artist-name'>
-                    {truncateText(album.artistName, 18)}
-                  </h4>
-                </Link>
+          <div className="item" key={album.albumId}>
+            <div
+              className="album-img"
+              onClick={() => navigate(`/album/${album.albumId}/songs`)}
+            >
+              <img src={album.image} alt="" />
+              <div
+                className="play-button"
+                onClick={() => (handlePlayButton(album.albumId))}
+              >
+                <FontAwesomeIcon icon={faPlay} className='icon' />
               </div>
             </div>
-          </Link>
+            <div className="info">
+              <h3 className='album-name' >
+                {truncateText(album.albumName, 18)}
+              </h3>
+
+              <h4
+                className='artist-name'
+                onClick={() => handleNavigate(`/artist/${album.artistId}`)}
+              >
+                {truncateText(album.artistName, 18)}
+              </h4>
+            </div>
+          </div>
         ))}
       </div>
     </div>

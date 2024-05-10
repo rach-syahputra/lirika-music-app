@@ -2,17 +2,24 @@ import React from 'react'
 import "./topResultArtist.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchArtistSongs } from '../../../redux/reducers/songListSlice'
 import { Link, useNavigate } from 'react-router-dom'
 
 const TopResultArtist = ({ topResult }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const isPlayedId = useSelector((state) => state.isPlayedId.id)
 
   const handlePlayButton = async (artistId) => {
-    await dispatch(fetchArtistSongs({ artistId })).unwrap()
-    navigate(`/artist/${topResult.artistId}`)
+    try {
+      await dispatch(fetchArtistSongs({ artistId })).unwrap()
+      console.log("ISPLAYED", isPlayedId)
+      navigate(`/artist/${topResult.artistId}`)
+    } catch (error) {
+
+    }
+
   }
 
   return (
@@ -39,7 +46,7 @@ const TopResultArtist = ({ topResult }) => {
           <div className="buttons">
             <div
               className="play-button"
-              onClick={() => (handlePlayButton(topResult.artistId, topResult.songId))}
+              onClick={() => (handlePlayButton(topResult.artistId))}
             >
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>

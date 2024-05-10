@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentSongId } from '../../redux/reducers/currentSongSlice'
 import { setIsPlayedId } from '../../redux/reducers/isPlayedSlice'
 import { fetchTopSongs } from '../../redux/reducers/songListSlice'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const TopSong = () => {
   const currentSongId = useSelector((state) => state.currentSongId.id)
@@ -16,6 +16,7 @@ const TopSong = () => {
   const dispatch = useDispatch()
   const [likedIds, setLikedIds] = useState([])
   const [topSongs, setTopSongs] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getTopSongs = async () => {
@@ -48,51 +49,55 @@ const TopSong = () => {
         <h4>See All</h4>
       </div>
 
-      <div className="top-songs-list">
-        {topSongs.length > 0 && topSongs.map((song, index) => (
-          <div className="item" key={song.songId}>
+      <div className='song-list'>
+        {topSongs && topSongs.map((song, index) => (
+          <ul className="item" key={song.songId}>
+            <li className='number'>
+              {index + 1}
+            </li>
 
-            <div className="info">
-              <h4 className='number'>{index + 1}</h4>
+            <li className="song-img">
+              <img src={song.image} alt="" />
+            </li>
 
-              <Link to={`/album/${song.albumId}/songs`}>
-                <img src={song.image} alt="" />
-              </Link>
+            {isPlayedId === song.songId
+              ?
+              <li className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
+                <FontAwesomeIcon icon={faPause} className='icon' />
+              </li>
+              :
+              <li className="play-button" onClick={() => handlePlayButton(song.songId)}>
+                <FontAwesomeIcon icon={faPlay} className='icon' />
+              </li>
+            }
 
-              <div className="title-and-artist">
-                <h3 className='title'>{song.title}</h3>
-                <Link to={`/artist/${song.artistId}`}>
-                  <h4 className='artist-name'>{song.artist}</h4>
-                </Link>
-              </div>
-            </div>
+            <li className='song-title'>
+              {song.title}
+            </li>
 
-            <div className="action">
-              <h3>{song.duration}</h3>
+            <li
+              className='artist-name'
+              onClick={() => navigate(`/artist/${song.artistId}`)}
+            >
+              {song.artistName}
+            </li>
 
-              {isPlayedId === song.songId
-                ?
-                <div className="stop-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
-                  <FontAwesomeIcon icon={faPause} className='icon' />
-                </div>
-                :
-                <div className="play-button" onClick={() => handlePlayButton(song.songId)}>
-                  <FontAwesomeIcon icon={faPlay} className='icon' />
-                </div>
-              }
 
-              {isLiked(likedIds, song.songId)
-                ?
-                <div className="check-button" onClick={() => handleToggleLike(likedIds, setLikedIds, song.songId)}>
-                  <FontAwesomeIcon icon={faCheck} className='icon' />
-                </div>
-                :
-                <div className="plus-button" onClick={() => handleToggleLike(likedIds, setLikedIds, song.songId)}>
-                  <FontAwesomeIcon icon={faPlus} className='icon' />
-                </div>
-              }
-            </div>
-          </div>
+            <li className='played-count'>
+              {`${song.playedCount} Plays`}
+            </li>
+
+            <li
+              className='album-name'
+              onClick={() => navigate(`/album/${song.albumId}/songs`)}
+            >
+              {song.albumName}
+            </li>
+
+            <li className='duration'>
+              {song.duration}
+            </li>
+          </ul>
         ))}
       </div>
     </div>

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import "./home.css"
 import Sidebar from '../../components/sidebar/Sidebar'
 import HomeContent from '../../components/homeContent/HomeContent'
-import Rightbar from '../../components/rightbar/Rightbar'
 import Navbar from '../../components/navbar/Navbar'
+import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 
 const Home = () => {
   useEffect(() => {
@@ -17,8 +17,8 @@ const Home = () => {
         <Navbar />
         <div className="home-page-child">
           <HomeContent />
-          <Rightbar />
         </div>
+        <MusicPlayer />
       </div>
     </div>
   )

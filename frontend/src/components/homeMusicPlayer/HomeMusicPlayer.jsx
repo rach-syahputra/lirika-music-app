@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./homeMusicPlayer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faBackward, faBars, faForward, faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
@@ -50,7 +50,6 @@ const HomeMusicPlayer = () => {
               <h2 style={{ fontSize: isLarge && '18px' }}>{currentSongId ? title : 'Song Title'}</h2>
             </div>
             <h3>{artist}</h3>
-            <h4>Best of 2024</h4>
           </div>
           <div className="progress">
             <h4>3.45</h4>

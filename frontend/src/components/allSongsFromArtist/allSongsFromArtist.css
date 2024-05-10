@@ -43,14 +43,6 @@
   gap: 2px;
 }
 
-.all-songs-from-artist .song-list .item .song-info .artist-album-info {
-  display: flex;
-  gap: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .all-songs-from-artist .song-list .item .song-img {
   display: flex;
   align-items: center;

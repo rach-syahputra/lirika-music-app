@@ -6,7 +6,6 @@ const Rightbar = () => {
   return (
     <div className='rightbar'>
       <HomeMusicPlayer
-      // songs={songs}
       />
     </div>
   )
