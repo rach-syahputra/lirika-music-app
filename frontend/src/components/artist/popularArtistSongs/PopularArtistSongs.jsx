@@ -91,6 +91,10 @@ const PopularArtistSongs = () => {
               {song.albumName}
             </h4>
 
+            <h4 className='duration'>
+              {song.duration}
+            </h4>
+
           </div>
         ))}
         <Link to={`/artist/${artistId}/songs`}>

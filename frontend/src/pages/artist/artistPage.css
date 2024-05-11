@@ -6,6 +6,25 @@
 
 .artist-page .artist-page-child {
   padding: 10px 20px;
-  margin-left: 16%;
+  margin-left: 245px;
   margin-top: 80px;
+}
+
+@media screen and (max-width: 1024px) {
+  .artist-page .artist-page-child {
+    margin-left: 200px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .artist-page .artist-page-child {
+    margin-left: 150px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .artist-page .artist-page-child {
+    margin-left: 80px;
+  }
 }

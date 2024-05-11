@@ -1,5 +1,5 @@
 .popular-artist-songs {
-  padding: 15px;
+  padding: 15px 0;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   background-color: var(--dark-bg);
@@ -58,11 +58,12 @@
   cursor: pointer;
 }
 
-.popular-artist-songs .popular-artist-songs .header {
+.popular-artist-songs .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  padding: 0 15px;
 }
 
 .popular-artist-songs .song-list {
@@ -71,16 +72,11 @@
 
 .popular-artist-songs .song-list .item {
   position: relative;
-  display: grid;
-  grid-template-columns: 4.5% 4.5% 31% 20% 20% 20%;
+  display: flex;
   align-items: center;
-  /* display: flex;
-  align-items: center; */
-  /* gap: 10px; */
   width: 100%;
-  /* height: 70px; */
   transition: background-color 0.15s ease-in-out;
-  padding: 8px;
+  padding: 8px 0;
 }
 
 .popular-artist-songs .song-list .item h4 {
@@ -89,6 +85,15 @@
 
 .popular-artist-songs .song-list .item:hover {
   background-color: var(--dark-bg-hover);
+}
+
+.popular-artist-songs .song-list .item .number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  flex-basis: 40px;
+  color: var(--light);
 }
 
 .popular-artist-songs .song-list .item .song-info {
@@ -109,13 +114,14 @@
 .popular-artist-songs .song-list .item .song-img {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 5%;
+  flex-shrink: 0;
+  flex-basis: 57px;
+  height: 42px;
 }
 
 .popular-artist-songs .song-list .item .song-img img {
-  height: 43px;
-  width: 43px;
+  height: 42px;
+  width: 42px;
 }
 
 .popular-artist-songs .song-list .item .play-button {
@@ -151,19 +157,54 @@
 .popular-artist-songs .song-list .item .song-title {
   display: flex;
   align-items: center;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 270px;
+  max-width: 500px;
   padding-right: 10px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .popular-artist-songs .song-list .item .artist-name {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  flex-basis: 250px;
   padding-right: 10px;
+  color: var(--light);
+  font-size: 16px;
 }
 
 .popular-artist-songs .song-list .item .played-count {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  flex-basis: 250px;
   padding-right: 10px;
+  color: var(--light);
+  font-size: 16px;
+}
+
+.popular-artist-songs .song-list .item .album-name {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-basis: 250px;
+  padding-right: 10px;
+  color: var(--light);
+  font-size: 16px;
+}
+
+.popular-artist-songs .song-list .item .duration {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  flex-shrink: 0;
+  flex-basis: 60px;
+  margin-right: 20px;
+  color: var(--light);
+  font-size: 16px;
 }
 
 .popular-artist-songs .song-list .see-more {
@@ -180,4 +221,105 @@
 
 .popular-artist-songs .song-list .see-more:hover h4 {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1600px) {
+  .popular-artist-songs .song-list .item .song-title {
+    flex-shrink: 0;
+  }
+
+  .popular-artist-songs .song-list .item .played-count,
+  .popular-artist-songs .song-list .item .album-name,
+  .popular-artist-songs .song-list .item .duration {
+    flex-shrink: 1;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .popular-artist-songs .header {
+    margin-bottom: 14px;
+  }
+
+  .popular-artist-songs .header h2 {
+    font-size: 18px;
+  }
+
+  .popular-artist-songs .header h4 {
+    font-size: 12px;
+  }
+
+  .popular-artist-songs .song-list .item .song-img {
+    flex-basis: 52px;
+    height: 40px;
+  }
+
+  .popular-artist-songs .song-list .item .song-img img {
+    width: 37px;
+    height: 37px;
+  }
+
+  .popular-artist-songs .song-list .item .played-count {
+    flex-basis: 0;
+    display: none;
+  }
+
+  .popular-artist-songs .song-list .item .song-title,
+  .popular-artist-songs .song-list .item .artist-name {
+    flex-shrink: 1;
+  }
+
+  .popular-artist-songs .song-list .item .album-name {
+    flex-shrink: 2;
+  }
+
+  .popular-artist-songs .song-list .item .number,
+  .popular-artist-songs .song-list .item .song-title,
+  .popular-artist-songs .song-list .item .artist-name,
+  .popular-artist-songs .song-list .item .played-count,
+  .popular-artist-songs .song-list .item .album-name,
+  .popular-artist-songs .song-list .item .duration {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .popular-artist-songs .song-list .item .artist-name {
+    flex-shrink: 1;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .popular-artist-songs .song-list .item .song-img {
+    flex-basis: 47px;
+    height: 35px;
+  }
+
+  .popular-artist-songs .song-list .item .song-img img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .popular-artist-songs .song-list .item .number,
+  .popular-artist-songs .song-list .item .song-title,
+  .popular-artist-songs .song-list .item .artist-name,
+  .popular-artist-songs .song-list .item .played-count,
+  .popular-artist-songs .song-list .item .album-name,
+  .popular-artist-songs .song-list .item .duration {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popular-artist-songs .song-list .item .artist-name {
+    flex-basis: 200px;
+  }
+
+  .popular-artist-songs .song-list .item .song-title {
+    flex-basis: 220px;
+  }
+
+  .popular-artist-songs .song-list .item .song-title,
+  .popular-artist-songs .song-list .item .duration {
+    flex-shrink: 0;
+  }
 }

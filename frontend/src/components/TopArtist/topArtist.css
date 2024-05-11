@@ -113,11 +113,11 @@
 }
 
 .top-artist .artist-list .item .info .artist-name {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .top-artist .artist-list .item .info .country {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .top-artist .artist-list .item .info .artist-name {
@@ -190,5 +190,13 @@
   .top-artist .artist-list .item .artist-img {
     height: 100px;
     width: 100px;
+  }
+
+  .top-artist .artist-list .item .info .artist-name {
+    font-size: 13px;
+  }
+
+  .top-artist .artist-list .item .info .country {
+    font-size: 12px;
   }
 }

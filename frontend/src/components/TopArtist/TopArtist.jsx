@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { fetchArtistSongs } from '../../redux/reducers/songListSlice'
+import { truncateText } from '../../utils/truncation'
 
 const TopArtist = () => {
   const [topArtists, setTopArtists] = useState()
@@ -62,9 +63,7 @@ const TopArtist = () => {
             </div>
             <div className="info">
               <h3 className='artist-name' >
-                {artist.artistName.length > 15
-                  ? artist.artistName.slice(0, 13) + '...'
-                  : artist.artistName}
+                {truncateText(artist.artistName, 17)}
               </h3>
               <h4 className='country'>{artist.country}</h4>
             </div>
