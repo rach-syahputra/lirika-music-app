@@ -67,7 +67,7 @@
   color: var(--light);
 }
 
-.login .sign-in-form .sign-up .sign-up-botton {
+.login .sign-in-form .sign-up .sign-up-button:hover {
   color: #fff;
   text-decoration: underline;
   cursor: pointer;

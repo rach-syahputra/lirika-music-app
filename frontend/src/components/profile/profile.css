@@ -91,4 +91,9 @@
   .profile .user-info .username {
     font-size: 13px;
   }
+
+  .profile .profile-menu .list {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
 }
