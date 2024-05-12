@@ -66,7 +66,7 @@ const PopularArtistSongs = () => {
 
             {isPlayedId === song.songId
               ?
-              <div className="pause-button" onClick={() => handleStop(dispatch, setIsPlayedId)}>
+              <div className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
                 <FontAwesomeIcon icon={faPause} className='icon' />
               </div>
               :

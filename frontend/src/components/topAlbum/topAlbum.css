@@ -92,7 +92,7 @@
   transition: all 0.3s ease;
 }
 
-.top-album .album-list .item .album-img .play-button:hover .icon {
+.top-album .album-list .item .album-img .play-button .icon {
   transition: all 0.3s ease;
 }
 

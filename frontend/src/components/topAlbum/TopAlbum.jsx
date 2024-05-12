@@ -28,8 +28,7 @@ const TopAlbum = () => {
   }, [])
 
   const handlePlayButton = async (albumId) => {
-    console.log(await dispatch(fetchAlbumSongs({ albumId })).unwrap())
-    // console.log('IS PLAYED ID', isPlayedId)
+    await dispatch(fetchAlbumSongs({ albumId })).unwrap()
     navigate(`/album/${albumId}/songs`)
   }
 
@@ -42,11 +41,12 @@ const TopAlbum = () => {
       <div className="album-list">
         {topAlbums && topAlbums.map(album => (
           <div className="item" key={album.albumId}>
-            <div
-              className="album-img"
-              onClick={() => navigate(`/album/${album.albumId}/songs`)}
-            >
-              <img src={album.image} alt="" />
+            <div className="album-img">
+              <img
+                src={album.image}
+                alt=""
+                onClick={() => navigate(`/album/${album.albumId}/songs`)}
+              />
               <div
                 className="play-button"
                 onClick={() => (handlePlayButton(album.albumId))}

@@ -38,7 +38,7 @@
   flex-direction: column;
   justify-content: left;
   height: fit-content;
-  width: 180px;
+  width: fit-content;
   padding: 14px;
   flex-shrink: 1;
   margin-bottom: 8px;
@@ -61,13 +61,51 @@
 .artist-albums .album-list .item .album-img {
   display: flex;
   align-items: center;
+  height: 148px;
+  width: 148px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .artist-albums .album-list .item .album-img img {
-  height: 148px;
-  width: 148px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
+}
+
+.artist-albums .album-list .item .album-img .play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(25, 25, 32, 0.7);
+  height: 45px;
+  width: 45px;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.artist-albums .album-list .item .album-img .play-button .icon {
+  transition: all 0.3s ease;
+}
+
+.artist-albums .album-list .item:hover .album-img .play-button {
+  opacity: 1;
+  bottom: 10px;
+}
+
+.artist-albums .album-list .item .album-img .play-button:hover {
+  background-color: rgba(25, 25, 32, 1);
+  transform: scale(1.12);
+}
+
+.artist-albums .album-list .item .album-img .play-button:hover .icon {
+  transform: scale(1.12);
 }
 
 .artist-albums .album-list .item .info .album-name {
@@ -98,4 +136,34 @@
 
 .artist-albums .show-all:hover h4 {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1280px) {
+  .artist-albums .header {
+    margin-bottom: 4px;
+  }
+
+  .artist-albums .header h2 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .artist-albums {
+    padding: 12px;
+  }
+
+  .artist-albums .album-list .item .album-img {
+    height: 120px;
+    width: 120px;
+  }
+
+  .artist-albums .album-list .item .info .album-name,
+  .artist-albums .album-list .item .info .releaseYear-type {
+    font-size: 13px;
+  }
+
+  .artist-albums .show-all h4 {
+    font-size: 12px;
+  }
 }

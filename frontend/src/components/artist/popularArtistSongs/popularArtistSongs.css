@@ -10,9 +10,8 @@
 .popular-artist-songs .top-buttons {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 18px;
-  margin-bottom: 28px;
+  gap: 14px;
+  margin: 18px 0 28px 15px;
 }
 
 .popular-artist-songs .top-buttons .play-button {
@@ -129,12 +128,12 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 41.5px;
-  width: 43px;
-  height: 43px;
+  left: 40px;
+  width: 42px;
+  height: 42px;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .popular-artist-songs .song-list .item:hover .play-button {
@@ -147,11 +146,11 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 41.5px;
-  width: 43px;
-  height: 43px;
+  left: 40px;
+  width: 42px;
+  height: 42px;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .popular-artist-songs .song-list .item .song-title {
@@ -228,14 +227,25 @@
     flex-shrink: 0;
   }
 
-  .popular-artist-songs .song-list .item .played-count,
-  .popular-artist-songs .song-list .item .album-name,
-  .popular-artist-songs .song-list .item .duration {
+  .popular-artist-songs .song-list .item .artist-name {
     flex-shrink: 1;
+  }
+
+  .popular-artist-songs .song-list .item .played-count,
+  .popular-artist-songs .song-list .item .duration {
+    flex-shrink: 2;
   }
 }
 
 @media screen and (max-width: 1280px) {
+
+  .popular-artist-songs .top-buttons .play-button,
+  .popular-artist-songs .top-buttons .shuffle-button,
+  .popular-artist-songs .top-buttons .follow-button {
+    padding: 6px 14px;
+    font-size: 15px;
+  }
+
   .popular-artist-songs .header {
     margin-bottom: 14px;
   }
@@ -246,6 +256,12 @@
 
   .popular-artist-songs .header h4 {
     font-size: 12px;
+  }
+
+  .popular-artist-songs .song-list .item .play-button,
+  .popular-artist-songs .song-list .item .pause-button {
+    width: 37px;
+    height: 37px;
   }
 
   .popular-artist-songs .song-list .item .song-img {
@@ -264,12 +280,9 @@
   }
 
   .popular-artist-songs .song-list .item .song-title,
-  .popular-artist-songs .song-list .item .artist-name {
-    flex-shrink: 1;
-  }
-
+  .popular-artist-songs .song-list .item .artist-name,
   .popular-artist-songs .song-list .item .album-name {
-    flex-shrink: 2;
+    flex-shrink: 1;
   }
 
   .popular-artist-songs .song-list .item .number,
@@ -289,6 +302,13 @@
 }
 
 @media screen and (max-width: 900px) {
+
+  .popular-artist-songs .song-list .item .play-button,
+  .popular-artist-songs .song-list .item .pause-button {
+    width: 32px;
+    height: 32px;
+  }
+
   .popular-artist-songs .song-list .item .song-img {
     flex-basis: 47px;
     height: 35px;
@@ -299,6 +319,10 @@
     height: 32px;
   }
 
+  .popular-artist-songs .song-list .item .artist-name {
+    flex-shrink: 1;
+  }
+
   .popular-artist-songs .song-list .item .number,
   .popular-artist-songs .song-list .item .song-title,
   .popular-artist-songs .song-list .item .artist-name,
@@ -307,9 +331,32 @@
   .popular-artist-songs .song-list .item .duration {
     font-size: 13px;
   }
+
+  .popular-artist-songs .song-list .see-more h4 {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+
+  .popular-artist-songs .top-buttons {
+    gap: 12px;
+  }
+
+  .popular-artist-songs .top-buttons .play-button,
+  .popular-artist-songs .top-buttons .shuffle-button,
+  .popular-artist-songs .top-buttons .follow-button {
+    padding: 4px 12px;
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .popular-artist-songs .top-buttons .play-button .icon,
+  .popular-artist-songs .top-buttons .shuffle-button .icon,
+  .popular-artist-songs .top-buttons .follow-button .icon {
+    font-size: 12px;
+  }
+
   .popular-artist-songs .song-list .item .artist-name {
     flex-basis: 200px;
   }

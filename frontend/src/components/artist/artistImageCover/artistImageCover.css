@@ -43,7 +43,7 @@
   bottom: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .artist-image-cover-container .artist-image-cover .artist-details .artist-name {
@@ -52,4 +52,24 @@
 
 .artist-image-cover-container .artist-image-cover .artist-details .monthly-listener {
   font-weight: 100;
+}
+
+@media screen and (max-width: 1280px) {
+  .artist-image-cover-container .artist-image-cover .artist-details .artist-name {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .artist-image-cover-container .artist-image-cover .artist-details {
+    gap: 4px;
+  }
+
+  .artist-image-cover-container .artist-image-cover .artist-details .artist-name {
+    font-size: 26px;
+  }
+
+  .artist-image-cover-container .artist-image-cover .artist-details .monthly-listener {
+    font-size: 14px;
+  }
 }

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import "./artistAlbums.css"
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { fetchAlbumSongs } from '../../../redux/reducers/songListSlice'
 
 const ArtistAlbums = () => {
   const { artistId } = useParams()
   const [albums, setAlbums] = useState([])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getAllAlbumFromArtist()
@@ -22,6 +28,11 @@ const ArtistAlbums = () => {
     }
   }
 
+  const handlePlayButton = async (albumId) => {
+    await dispatch(fetchAlbumSongs({ albumId })).unwrap()
+    navigate(`/album/${albumId}/songs`)
+  }
+
   return (
     <div className='artist-albums'>
       <div className="header">
@@ -30,17 +41,27 @@ const ArtistAlbums = () => {
 
       <div className="album-list">
         {albums && albums.map((album) => (
-          <Link to={`/album/${album.albumId}/songs`} key={album.albumId}>
-            <div className="item" >
-              <div className="album-img">
-                <img src={album.image} alt="" />
-              </div>
-              <div className="info">
-                <h3 className='album-name' >{album.albumName}</h3>
-                <h4 className='releaseYear-type'>2017 • Album</h4>
+          <div className="item" key={album.albumId}>
+            <div
+              className="album-img"
+            >
+              <img
+                src={album.image}
+                alt=""
+                onClick={() => navigate(`/album/${album.albumId}/songs`)}
+              />
+              <div
+                className="play-button"
+                onClick={() => (handlePlayButton(album.albumId))}
+              >
+                <FontAwesomeIcon icon={faPlay} className='icon' />
               </div>
             </div>
-          </Link>
+            <div className="info">
+              <h3 className='album-name' >{album.albumName}</h3>
+              <h4 className='releaseYear-type'>2017 • Album</h4>
+            </div>
+          </div>
         ))}
       </div>
       <div className="show-all">
