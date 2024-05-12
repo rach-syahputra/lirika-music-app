@@ -61,7 +61,7 @@ img {
 
 html,
 body {
-  background: linear-gradient(#050505, #18181d);
+  background: var(--darker-bg);
   height: 100vh;
 }
 

@@ -44,10 +44,8 @@ const AllSongsFromArtist = () => {
       <div className='song-list'>
         {songs && songs.map((song, index) => (
           <ul className="item" key={song.songId}>
-            <li>
-              <h3 className='no'>
-                {index + 1}
-              </h3>
+            <li className='number'>
+              {index + 1}
             </li>
 
             <li className="song-img">
@@ -65,34 +63,24 @@ const AllSongsFromArtist = () => {
               </li>
             }
 
-            <li>
-              <h3 className='song-title'>
-                {song.title}
-              </h3>
+            <li className='song-title'>
+              {song.title}
             </li>
 
-            <li>
-              <h4 className='artist-name'>
-                {song.artistName}
-              </h4>
+            <li className='artist-name'>
+              {song.artistName}
             </li>
 
-            <li>
-              <h4 className='played-count'>
-                {`${song.playedCount} Plays`}
-              </h4>
+            <li className='played-count'>
+              {`${song.playedCount} Plays`}
             </li>
 
-            <li>
-              <h4 className='album-name'>
-                {song.albumName}
-              </h4>
+            <li className='album-name'>
+              {song.albumName}
             </li>
 
-            <li >
-              <h4 className='duration'>
-                {song.duration}
-              </h4>
+            <li className='duration'>
+              {song.duration}
             </li>
           </ul>
         ))}

@@ -10,6 +10,7 @@
 }
 
 .all-songs-from-album .album-container {
+  width: 100%;
   padding: 15px 10px;
   margin-bottom: 16px;
   display: flex;
@@ -18,6 +19,8 @@
 }
 
 .all-songs-from-album .album-container .img-container {
+  display: flex;
+  flex-shrink: 0;
   width: 230px;
   height: 230px;
   border-radius: 12px;
@@ -30,14 +33,18 @@
 }
 
 .all-songs-from-album .album-container .album-info {
+  width: fit-content;
   display: flex;
+  flex-basis: 200px;
+  flex-grow: 1;
   flex-direction: column;
   gap: 26px;
 }
 
 .all-songs-from-album .album-container .album-info .album-name {
   height: 72px;
-  width: 600px;
+  display: flex;
+  flex-grow: 1;
   line-height: 36px;
   font-size: 32px;
 }
@@ -109,21 +116,6 @@
   background-color: var(--dark-bg-hover);
 }
 
-.all-songs-from-album .song-list .item .song-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.all-songs-from-album .song-list .item .song-info .artist-album-info {
-  display: flex;
-  gap: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .all-songs-from-album .song-list .item .play-button {
   display: flex;
   position: absolute;
@@ -159,36 +151,40 @@
 }
 
 .all-songs-from-album .song-list .item .number {
-  width: 30px;
+  display: flex;
+  flex-shrink: 0;
+  flex-basis: 30px;
 }
 
 .all-songs-from-album .song-list .item .song-title {
   display: flex;
   align-items: center;
   padding-right: 10px;
-  min-width: 500px;
+  flex-basis: 300px;
   flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .all-songs-from-album .song-list .item .artist-name {
   display: flex;
   align-items: center;
   padding-right: 10px;
-  min-width: 250px;
+  flex-basis: 300px;
 }
 
 .all-songs-from-album .song-list .item .played-count {
   display: flex;
   align-items: center;
   padding-right: 10px;
-  min-width: 250px;
+  flex-basis: 250px;
 }
 
 .all-songs-from-album .song-list .item .duration {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding-right: 10px;
-  min-width: 100px;
+  flex-basis: 100px;
 }
 
 .all-songs-from-album .song-list .see-more {
@@ -205,4 +201,104 @@
 
 .all-songs-from-album .song-list .see-more:hover h4 {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1366px) {
+  .all-songs-from-album .song-list .item .song-title {
+    flex-shrink: 0;
+  }
+
+  .all-songs-from-album .song-list .item .artist-name,
+  .all-songs-from-album .song-list .item .played-count,
+  .all-songs-from-album .song-list .item .duration {
+    flex-shrink: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .all-songs-from-album .album-container .album-info .album-name {
+    font-size: 28px;
+  }
+
+  .all-songs-from-album .album-container .buttons .play-button,
+  .all-songs-from-album .album-container .buttons .shuffle-button {
+    padding: 8px 14px;
+  }
+
+  .all-songs-from-album .song-list .item .played-count {
+    flex-basis: 0;
+    display: none;
+  }
+
+  .all-songs-from-album .song-list .item .song-title,
+  .all-songs-from-album .song-list .item .artist-name,
+  .all-songs-from-album .song-list .item .duration {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .all-songs-from-album .album-container .img-container {
+    width: 210px;
+    height: 210px;
+  }
+
+  .all-songs-from-album .album-container .album-info .album-name {
+    font-size: 26px;
+  }
+
+  .all-songs-from-album .album-container .buttons .play-button,
+  .all-songs-from-album .album-container .buttons .shuffle-button {
+    padding: 6px 10px;
+  }
+
+  .all-songs-from-album .album-container .buttons .play-button .icon,
+  .all-songs-from-album .album-container .buttons .shuffle-button .icon {
+    font-size: 15px;
+  }
+
+  .all-songs-from-album .album-container .album-info .more-album-details .album-and-artist-details,
+  .all-songs-from-album .album-container .album-info .more-album-details .total-songs-and-duration {
+    font-size: 15px;
+  }
+
+  .all-songs-from-album .song-list .item .song-title {
+    flex-shrink: 1;
+  }
+
+  .all-songs-from-album .song-list .item .artist-name {
+    flex-shrink: 2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .all-songs-from-album .album-container .img-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .all-songs-from-album .album-container .album-info .album-name {
+    font-size: 24px;
+  }
+
+  .all-songs-from-album .album-container .buttons .play-button,
+  .all-songs-from-album .album-container .buttons .shuffle-button {
+    padding: 4px 8px;
+    font-size: 15px;
+  }
+
+  .all-songs-from-album .album-container .buttons .play-button .icon,
+  .all-songs-from-album .album-container .buttons .shuffle-button .icon {
+    font-size: 14px;
+  }
+
+  .all-songs-from-album .song-list .item .song-title {
+    flex-basis: 250px;
+    flex-shrink: 0;
+  }
+
+  .all-songs-from-album .song-list .item .artist-name {
+    flex-basis: 200px;
+    flex-shrink: 0;
+  }
 }

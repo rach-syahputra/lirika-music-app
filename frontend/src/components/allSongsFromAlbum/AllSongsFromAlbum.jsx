@@ -48,7 +48,7 @@ const AllSongsFromAlbum = () => {
   return (
     <div className="all-songs-from-album">
       {songs && (
-        <>
+        <div>
           <div className="album-container">
             <div className="img-container">
               <img src={image} alt="" />
@@ -117,7 +117,7 @@ const AllSongsFromAlbum = () => {
             ))}
 
           </div>
-        </>
+        </div>
       )}
     </div>
   )
