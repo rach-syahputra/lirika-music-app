@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import ArtistPage from './pages/artist/ArtistPage.jsx'
 import ArtistSongs from './pages/artistSongs/ArtistSongs.jsx'
 import AlbumSongs from './pages/albumSongs/AlbumSongs.jsx'
+import Profile from './pages/profile/Profile.jsx'
 
 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/register/identity' element={<RegisterIdentity />} />
+        <Route path='/profile' element={<Profile />} />
 
         <Route element={<ProtectedRoute />}>
 
