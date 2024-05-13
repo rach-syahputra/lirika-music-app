@@ -48,7 +48,7 @@ const TopAlbum = () => {
                 onClick={() => navigate(`/album/${album.albumId}/songs`)}
               />
               <div
-                className='absolute flex items-center justify-center rounded-full w-12 h-12 bg-gray-dark bg-opacity-80 hover:bg-opacity-100 opacity-0 group-hover:opacity-100 hover:scale-110 -bottom-3 group-hover:bottom-4 right-4 duration-300'
+                className='absolute flex items-center justify-center rounded-full w-12 h-12 bg-gray-dark bg-opacity-80 hover:bg-opacity-100 opacity-0 group-hover:opacity-100 hover:scale-110 -bottom-3 group-hover:bottom-4 right-4 duration-300 cursor-pointer'
                 onClick={() => (handlePlayButton(album.albumId))}
               >
                 <FontAwesomeIcon icon={faPlay} className='icon' />
@@ -60,8 +60,8 @@ const TopAlbum = () => {
               </h3>
 
               <h4
-                className='text-base'
-                onClick={() => handleNavigate(`/artist/${album.artistId}`)}
+                className='text-base hover:underline cursor-pointer'
+                onClick={() => navigate(`/artist/${album.artistId}`)}
               >
                 {truncateText(album.artistName, 18)}
               </h4>

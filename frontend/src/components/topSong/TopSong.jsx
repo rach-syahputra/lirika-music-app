@@ -61,14 +61,14 @@ const TopSong = () => {
               {isPlayedId === song.songId
                 ?
                 <li
-                  className='absolute flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-80'
+                  className='absolute flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-80 cursor-pointer'
                   onClick={() => handleStop(setIsPlayedId, dispatch)}
                 >
                   <FontAwesomeIcon icon={faPause} className='icon' />
                 </li>
                 :
                 <li
-                  className='hidden absolute group-hover:flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-80'
+                  className='hidden absolute group-hover:flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-80 cursor-pointer'
                   onClick={() => handlePlayButton(song.songId)}
                 >
                   <FontAwesomeIcon icon={faPlay} className='icon' />
@@ -81,7 +81,7 @@ const TopSong = () => {
             </li>
 
             <li
-              className='flex grow basis-[250px] pr-2 text-sm md:text-base xl:text-lg text-gray'
+              className='flex grow basis-[250px] pr-2 text-sm md:text-base xl:text-lg text-gray hover:underline cursor-pointer'
               onClick={() => navigate(`/artist/${song.artistId}`)}
             >
               {song.artistName}
@@ -93,7 +93,7 @@ const TopSong = () => {
             </li>
 
             <li
-              className='flex basis-[250px] pr-2 text-sm md:text-base xl:text-lg text-gray'
+              className='flex basis-[250px] pr-2 text-sm md:text-base xl:text-lg text-gray hover:underline cursor-pointer'
               onClick={() => navigate(`/album/${song.albumId}/songs`)}
             >
               {song.albumName}
