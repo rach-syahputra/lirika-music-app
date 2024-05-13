@@ -15,7 +15,7 @@ const Home = () => {
       <Sidebar currentPage='home' />
       <div className="home-page">
         <Navbar />
-        <div className="home-page-child">
+        <div className="content-page-wrapper">
           <HomeContent />
         </div>
         <MusicPlayer />

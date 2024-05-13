@@ -4,20 +4,47 @@
 
 @layer components {
 
-  /* componenent wrapper */
+  /* component style */
+  .content-page-wrapper {
+    display: flex;
+    padding: 8px 16px;
+    margin-left: 80px;
+    margin-top: 60px;
+
+    @screen md {
+      margin-left: 200px;
+    }
+
+    @screen lg {
+      margin-left: 245px;
+    }
+  }
+
   .component-wrapper {
     background-color: theme("colors.gray-dark");
     color: theme("colors.white");
     width: 100%;
     padding: 12px;
-    @apply w-full;
+    border-radius: 6px;
 
     @screen md {
       padding: 16px
     }
   }
 
-  /* end of component wrapper */
+  .component-header {
+    color: theme("colors.white");
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+
+    @screen md {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  /* end of component style */
 
   /* button styles */
   .default-button-style {
@@ -73,6 +100,17 @@
 @layer utilities {
 
   /* song items style */
+  .song-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .song-item {
+    display: flex;
+    align-items: center;
+  }
+
   .song-title {
     color: theme('colors.white');
     font-weight: bold;
@@ -98,4 +136,13 @@
   }
 
   /* end of song items style */
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--light);
+    border-radius: 50px;
+  }
 }

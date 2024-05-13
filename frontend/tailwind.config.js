@@ -8,6 +8,7 @@ export default {
     colors: {
       'gray': '#919191',
       'gray-dark': '#191920',
+      'gray-dark-hover': '#24242d',
       'green-light': '#1db954',
       'white': "#f8f9fa",
       'white-hover': "#e9ecef"
