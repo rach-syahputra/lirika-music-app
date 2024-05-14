@@ -46,11 +46,8 @@ const TopArtist = () => {
       <ul className='flex w-full pb-4 gap-4 overflow-hidden hover:overflow-x-scroll custom-scrollbar'>
         {topArtists && topArtists.map(artist => (
           <li className='flex flex-col gap-2' key={artist.artistId}>
-            <div
-              className='flex relative h-[150px] w-[150px] md:h-[180px] md:w-[180px] group'
-              onClick={() => navigate(`/artist/${artist.artistId}`)}
-            >
-              <img src={artist.image} alt='' className='cursor-pointer rounded-full' />
+            <div className='flex relative h-[150px] w-[150px] md:h-[180px] md:w-[180px] group'>
+              <img src={artist.image} alt='' className='cursor-pointer rounded-full' onClick={() => navigate(`/artist/${artist.artistId}`)} />
               <div
                 className='absolute flex items-center justify-center rounded-full w-12 h-12 bg-gray-dark bg-opacity-80 hover:bg-opacity-100 opacity-0 group-hover:opacity-100 hover:scale-110 -bottom-3 group-hover:bottom-4 right-4 duration-300 cursor-pointer'
                 onClick={() => (handlePlayButton(artist.artistId))}
