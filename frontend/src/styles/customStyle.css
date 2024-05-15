@@ -33,14 +33,22 @@
   }
 
   .component-header {
-    color: theme("colors.white");
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 32px;
+    margin-bottom: 16px;
+
+    .header {
+      color: theme("colors.white");
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 28px;
+    }
 
     @screen md {
-      font-size: 28px;
-      line-height: 36px;
+      .header {
+        color: theme("colors.white");
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+      }
     }
   }
 
@@ -84,18 +92,76 @@
 
   /* end of button styles */
 
-  /* song items style */
-  .song-image {
-    height: 36px;
-    width: 36px;
+  /* LIST ITEMS COMPONENT */
+  .list-component {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 16px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .list-component:hover {
+    overflow-x: scroll;
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .image-container {
+    display: flex;
+    position: relative;
+    height: 150px;
+    width: 150px;
 
     @screen md {
-      height: 42px;
-      width: 42px;
+      height: 180px;
+      width: 180px;
     }
   }
 
-  /* end of song items */
+  .round-image-list {
+    border-radius: 9999px;
+    cursor: pointer;
+  }
+
+  .square-image-list {
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  /* rounded play button */
+  .rounded-play-button {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 48px;
+    bottom: -12px;
+    right: 16px;
+    background-color: rgba(25, 25, 32, 0.7);
+    border-radius: 9999px;
+    opacity: 0;
+    background-color: rgba(#191920, 0.8);
+    transition: all 300ms;
+    cursor: pointer;
+  }
+
+  .rounded-play-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(25, 25, 32, 1);
+  }
+
+  .image-container:hover .rounded-play-button {
+    opacity: 1;
+    bottom: 16px;
+  }
+
+  /* end of LIST ITEMS COMPONENT */
 }
 
 @layer utilities {

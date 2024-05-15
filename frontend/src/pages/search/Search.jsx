@@ -41,7 +41,7 @@ const Search = () => {
       <Sidebar currentPage='search' />
       <div className="search-page">
         <Navbar />
-        <div className="search-page-child">
+        <div className="content-page-wrapper">
           <SearchResultContent
             topResult={topResult}
             artists={artists}

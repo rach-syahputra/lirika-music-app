@@ -1,5 +1,5 @@
 import React from 'react'
-import "./topResultArtist.css"
+// import './topResultArtist.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,7 +14,7 @@ const TopResultArtist = ({ topResult }) => {
   const handlePlayButton = async (artistId) => {
     try {
       await dispatch(fetchArtistSongs({ artistId })).unwrap()
-      console.log("ISPLAYED", isPlayedId)
+      console.log('ISPLAYED', isPlayedId)
       navigate(`/artist/${topResult.artistId}`)
     } catch (error) {
       console.log('TopResultArtist Error', error.message)
@@ -23,34 +23,38 @@ const TopResultArtist = ({ topResult }) => {
   }
 
   return (
-    <div className="top-result-artist">
-      <div className="item">
-        <div className="artist-img">
+    // wrapper
+    <div className='overflow-hidden'>
+      {/* item container */}
+      <div className='flex items-center gap-4'>
+        {/* artist image */}
+        <div className='flex h-32 w-32 md:h-36 md:w-36 rounded-full overflow-hidden'>
           <Link to={`/artist/${topResult.artistId}`}>
-            <img src={topResult.artist_image} alt="" />
+            <img
+              src={topResult.artist_image}
+              alt=''
+              className='h-full w-full'
+            />
           </Link>
         </div>
-        <div className="info">
-          <div className="artist-name">
-            <Link to={`/artist/${topResult.artistId}`}>
-              <h2>{topResult.artist_name}</h2>
-            </Link>
-          </div>
-          <div className="details">
-            <h4>
-              <span className='type'>Artist</span>
-              •
-              <span className='follower'>100K Follower</span>
-            </h4>
-          </div>
-          <div className="buttons">
+        {/* artist info */}
+        <div className='flex flex-col gap-4'>
+
+          <Link to={`/artist/${topResult.artistId}`}>
+            <span className='w-fit text-base md:text-xl font-bold'>{topResult.artist_name}</span>
+          </Link>
+
+          <span className='text-sm text-gray'>Artist • 100k Follower</span>
+
+          {/* buttons */}
+          <div className='flex gap-3'>
             <div
-              className="play-button"
+              className='light-button'
               onClick={() => (handlePlayButton(topResult.artistId))}
             >
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
-            <div className="shuffle-button">
+            <div className='light-button'>
               <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
             </div>
           </div>

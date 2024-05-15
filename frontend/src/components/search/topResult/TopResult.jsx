@@ -1,17 +1,17 @@
 import React from 'react'
-import "./topResult.css"
-import TopResultArtist from "../topResultArtist/TopResultArtist"
-import TopResultSong from "../topResultSong/TopResultSong"
-import TopResultAlbum from "../topResultAlbum/TopResultAlbum"
+// import './topResult.css'
+import TopResultArtist from '../topResultArtist/TopResultArtist'
+import TopResultSong from '../topResultSong/TopResultSong'
+import TopResultAlbum from '../topResultAlbum/TopResultAlbum'
 
 const TopResult = ({ topResult }) => {
   return (
-    <div className='top-result'>
-      <div className="header">
-        <h2>Top Result</h2>
+    <div className='component-wrapper'>
+      <div className='component-header'>
+        <span className='header'>Top Result</span>
       </div>
 
-      <div className="top-result-content">
+      <div className='w-full'>
         {
           topResult.type === 'artist' ? <TopResultArtist topResult={topResult} /> :
             topResult.type === 'song' ? <TopResultSong topResult={topResult} /> :

@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import "./topResultAlbum.css"
+import React from 'react'
+// import './topResultAlbum.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
-import { handlePlay } from '../../../handlers/handleSong'
 import { useDispatch } from 'react-redux'
 import { fetchAlbumSongs } from '../../../redux/reducers/songListSlice'
-import { setCurrentSongId } from '../../../redux/reducers/currentSongSlice'
-import { setIsPlayedId } from '../../../redux/reducers/isPlayedSlice'
 import { useNavigate } from 'react-router-dom'
 
 const TopResultAlbum = ({ topResult }) => {
@@ -20,27 +17,37 @@ const TopResultAlbum = ({ topResult }) => {
   }
 
   return (
-    <div className="top-result-album">
-      <div className="item">
-        <div className="album-img">
-          <img src={topResult.album_image} alt="" />
+    // wrapper
+    <div className='overflow-hidden'>
+      {/* item container */}
+      <div className='flex items-center gap-4'>
+        {/* image container */}
+        <div className='flex h-32 w-32 md:h-36 md:w-36 rounded-md overflow-hidden'>
+          <img
+            src={topResult.album_image}
+            alt=''
+            className='h-full w-full'
+          />
         </div>
-        <div className="info">
-          <div className="album-name">
-            <h2>{topResult.album_name}</h2>
+
+        {/* album info */}
+        <div className='flex flex-col gap-4'>
+          <span className='w-fit text-base md:text-xl font-bold'>
+            {topResult.album_name}
+          </span>
+
+          <div className='flex gap-1 text-sm text-gray'>
+            <span>Album</span>
+            •
+            <span>{topResult.artist_name}</span>
           </div>
-          <div className="details">
-            <h4>
-              <span className='type'>Album</span>
-              •
-              <span className='artist-name'>{topResult.artist_name}</span>
-            </h4>
-          </div>
-          <div className="buttons">
-            <div className="play-button" onClick={() => handlePlayButton(topResult.albumId)}>
+
+          {/* buttons */}
+          <div className='flex gap-3'>
+            <div className='light-button' onClick={() => handlePlayButton(topResult.albumId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
-            <div className="shuffle-button">
+            <div className='light-button'>
               <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./topResultSong.css"
+import './topResultSong.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
@@ -16,31 +16,40 @@ const TopResultSong = ({ topResult }) => {
   }
 
   return (
-    <div className="top-result-song">
-      <div className="item">
-        <div className="album-img">
-          <img src={topResult.album_image} alt="" />
+    // wrapper
+    <div className='overflow-hidden'>
+      {/* item container */}
+      <div className='flex items-center gap-4'>
+        {/* image container */}
+        <div className='flex h-32 w-32 md:h-36 md:w-36 rounded-md overflow-hidden'>
+          <img
+            src={topResult.album_image}
+            alt=''
+            className='h-full w-full'
+          />
         </div>
-        <div className="info">
-          <div className="song-title">
-            <h2>{topResult.song_title}</h2>
+
+        {/* song info */}
+        <div className='flex flex-col gap-4'>
+          <span className='w-fit text-base md:text-xl font-bold'>{topResult.song_title}</span>
+
+          <div className='flex gap-1 text-sm text-gray'>
+            <span>Song</span>
+            •
+            <span>{topResult.artist_name}</span>
+            •
+            <span>{topResult.album_name}</span>
+            •
+            <span>{topResult.duration}</span>
           </div>
-          <div className="details">
-            <h4>
-              <span className='type'>Song</span>
-              •
-              <span className='artist-name'>{topResult.artist_name}</span>
-              •
-              <span className='album'>{topResult.album_name}</span>
-              •
-              <span className='duration'>{topResult.duration}</span>
-            </h4>
-          </div>
-          <div className="buttons">
-            <div className="play-button" onClick={() => handlePlayButton(topResult.artistId, topResult.songId)}>
+
+
+          {/* buttons */}
+          <div className='flex gap-3'>
+            <div className='light-button' onClick={() => handlePlayButton(topResult.artistId, topResult.songId)}>
               <FontAwesomeIcon icon={faPlay} className='icon' /> Play
             </div>
-            <div className="add-button">
+            <div className='light-button'>
               <FontAwesomeIcon icon={faPlus} className='icon' /> Add
             </div>
           </div>

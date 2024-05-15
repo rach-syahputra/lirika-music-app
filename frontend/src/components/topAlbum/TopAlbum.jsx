@@ -34,27 +34,28 @@ const TopAlbum = () => {
 
   return (
     <div className='component-wrapper h-[304px] md:h-[344px] mb-4'>
-      <div className='flex mb-4'>
-        <span className='text-xl md:text-2xl font-bold'>Top Albums</span>
+      <div className='component-header'>
+        <span className='header'>Top Albums</span>
       </div>
 
-      <ul className='flex w-full pb-4 gap-4 overflow-hidden hover:overflow-x-scroll custom-scrollbar'>
+      <ul className='list-component custom-scrollbar'>
         {topAlbums && topAlbums.map(album => (
-          <li className='flex flex-col gap-2' key={album.albumId}>
-            <div className='flex relative h-36 w-36 md:h-44 md:w-44 rounded-sm group'>
+          <li className='list-container' key={album.albumId}>
+            <div className='image-container'>
               <img
                 src={album.image}
                 alt=''
                 onClick={() => navigate(`/album/${album.albumId}/songs`)}
-                className='cursor-pointer'
+                className='square-image-list'
               />
               <div
-                className='absolute flex items-center justify-center rounded-full w-12 h-12 bg-gray-dark bg-opacity-80 hover:bg-opacity-100 opacity-0 group-hover:opacity-100 hover:scale-110 -bottom-3 group-hover:bottom-4 right-4 duration-300 cursor-pointer'
+                className='rounded-play-button'
                 onClick={() => (handlePlayButton(album.albumId))}
               >
                 <FontAwesomeIcon icon={faPlay} className='icon' />
               </div>
             </div>
+            {/* info */}
             <div className='flex flex-col'>
               <span className='text-sm lg:text-base font-bold' >
                 {truncateText(album.albumName, 18)}

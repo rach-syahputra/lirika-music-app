@@ -1,21 +1,24 @@
 import React from 'react'
-import "./artistSearch.css"
+// import './artistSearch.css'
 import { truncateText } from '../../../utils/truncation'
 
 const ArtistSearch = ({ artists }) => {
   return (
-    <div className="artistSearch">
-      <div className="header">
-        <h2>Artist</h2>
+    <div className='component-wrapper'>
+      <div className='component-header'>
+        <span className='header'>Artist</span>
       </div>
-
-      <div className="artistList">
+      {/* artist list container */}
+      <div className='artistList'>
         {artists && artists.map(artist => (
-          <div className="item" key={artist.artistId}>
-            <div className="artistImg">
-              <img src={artist.image} alt="" />
+          // artist list
+          <div className='item' key={artist.artistId}>
+            {/* artist image */}
+            <div className='artistImg'>
+              <img src={artist.image} alt='' />
             </div>
-            <div className="info">
+            {/* details */}
+            <div className='info'>
               <h3 className='artistName' >
                 {truncateText(artist.artistName, 16)}
               </h3>
