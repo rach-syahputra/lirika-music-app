@@ -50,18 +50,18 @@
   .default-button-style {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 14px;
-    border-radius: 24px;
-    font-size: 16px;
-    line-height: 24px;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 21px;
     cursor: pointer;
 
     @screen md {
-      gap: 8px;
+      gap: 6px;
       padding: 4px 16px;
-      font-size: 18px;
-      line-height: 28px;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 
@@ -79,7 +79,7 @@
     @apply default-button-style;
     background-color: theme('colors.gray-dark');
     color: theme('colors.white');
-    border: 1.8px solid theme('colors.white');
+    border: 1px solid theme('colors.white');
   }
 
   /* end of button styles */

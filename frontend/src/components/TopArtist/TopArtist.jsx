@@ -38,13 +38,17 @@ const TopArtist = () => {
   }
 
   return (
+    // wrapper
     <div className='mt-4 p-4 h-[310px] md:h-[350px] bg-gray-dark rounded-md mb-4'>
+      {/* header */}
       <div className='flex mb-4'>
         <h2 className='text-xl md:text-2xl'>Top Artists</h2>
       </div>
 
+      {/* top artist container */}
       <ul className='flex w-full pb-4 gap-4 overflow-hidden hover:overflow-x-scroll custom-scrollbar'>
         {topArtists && topArtists.map(artist => (
+          // top artist list
           <li className='flex flex-col gap-2' key={artist.artistId}>
             <div className='flex relative h-[150px] w-[150px] md:h-[180px] md:w-[180px] group'>
               <img src={artist.image} alt='' className='cursor-pointer rounded-full' onClick={() => navigate(`/artist/${artist.artistId}`)} />
@@ -56,10 +60,10 @@ const TopArtist = () => {
               </div>
             </div>
             <div className='flex flex-col items-center'>
-              <h3 className='text-base xl:text-lg font-bold' >
+              <h3 className='text-base font-bold' >
                 {truncateText(artist.artistName, 17)}
               </h3>
-              <h4 className='text-base'>{artist.country}</h4>
+              <h4 className='text-sm md:text-base'>{artist.country}</h4>
             </div>
           </li>
         ))}

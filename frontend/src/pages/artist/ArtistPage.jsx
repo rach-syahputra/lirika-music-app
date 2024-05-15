@@ -15,7 +15,7 @@ const ArtistPage = () => {
       <Sidebar />
       <div className="artist-page">
         <Navbar />
-        <div className="artist-page-child">
+        <div className="content-page-wrapper">
           <ArtistContent />
         </div>
       </div>

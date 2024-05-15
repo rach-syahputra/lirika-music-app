@@ -40,7 +40,7 @@ const MusicPlayer = () => {
   }
 
   return (
-
+    // wrapper
     <div className='fixed flex h-[75px] items-center w-full bottom-0 left-0 bg-dark z-20'>
       <div className='flex items-center h-full pl-3 gap-3 flex-1'>
         <div className='w-[38px] h-[38px] lg:w-[45px] lg:h-[45px]'>

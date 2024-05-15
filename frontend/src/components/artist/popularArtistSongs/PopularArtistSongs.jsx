@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import "./popularArtistSongs.css"
+import './popularArtistSongs.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIsPlayedId } from '../../../redux/reducers/isPlayedSlice'
@@ -16,6 +16,7 @@ const PopularArtistSongs = () => {
   const [firstSongId, setFirstSongId] = useState(null)
   const isPlayedId = useSelector((state) => state.isPlayedId.id)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getPopularSongsFromArtist()
@@ -39,70 +40,89 @@ const PopularArtistSongs = () => {
   }
 
   return (
-    <div className='popular-artist-songs'>
-      <div className="top-buttons">
-        <div className='play-button' onClick={() => handlePlayButton(firstSongId)}>
-          <FontAwesomeIcon icon={faPlay} className='icon' /> Play
+    // wrapper
+    <div className='component-wrapper'>
+      {/* buttons container */}
+      <div className='flex items-center gap-4'>
+        <div className='light-button' onClick={() => handlePlayButton(firstSongId)}>
+          <FontAwesomeIcon icon={faPlay} /> Play
         </div>
-        <div className='shuffle-button'>
-          <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
+        <div className='light-button'>
+          <FontAwesomeIcon icon={faShuffle} /> Shuffle
         </div>
-        <div className='follow-button'>
+        <div className='dark-button'>
           Follow
         </div>
       </div>
-      <div className="header">
-        <h2>Songs</h2>
+
+      {/* header */}
+      <div className='py-4'>
+        <span className='text-xl md:text-2xl font-bold'>Songs</span>
       </div>
-      <div className='song-list'>
-        {songs && songs.map((song, index) => (
-          <div className="item" key={song.songId}>
-            <h4 className='number'>
+
+      {/* song list container */}
+      <ul className='flex flex-col'>
+        {songs.map((song, index) => (
+          // song list item container
+          <li className='flex w-full h-14 lg:h-16 items-center group' key={song.songId}>
+            <span className='hidden md:flex shrink-0 w-6 text-base text-gray'>
               {index + 1}
-            </h4>
-            <div className="song-img">
-              <img src={song.image} alt="" />
-            </div>
+            </span>
+            {/* image and buttons container */}
+            <span className='flex shrink-0 relative h-9 md:h-10 lg:h-11 w-14'>
+              <img className='h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11' src={song.image} alt='' />
+              {isPlayedId === song.songId
+                ?
+                <span
+                  className='absolute flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-60 cursor-pointer'
+                  onClick={() => handleStop(setIsPlayedId, dispatch)}
+                >
+                  <FontAwesomeIcon icon={faPause} className='icon' />
+                </span>
+                :
+                <span
+                  className='hidden absolute group-hover:flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-60 cursor-pointer'
+                  onClick={() => handlePlayButton(song.songId)}
+                >
+                  <FontAwesomeIcon icon={faPlay} className='icon' />
+                </span>
+              }
+            </span>
 
-            {isPlayedId === song.songId
-              ?
-              <div className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
-                <FontAwesomeIcon icon={faPause} className='icon' />
-              </div>
-              :
-              <div className="play-button" onClick={() => handlePlayButton(song.songId)}>
-                <FontAwesomeIcon icon={faPlay} className='icon' />
-              </div>
-            }
-
-            <h3 className='song-title' >
+            <span className='flex grow-[2] basis-[300px] pr-2 text-sm md:text-base font-bold'>
               {song.title}
-            </h3>
+            </span>
 
-            <h4 className='artist-name'>
+            <span
+              className='flex grow basis-[250px] pr-2 text-sm md:text-base text-gray hover:underline cursor-pointer'
+              onClick={() => navigate(`/artist/${song.artistId}`)}
+            >
               {song.artistName}
-            </h4>
+            </span>
 
-            <h4 className='played-count'>
-              {`${song.playedCount} plays`}
-            </h4>
 
-            <h4 className='album-name'>
+            <span className='hidden xl:flex xl:basis-[200px] pr-2 text-sm md:text-base text-gray'>
+              {`${song.playedCount} Plays`}
+            </span>
+
+            <span
+              className='flex basis-[250px] pr-2 text-sm md:text-base text-gray hover:underline cursor-pointer'
+              onClick={() => navigate(`/album/${song.albumId}/songs`)}
+            >
               {song.albumName}
-            </h4>
+            </span>
 
-            <h4 className='duration'>
+            <span className='hidden lg:flex justify-end pr-5 basis-[100px] text-sm md:text-base text-gray'>
               {song.duration}
-            </h4>
-
-          </div>
+            </span>
+          </li>
         ))}
-        <Link to={`/artist/${artistId}/songs`}>
-          <div className="see-more">
-            <h4>See more</h4>
-          </div>
-        </Link>
-      </div>
+        <span
+          className='text-gray text-xs md:text-sm mt-2 w-fit h-fit cursor-pointer hover:underline'
+          onClick={() => navigate(`/artist/${artistId}/songs`)}
+        >
+          See more</span>
+      </ul>
 
     </div>
   )

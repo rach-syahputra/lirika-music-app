@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { fetchAlbumSongs } from '../../../redux/reducers/songListSlice'
+import { truncateText } from '../../../utils/truncation'
 
 const ArtistAlbums = () => {
   const { artistId } = useParams()
@@ -34,39 +35,43 @@ const ArtistAlbums = () => {
   }
 
   return (
-    <div className='artist-albums'>
-      <div className="header">
-        <h2>Albums</h2>
+    <div className='component-wrapper h-[304px] md:h-[344px] mb-4'>
+      <div className='py-4'>
+        <span className='text-xl md:text-2xl font-bold'>Albums</span>
       </div>
 
-      <div className="album-list">
-        {albums && albums.map((album) => (
-          <div className="item" key={album.albumId}>
-            <div
-              className="album-img"
-            >
+      <ul className='flex w-full pb-4 gap-4 overflow-hidden hover:overflow-x-scroll custom-scrollbar'>
+        {albums && albums.map(album => (
+          <li className='flex flex-col gap-2' key={album.albumId}>
+            <div className='flex relative h-36 w-36 md:h-44 md:w-44 rounded-sm group'>
               <img
                 src={album.image}
-                alt=""
+                alt=''
                 onClick={() => navigate(`/album/${album.albumId}/songs`)}
+                className='cursor-pointer'
               />
               <div
-                className="play-button"
+                className='absolute flex items-center justify-center rounded-full w-12 h-12 bg-gray-dark bg-opacity-80 hover:bg-opacity-100 opacity-0 group-hover:opacity-100 hover:scale-110 -bottom-3 group-hover:bottom-4 right-4 duration-300 cursor-pointer'
                 onClick={() => (handlePlayButton(album.albumId))}
               >
                 <FontAwesomeIcon icon={faPlay} className='icon' />
               </div>
             </div>
-            <div className="info">
-              <h3 className='album-name' >{album.albumName}</h3>
-              <h4 className='releaseYear-type'>2017 • Album</h4>
+            <div className='flex flex-col'>
+              <span className='text-sm lg:text-base font-bold' >
+                {truncateText(album.albumName, 20)}
+              </span>
+
+              <span
+                className='text-xs lg:text-sm text-gray hover:underline cursor-pointer'
+                onClick={() => navigate(`/artist/${album.artistId}`)}
+              >
+                2018
+              </span>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
-      <div className="show-all">
-        <h4>Show all</h4>
-      </div>
+      </ul>
     </div>
   )
 }

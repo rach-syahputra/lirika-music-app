@@ -121,7 +121,6 @@ const AllSongsFromAlbum = () => {
 
               </li>
             ))}
-
           </ul>
         </div>
       )}

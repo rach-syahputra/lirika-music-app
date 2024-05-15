@@ -33,9 +33,9 @@ const TopAlbum = () => {
   }
 
   return (
-    <div className='p-4 h-[304px] md:h-[344px] bg-gray-dark rounded-md mb-4'>
+    <div className='component-wrapper h-[304px] md:h-[344px] mb-4'>
       <div className='flex mb-4'>
-        <h2 className='text-xl md:text-2xl'>Top Albums</h2>
+        <span className='text-xl md:text-2xl font-bold'>Top Albums</span>
       </div>
 
       <ul className='flex w-full pb-4 gap-4 overflow-hidden hover:overflow-x-scroll custom-scrollbar'>
@@ -56,16 +56,16 @@ const TopAlbum = () => {
               </div>
             </div>
             <div className='flex flex-col'>
-              <h3 className='text-base xl:text-lg font-bold' >
+              <span className='text-sm lg:text-base font-bold' >
                 {truncateText(album.albumName, 18)}
-              </h3>
+              </span>
 
-              <h4
-                className='text-base hover:underline cursor-pointer'
+              <span
+                className='text-sm lg:text-base text-gray hover:underline cursor-pointer'
                 onClick={() => navigate(`/artist/${album.artistId}`)}
               >
                 {truncateText(album.artistName, 18)}
-              </h4>
+              </span>
             </div>
           </li>
         ))}

@@ -17,7 +17,7 @@ const TopResultArtist = ({ topResult }) => {
       console.log("ISPLAYED", isPlayedId)
       navigate(`/artist/${topResult.artistId}`)
     } catch (error) {
-
+      console.log('TopResultArtist Error', error.message)
     }
 
   }

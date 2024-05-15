@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./artistImageCover.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
+import './artistImageCover.css'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
@@ -26,16 +24,19 @@ const ArtistImageCover = () => {
 
   return (
 
-    <div className="artist-image-cover-container">
+    <div>
       {artist && (
-        <div className="artist-image-cover">
-          <div className="img-container">
-            <img src={artist.image} alt="" />
-            <div className="overlay"></div>
+        // wrapper
+        <div className='relative rounded-t-md max-w-full h-[350px] bg-gray-dark'>
+          {/* image container */}
+          <div className='relative w-full h-full'>
+            <img src={artist.image} alt='' className='h-full w-full border-0' />
+            <div className='absolute top-0 left-0 w-full h-full bg-dark bg-opacity-30'></div>
           </div>
-          <div className="artist-details">
-            <h1 className='artist-name'>{artist.artistName}</h1>
-            <h3 className='monthly-listener'>35,290 monthly listeners</h3>
+          {/* artist info */}
+          <div className='absolute flex flex-col left-4 bottom-4'>
+            <span className='text-2xl md:text-4xl font-bold'>{artist.artistName}</span>
+            <span className='text-sm md:text-base'>35,290 monthly listeners</span>
           </div>
         </div>
       )}

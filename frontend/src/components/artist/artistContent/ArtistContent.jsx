@@ -7,7 +7,7 @@ import ArtistAbout from '../artistAbout/ArtistAbout'
 
 const ArtistContent = () => {
   return (
-    <div className="artist-content">
+    <div className='component-wrapper p-0'>
       <ArtistImageCover />
       <PopularArtistSongs />
       <ArtistAlbums />

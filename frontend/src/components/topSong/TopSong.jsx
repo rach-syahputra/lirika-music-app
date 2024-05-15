@@ -43,68 +43,71 @@ const TopSong = () => {
   }
 
   return (
+    // wrapper
     <div className='p-0 bg-gray-dark rounded-md'>
       <div className='p-4 flex justify-between'>
         <h2 className='text-xl md:text-2xl'>Top Songs</h2>
         <h4>See All</h4>
       </div>
 
-      <div className='flex flex-col'>
+      {/* song items container */}
+      <ul className='flex flex-col'>
         {topSongs && topSongs.map((song, index) => (
-          <ul className='flex w-full h-14 lg:h-16 px-4 items-center hover:bg-gray-dark-hover group' key={song.songId}>
-            <li className='hidden md:flex shrink-0 w-6 text-base text-gray'>
+          // song item container
+          <li className='flex w-full h-14 lg:h-16 px-4 items-center hover:bg-gray-dark-hover group' key={song.songId}>
+            <span className='hidden md:flex shrink-0 w-6 text-base text-gray'>
               {index + 1}
-            </li>
-
-            <li className='flex shrink-0 relative h-9 md:h-10 lg:h-11 w-14'>
+            </span>
+            {/* image and buttons container */}
+            <span className='flex shrink-0 relative h-9 md:h-10 lg:h-11 w-14'>
               <img className='h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11' src={song.image} alt='' />
               {isPlayedId === song.songId
                 ?
-                <li
+                <span
                   className='absolute flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-80 cursor-pointer'
                   onClick={() => handleStop(setIsPlayedId, dispatch)}
                 >
                   <FontAwesomeIcon icon={faPause} className='icon' />
-                </li>
+                </span>
                 :
-                <li
+                <span
                   className='hidden absolute group-hover:flex items-center justify-center h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11 rounded-md bg-gray-dark bg-opacity-80 cursor-pointer'
                   onClick={() => handlePlayButton(song.songId)}
                 >
                   <FontAwesomeIcon icon={faPlay} className='icon' />
-                </li>
+                </span>
               }
-            </li>
+            </span>
 
-            <li className='flex grow-[2] basis-[300px] pr-2 text-sm md:text-base xl:text-lg font-bold'>
+            <span className='flex grow-[2] basis-[300px] pr-2 text-sm md:text-base font-bold'>
               {song.title}
-            </li>
+            </span>
 
-            <li
-              className='flex grow basis-[250px] pr-2 text-sm md:text-base xl:text-lg text-gray hover:underline cursor-pointer'
+            <span
+              className='flex grow basis-[250px] pr-2 text-sm md:text-base text-gray hover:underline cursor-pointer'
               onClick={() => navigate(`/artist/${song.artistId}`)}
             >
               {song.artistName}
-            </li>
+            </span>
 
 
-            <li className='hidden xl:flex xl:basis-[200px] pr-2 text-sm md:text-base xl:text-lg text-gray'>
+            <span className='hidden xl:flex xl:basis-[200px] pr-2 text-sm md:text-base text-gray'>
               {`${song.playedCount} Plays`}
-            </li>
+            </span>
 
-            <li
-              className='flex basis-[250px] pr-2 text-sm md:text-base xl:text-lg text-gray hover:underline cursor-pointer'
+            <span
+              className='flex basis-[250px] pr-2 text-sm md:text-base text-gray hover:underline cursor-pointer'
               onClick={() => navigate(`/album/${song.albumId}/songs`)}
             >
               {song.albumName}
-            </li>
+            </span>
 
-            <li className='hidden lg:flex justify-end pr-5 basis-[100px] text-sm md:text-base xl:text-lg text-gray'>
+            <span className='hidden lg:flex justify-end pr-5 basis-[100px] text-sm md:text-base text-gray'>
               {song.duration}
-            </li>
-          </ul>
+            </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
