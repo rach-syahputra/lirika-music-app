@@ -20,43 +20,60 @@ const Register = () => {
   const navigate = useNavigate()
 
   return (
-    <div className='register'>
+    <div className='w-full h-screen'>
       <AuthNavbar />
-      <div className="section">
+      <div className="flex justify-center p-4">
         <form
-          className='sign-up'
+          className='flex flex-col max-w-[340px] gap-4'
           onSubmit={handleRegister(email, password, confirmPassword, setError, navigate)}>
-          <h1>Sign up to start listening</h1>
+          <span className='text-6xl text-line leading-[1.10] text-white font-bold'>Sign up to start listening</span>
 
-          <div className="email input">
-            <h3>Email address</h3>
-            <input type="text" placeholder='name@domain.com' value={email} onChange={(e) => setEmail(e.target.value)} />
-            {error.email && <p className='error-message'>{error.email}</p>}
+          {/* inputs container */}
+          <div className='flex flex-col gap-4'>
+            <div className="flex flex-col gap-1 w-full">
+              <span className='text-base text-white font-bold'>Email address</span>
+              <input
+                type="text"
+                placeholder='name@domain.com'
+                value={email} onChange={(e) => setEmail(e.target.value)}
+                className='w-full p-2 bg-dark text-white font-bold border-2 rounded-md'
+              />
+              {error.email && <span className='text-base text-red-error'>{error.email}</span>}
+            </div>
+
+            <div className="flex flex-col gap-1 w-full">
+              <span className='text-base text-white font-bold'>Password</span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className='w-full p-2 bg-dark text-white font-bold border-2 rounded-md'
+              />
+              {error.password && <span className='text-base text-red-error'>{error.password}</span>}
+            </div>
+
+            <div className="flex flex-col gap-1 w-full">
+              <span className='text-base text-white font-bold'>Confirm Password</span>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className='w-full p-2 bg-dark text-white font-bold border-2 rounded-md'
+              />
+              {error.confirmPassword && <span className='text-base text-red-error'>{error.confirmPassword}</span>}
+            </div>
+            {error.message && <span className='text-base text-red-error'>{error.message}</span>}
           </div>
 
-          <div className="password input">
-            <h3>Password</h3>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            {error.password && <p className='error-message'>{error.password}</p>}
-          </div>
-
-          <div className="confirm-password input">
-            <h3>Confirm Password</h3>
-            <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-            {error.confirmPassword && <p className='error-message'>{error.confirmPassword}</p>}
-
-          </div>
-
-          {error.message && <p className='error-message'>{error.message}</p>}
-          <button className='next-button' type='submit'>
+          <button className='w-full p-4 bg-green hover:bg-green-light text-lg text-dark font-bold rounded-md cursor-pointer duration-300' type='submit'>
             Next
           </button>
 
           <hr />
 
-          <p className='sign-in'>
-            Already have an account? <Link to='/login' className='sign-in-button'>Log in here</Link>
-          </p>
+          <span className='text-gray text-center'>
+            Already have an account? <Link to='/login' className='text-white hover:underline'>Log in here</Link>
+          </span>
         </form>
       </div>
     </div>
