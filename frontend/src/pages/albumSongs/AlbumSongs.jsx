@@ -15,7 +15,7 @@ const AlbumSongs = () => {
       <Sidebar />
       <div className="album-songs">
         <Navbar />
-        <div className="album-songs-child">
+        <div className='content-page-wrapper'>
           <AllSongsFromAlbum />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import './topArtist.css'
+import './topArtist.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

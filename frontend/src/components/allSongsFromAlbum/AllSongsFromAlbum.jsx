@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./allSongsFromAlbum.css"
+// import './allSongsFromAlbum.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay, faShuffle } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
@@ -46,77 +46,83 @@ const AllSongsFromAlbum = () => {
   }
 
   return (
-    <div className="all-songs-from-album">
+    // wrapper
+    <div className='component-wrapper'>
       {songs && (
         <div>
-          <div className="album-container">
-            <div className="img-container">
-              <img src={image} alt="" />
+          {/* album container */}
+          <div className='flex items-center gap-6 w-full overflow-hidden mb-8'>
+            {/* image container */}
+            <div className='flex shrink-0 h-[240px] w-[240px] overflow-hidden rounded-md'>
+              <img src={image} alt='' />
             </div>
 
-            <div className="album-info">
-              <h1 className='album-name'>{albumName}</h1>
+            {/* album info */}
+            <div className='flex flex-col gap-4'>
+              <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold max-w-[600px] h-[70px] md:h-[75px] lg:h-[80px]'>{albumName}</h1>
 
-              <div className="more-album-details">
-                <h4 className='album-and-artist-details'>{`Album • ${artistName}`}</h4>
-                <h4 className='total-songs-and-duration'>10 songs • 30 minutes</h4>
+              <div className='flex flex-col'>
+                <h4 className='text-base lg:text-lg'>{`Album • ${artistName}`}</h4>
+                <h4 className='text-base lg:text-lg'>10 songs • 30 minutes</h4>
               </div>
 
-              <div className="buttons">
-                <div className='play-button' onClick={() => handlePlayButton(firstSongId)}>
+              <div className='flex gap-4'>
+                <div className='light-button' onClick={() => handlePlayButton(firstSongId)}>
                   <FontAwesomeIcon icon={faPlay} className='icon' /> Play
                 </div>
-                <div className='shuffle-button'>
+                <div className='light-button'>
                   <FontAwesomeIcon icon={faShuffle} className='icon' /> Shuffle
                 </div>
               </div>
             </div>
           </div>
 
-          <hr />
+          <hr className='border border-gray text-gray opacity-40' />
 
-          <div className='song-list'>
+          {/* song list */}
+          <ul className='flex flex-col mt-4 '>
             {songs.map((song, index) => (
-              <div className="item" key={song.songId}>
+              <li className='flex h-12 items-center group' key={song.songId}>
 
-                <h3 className='number'>
-                  {isPlayedId !== song.songId && (
-                    `${index + 1}`
-                  )}
+                <div className='flex relative items-center justify-center shrink-0 w-5 lg:w-7 mr-3 '>
+                  <h3 className='flex group-hover:hidden justify-center w-full h-full text-base lg:text-lg text-gray'>
+                    {isPlayedId !== song.songId && (
+                      `${index + 1}`
+                    )}
+                  </h3>
 
-                </h3>
+                  {isPlayedId === song.songId
+                    ?
+                    <div className='absolute items-center justify-center bg-dark bg-opacity-40 flex w-8 h-8 cursor-pointer' onClick={() => handleStop(setIsPlayedId, dispatch)}>
+                      <FontAwesomeIcon icon={faPause} className='icon' />
+                    </div>
+                    :
+                    <div className='hidden absolute group-hover:flex items-center justify-center bg-dark bg-opacity-40 w-8 h-8 cursor-pointer' onClick={() => handlePlayButton(song.songId)}>
+                      <FontAwesomeIcon icon={faPlay} className='icon' />
+                    </div>
+                  }
+                </div>
 
-                {isPlayedId === song.songId
-                  ?
-                  <div className="pause-button" onClick={() => handleStop(setIsPlayedId, dispatch)}>
-                    <FontAwesomeIcon icon={faPause} className='icon' />
-                  </div>
-                  :
-                  <div className="play-button" onClick={() => handlePlayButton(song.songId)}>
-                    <FontAwesomeIcon icon={faPlay} className='icon' />
-                  </div>
-                }
-
-                <h3 className='song-title' >
+                <h3 className='flex-grow-2 shrink-0 basis-[300px] text-base lg:text-lg font-bold' >
                   {song.title}
                 </h3>
 
-                <h4 className='artist-name'>
+                <h4 className='flex-grow basis-[250px] pr-2 text-sm lg:text-base'>
                   {song.artistName}
                 </h4>
 
-                <h4 className='played-count'>
+                <h4 className='flex justify-end md:justify-start basis-[250px] pr-2 text-sm lg:text-base'>
                   {`${song.playedCount} Plays`}
                 </h4>
 
-                <h4 className='duration'>
+                <h4 className='hidden md:flex basis-[100px] pr-2 justify-end text-sm lg:text-base'>
                   {song.duration}
                 </h4>
 
-              </div>
+              </li>
             ))}
 
-          </div>
+          </ul>
         </div>
       )}
     </div>

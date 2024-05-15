@@ -14,7 +14,14 @@ export default {
       'white': "#f8f9fa",
       'white-hover': "#e9ecef"
     },
-    extend: {},
+    extend: {
+      flexGrow: {
+        '2': '2'
+      },
+      flexShrink: {
+        '2': '2'
+      },
+    },
   },
   plugins: [],
 }
