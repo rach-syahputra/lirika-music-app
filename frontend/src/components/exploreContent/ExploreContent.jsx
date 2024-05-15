@@ -6,7 +6,7 @@ import TrendingSong from '../trendingSong/TrendingSong'
 
 const ExploreContent = () => {
   return (
-    <div className='exploreContent'>
+    <div className='component-wrapper'>
       <RecommendedAlbum />
       <NewReleases />
       <TrendingSong />

@@ -15,7 +15,7 @@ const Explore = () => {
       <Sidebar currentPage='explore' />
       <div className="explore-page">
         <Navbar />
-        <div className="explore-page-child">
+        <div className="content-page-wrapper">
           <ExploreContent />
         </div>
       </div>
