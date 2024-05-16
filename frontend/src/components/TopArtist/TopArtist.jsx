@@ -39,14 +39,14 @@ const TopArtist = () => {
 
   return (
     // wrapper
-    <div className='component-wrapper mb-4 h-[310px] md:h-[350px] '>
+    <div className='component-wrapper mb-4 h-[304px] md:h-[344px] '>
       {/* header */}
       <div className='component-header'>
         <h2 className='header'>Top Artists</h2>
       </div>
 
       {/* top artist container */}
-      <ul className='list-component custom-scrollbar'>
+      <ul className='list-component hover:overflow-x-scroll custom-scrollbar'>
         {topArtists && topArtists.map(artist => (
           // top artist list
           <li className='list-container' key={artist.artistId}>
@@ -69,7 +69,7 @@ const TopArtist = () => {
               <span className='text-sm lg:text-base font-bold' >
                 {truncateText(artist.artistName, 17)}
               </span>
-              <span className='list text-sm md:text-base text-gray'>{artist.country}</span>
+              <span className='text-sm md:text-base text-gray'>{artist.country}</span>
             </div>
           </li>
         ))}

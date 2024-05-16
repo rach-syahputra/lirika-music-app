@@ -101,10 +101,6 @@
     overflow: hidden;
   }
 
-  .list-component:hover {
-    overflow-x: scroll;
-  }
-
   .list-container {
     display: flex;
     flex-direction: column;

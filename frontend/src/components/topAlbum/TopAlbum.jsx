@@ -38,7 +38,7 @@ const TopAlbum = () => {
         <span className='header'>Top Albums</span>
       </div>
 
-      <ul className='list-component custom-scrollbar'>
+      <ul className='list-component hover:overflow-x-scroll custom-scrollbar'>
         {topAlbums && topAlbums.map(album => (
           <li className='list-container' key={album.albumId}>
             <div className='image-container'>

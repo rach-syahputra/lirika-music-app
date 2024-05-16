@@ -59,7 +59,7 @@ const TopSong = () => {
               {index + 1}
             </span>
             {/* image and buttons container */}
-            <span className='flex shrink-0 relative h-9 md:h-10 lg:h-11 w-14'>
+            <div className='flex shrink-0 relative h-9 md:h-10 lg:h-11 w-14'>
               <img className='h-9 w-9 md:h-10 md:w-10 lg:h-11 lg:w-11' src={song.image} alt='' />
               {isPlayedId === song.songId
                 ?
@@ -77,7 +77,7 @@ const TopSong = () => {
                   <FontAwesomeIcon icon={faPlay} className='icon' />
                 </span>
               }
-            </span>
+            </div>
 
             <span className='flex grow-[2] basis-[300px] pr-2 text-sm md:text-base font-bold'>
               {song.title}

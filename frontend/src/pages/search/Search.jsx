@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import "./search.css"
+import './search.css'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
 import SearchResultContent from '../../components/search/searchContent/SearchContent'
-import axios from "axios"
+import axios from 'axios'
 import { useSearchParams } from 'react-router-dom'
 import MusicPlayer from '../../components/musicPlayer/MusicPlayer'
 
@@ -39,9 +39,9 @@ const Search = () => {
   return (
     <div className='layout'>
       <Sidebar currentPage='search' />
-      <div className="search-page">
+      <div className='search-page'>
         <Navbar />
-        <div className="content-page-wrapper">
+        <div className='content-page-wrapper'>
           <SearchResultContent
             topResult={topResult}
             artists={artists}

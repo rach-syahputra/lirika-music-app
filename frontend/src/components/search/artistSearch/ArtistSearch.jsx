@@ -4,29 +4,26 @@ import { truncateText } from '../../../utils/truncation'
 
 const ArtistSearch = ({ artists }) => {
   return (
-    <div className='component-wrapper'>
+    <div className='component-wrapper h-[304px] md:h-[344px]'>
       <div className='component-header'>
         <span className='header'>Artist</span>
       </div>
-      {/* artist list container */}
-      <div className='artistList'>
+
+      <ul className='list-component hover:overflow-x-scroll custom-scrollbar'>
         {artists && artists.map(artist => (
-          // artist list
-          <div className='item' key={artist.artistId}>
-            {/* artist image */}
-            <div className='artistImg'>
-              <img src={artist.image} alt='' />
+          <li className='list-container' key={artist.artistId}>
+            <div className='image-container'>
+              <img src={artist.image} alt='' className='round-image-list' />
             </div>
-            {/* details */}
-            <div className='info'>
-              <h3 className='artistName' >
+            <div className='flex flex-col items-center'>
+              <span className='text-sm lg:text-base font-bold' >
                 {truncateText(artist.artistName, 16)}
-              </h3>
-              <h4 className='type'>Artist</h4>
+              </span>
+              <span className='text-sm md:text-base text-gray'>Artist</span>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
